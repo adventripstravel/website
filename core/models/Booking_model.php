@@ -37,19 +37,21 @@ class Booking_model extends Model
 		return !empty($query) ? Functions::get_decoded_query($query[0]) : null;
 	}
 
-	public function get_availability($id, $date, $availability)
+	public function get_availability($tour, $date, $availability)
 	{
-		$query = Functions::get_decoded_query($this->database->select('bookings', [
+		$query = $this->database->select('bookings', [
 			'paxes'
 		], [
             'AND' => [
-				'id_tour' => $id,
+				'tour' => $tour,
 				'date_booking' => $date,
 			]
-        ]));
+        ]);
 
 		if (!empty($query))
 		{
+			$query = Functions::get_decoded_query($query);
+
 			foreach ($query as $value)
 				$availability = $availability - ($value['paxes']['adults'] + $value['paxes']['children']);
 		}
@@ -57,52 +59,58 @@ class Booking_model extends Model
 		return $availability;
 	}
 
-	// public function get_seller($token)
-	// {
-	// 	$id = null;
-	//
-	// 	$query = Functions::get_decoded_query($this->database->select('users', [
-	// 		'id_user',
-	// 	], [
-	// 		'token' => $token
-	// 	]));
-	//
-	// 	return $query;
-	// }
+	public function get_ladas()
+	{
+		$query = $this->database->select('countries', [
+			'name',
+			'lada'
+		]);
+
+		return Functions::get_decoded_query($query);
+	}
+
+	public function check_exist_promotional_code($token)
+	{
+		$query = $this->database->count('users', [
+			'token' => $token
+		]);
+
+		return !empty($query) ? true : false;
+	}
 
 	/* Inserts
 	------------------------------------------------------------------------------- */
-	// public function new($data)
-	// {
-	// 	$query = $this->database->insert('bookings', [
-	// 		'token' => $data['payment'][0]['data']['booking']['token'],
-	// 		'name' => $data['payment'][0]['data']['booking']['name'],
-	// 		'email' => $data['payment'][0]['data']['booking']['email'],
-	// 		'cellphone' => $data['payment'][0]['data']['booking']['cellphone'],
-	// 		'id_tour' => $data['payment'][0]['data']['booking']['id_tour'],
-	// 		'date_booking' => $data['payment'][0]['data']['booking']['date_booking'],
-	// 		'observations' => $data['payment'][0]['data']['booking']['observations'],
-	// 		'paxes' => json_encode($data['payment'][0]['data']['booking']['paxes']),
-	// 		'totals' => json_encode($data['payment'][0]['data']['booking']['totals']),
-	// 		'payment' => json_encode($data['payment'][0]['data']['booking']['payment']),
-	// 		'language' => $data['payment'][0]['data']['booking']['language'],
-	// 		'canceled' => $data['payment'][0]['data']['booking']['canceled'],
-	// 		'date_booked' => $data['payment'][0]['data']['booking']['date_booked'],
-	// 		'code' => $data['payment'][0]['data']['booking']['code']
-	// 	]);
-	//
-	// 	if (!empty($query))
-	// 	{
-	// 		$query = $this->database->insert('com_payment_tmp', [
-	// 			'incidence_number' => $data['payment'][0]['incidence_number'],
-	// 			'data' => json_encode($data)
-	// 		]);
-	//
-	// 		return !empty($query) ? $this->database->id($query) : null;
-	// 	}
-	// 	else
-	// 		return null;
-	// }
+	public function new($data)
+	{
+		$query = $this->database->insert('bookings', [
+			'token' => $data['booking']['token'],
+			'tour' => $data['booking']['tour'],
+			'date_booking' => $data['booking']['date_booking'],
+			'date_booked' => $data['booking']['date_booked'],
+			'paxes' => json_encode($data['booking']['paxes']),
+			'firstname' => $data['booking']['firstname'],
+			'lastname' => $data['booking']['lastname'],
+			'email' => $data['booking']['email'],
+			'phone' => $data['booking']['phone'],
+			'totals' => json_encode($data['booking']['totals']),
+			'payment' => json_encode($data['booking']['payment']),
+			'language' => $data['booking']['language'],
+			'canceled' => $data['booking']['canceled'],
+			'user' => $data['booking']['user'],
+		]);
+
+		if (!empty($query))
+		{
+			$query = $this->database->insert('com_payment_tmp', [
+				'incidence_number' => $data['payment']['incidence_number'],
+				'data' => json_encode($data)
+			]);
+
+			return !empty($query) ? $this->database->id($query) : null;
+		}
+		else
+			return null;
+	}
 
 	/* Updates
 	------------------------------------------------------------------------------- */

@@ -32,7 +32,7 @@ $(document).ready(function()
         }
     });
 
-    /* Map - Get location
+    /* Get map
     ------------------------------------------------------------------------------- */
     $.ajax({
         type: 'POST',
@@ -47,7 +47,7 @@ $(document).ready(function()
                     lat: parseFloat(response.data.location.lat),
                     lng: parseFloat(response.data.location.lng)
                 },
-                zoom: 12,
+                zoom: 14,
             });
 
             var location_marker = new google.maps.Marker({
@@ -59,7 +59,7 @@ $(document).ready(function()
             });
 
             var location_infowindow = new google.maps.InfoWindow({
-                content: 'Tour',
+                content: 'Aquí será tu tour',
             });
 
             location_infowindow.open(map, location_marker);
@@ -93,79 +93,89 @@ $(document).ready(function()
 
     /* Get availability
     ------------------------------------------------------------------------------- */
-    // $('[name="date"]').on('change', function()
-    // {
-    //     $.ajax({
-    //         url: '',
-    //         type: 'POST',
-    //         data: 'date=' + $('[name="date"]').val() + '&action=get&option=availability',
-    //         processData: false,
-    //         cache: false,
-    //         dataType: 'json',
-    //         success: function(response)
-    //         {
-    //             if (response.status == 'success')
-    //                 $('[name="date"]').parent().find('p.caption').html(response.data);
-    //         }
-    //     });
-    // });
+    $('[name="date"]').on('change', function()
+    {
+        $.ajax({
+            type: 'POST',
+            data: 'date=' + $(this).val() + '&action=get_availability',
+            processData: false,
+            cache: false,
+            dataType: 'json',
+            success: function(response)
+            {
+                if (response.status == 'success')
+                    $('[name="date"]').parent().find('p.caption').html(response.data);
+                else
+                {
+                    $('[data-modal="alert"] main > p').html(response.message);
+                    $('[data-modal="alert"]').addClass('view');
+                }
+            }
+        });
+    });
 
-    /* Get totals
+    /* Get total
     ------------------------------------------------------------------------------- */
-    // $('[name="adults"]').on('change', function()
-    // {
-    //     get_total();
-    // });
-    //
-    // $('[name="children"]').on('change', function()
-    // {
-    //     get_total();
-    // });
+    $('[name="adults"]').on('change', function()
+    {
+        get_total();
+    });
+
+    $('[name="children"]').on('change', function()
+    {
+        get_total();
+    });
 
     /* Booking
     ------------------------------------------------------------------------------- */
-    // $('[data-action="booking"]').on('click', function()
-    // {
-    //     $('form[name="booking"]').submit();
-    // });
-    //
-    // $('form[name="booking"]').on('submit', function(e)
-    // {
-    //     e.preventDefault();
-    //
-    //     var form = $(this);
-    //
-    //     $.ajax({
-    //         url: '',
-    //         type: 'POST',
-    //         data: form.serialize() + '&action=booking',
-    //         processData: false,
-    //         cache: false,
-    //         dataType: 'json',
-    //         success: function(response)
-    //         {
-    //             checkFormValidations(form, response, function()
-    //             {
-    //                 window.location.href = response.path;
-    //             });
-    //         }
-    //     });
-    // });
+    $('[data-action="booking"]').on('click', function()
+    {
+        $('form[name="booking"]').submit();
+    });
+
+    $('form[name="booking"]').on('submit', function(e)
+    {
+        e.preventDefault();
+
+        var form = $(this);
+
+        $.ajax({
+            type: 'POST',
+            data: form.serialize() + '&action=booking',
+            processData: false,
+            cache: false,
+            dataType: 'json',
+            success: function(response)
+            {
+                checkFormValidations(form, response, function()
+                {
+                    window.location.href = response.path;
+                });
+            }
+        });
+    });
 });
 
-// function get_total()
-// {
-//     $.ajax({
-//         url: '',
-//         type: 'POST',
-//         data: 'adults=' + $('[name="adults"]').val() + '&children=' + $('[name="children"]').val() + '&action=get&option=total',
-//         processData: false,
-//         cache: false,
-//         dataType: 'json',
-//         success: function(response)
-//         {
-//             if (response.status == 'success')
-//                 $('[name="total"]').val('$ ' + response.data + ' USD');
-//         }
-//     });
-// }
+function get_total()
+{
+    $.ajax({
+        type: 'POST',
+        data: 'adults=' + $('[name="adults"]').val() + '&children=' + $('[name="children"]').val() + '&action=get_total',
+        processData: false,
+        cache: false,
+        dataType: 'json',
+        success: function(response)
+        {
+            if (response.status == 'success')
+            {
+                $('[name="total"]').val(response.data.usd);
+                $('[name="total"]').parent().find('p.caption').find('span').html(response.data.mxn)
+            }
+            else
+            {
+                $('[data-modal="alert"] main > p').html(response.message);
+                $('[data-modal="alert"]').addClass('view');
+            }
+        }
+    });
+}

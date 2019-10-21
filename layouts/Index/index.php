@@ -27,7 +27,7 @@ $this->dependencies->add(['js', '{$path.js}Index/index.min.js']);
     <h1>{$lang.seo_description}</h1>
     <form name="search_booking">
         <fieldset>
-            <input type="text" name="token" placeholder="{$lang.booking_number}">
+            <input type="text" name="booking_number" placeholder="{$lang.booking_number}">
             <button type="submit">{$lang.search_my_booking}</button>
         </fieldset>
     </form>
@@ -35,10 +35,10 @@ $this->dependencies->add(['js', '{$path.js}Index/index.min.js']);
 <section class="tours">
     {$art_tours}
 </section>
-<section class="get-promtional-discount">
+<section class="get-promtional-code">
     <h2>¡{$lang.wait}!</h2>
     <h3>{$lang.if_you_dont_have_promotional_code}</h3>
-    <form name="get_promotional_discount">
+    <form name="get_promotional_code">
         <fieldset>
             <input type="email" name="email" placeholder="{$lang.email}">
             <button type="submit">{$lang.get_my_code}</button>

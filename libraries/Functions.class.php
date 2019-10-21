@@ -87,15 +87,12 @@ class Functions
 		return (strlen(strip_tags($text)) > $length) ? substr(strip_tags($text), 0, $length) . '...' : substr(strip_tags($text), 0, $length);
     }
 
-    public static function get_formatted_currency($number = 0, $currency = 'MXN')
+    public static function get_formatted_currency($currency = 'MXN', $number = 0)
     {
-        if (!empty($number))
-            return '$ ' . number_format($number, 2, '.', ',') . ' ' . $currency;
-        else
-            return '$ 0.00 ' . $currency;
+        return '$ ' . number_format($number, 2, '.', ',') . ' ' . $currency;
     }
 
-    static public function get_currency_exchange($number = 1, $from = 'MXN', $to = 'USD')
+    static public function get_currency_exchange($from = 'MXN', $to = 'USD', $number = 1)
     {
         $exchange = 0;
 
@@ -135,17 +132,17 @@ class Functions
         return $exchange;
     }
 
+    public static function check_email($email)
+    {
+        return (filter_var($email, FILTER_VALIDATE_EMAIL)) ? true : false;
+    }
+
     public static function check_access($user_level)
     {
 		if (in_array(Session::get_value('_vkye_user_level'), $user_level))
             return true;
         else
             return false;
-    }
-
-    public static function check_email($email)
-    {
-        return (filter_var($email, FILTER_VALIDATE_EMAIL)) ? true : false;
     }
 
     public static function uploader($file = null, $upload_directory = PATH_UPLOADS, $valid_extensions = ['png','jpg','jpeg'], $maximum_file_size = 'unlimited', $multiple = false)

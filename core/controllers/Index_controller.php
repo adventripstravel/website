@@ -41,16 +41,16 @@ class Index_controller extends Controller
 			{
 				$errors = [];
 
-				if (!isset($_POST['token']) OR empty($_POST['token']))
-					array_push($errors, ['token','{$lang.dont_leave_this_field_empty}']);
-				else if ($this->model->check_exist_booking($_POST['token']) == false)
-					array_push($errors, ['token','{$lang.invalid_data}']);
+				if (!isset($_POST['booking_number']) OR empty($_POST['booking_number']))
+					array_push($errors, ['booking_number','{$lang.dont_leave_this_field_empty}']);
+				else if ($this->model->check_exist_booking($_POST['booking_number']) == false)
+					array_push($errors, ['booking_number','{$lang.invalid_data}']);
 
 				if (empty($errors))
 				{
 					echo json_encode([
 						'status' => 'success',
-						'path' => '/voucher/index/' . $_POST['token'],
+						'path' => '/voucher/index/' . $_POST['booking_number'],
 					]);
 				}
 				else
@@ -62,7 +62,7 @@ class Index_controller extends Controller
 				}
 			}
 
-			if ($_POST['action'] == 'get_promotional_discount')
+			if ($_POST['action'] == 'get_promotional_code')
 			{
 				$errors = [];
 
@@ -80,15 +80,15 @@ class Index_controller extends Controller
 					if ($this->lang == 'es')
 					{
 						$subject_mail = 'Obten tu código promocional';
-						$message_mail = 'Ingresa tu código promocional en cualquier reservación que hagas y obten los inigualables descuentos que tenemos para ti';
-						$book_now_mail = 'Reserva ahora';
+						$message_mail = 'Ingresa tu código promocional en cualquier reservación que hagas con nosotros y obten los inigualables descuentos que tenemos para ti';
+						$button_mail = 'Reserva ahora';
 						$success_mail = 'Hemos enviado un correo electrónico a ' . $_POST['mail'] . ' con tu código promocional';
 					}
 					else if ($this->lang == 'en')
 					{
-						$subject_mail = 'Get your promotional discount';
-						$message_mail = 'Enter your promotional code in any reservation you make and get the unmatched discounts we have for you';
-						$book_now_mail = 'Book now';
+						$subject_mail = 'Get your promotional code';
+						$message_mail = 'Enter your promotional code in any reservation you make with us and get the unmatched discounts we have for you';
+						$button_mail = 'Book now';
 						$success_mail = 'We have sent an email to ' . $_POST ['mail'] . ' with your promotional code';
 					}
 
@@ -110,7 +110,7 @@ class Index_controller extends Controller
 									<td style="width:100%;margin:0px;border:0px;padding:40px 20px;box-sizing:border-box;background-color:#fff;">
 										<p style="font-size:60px;font-weight:600;text-align:center;color:#212121;margin:0px;margin-bottom:20px;padding:0px;">EX18AZ</p>
 										<p style="font-size:14px;font-weight:400;text-align:center;color:#212121;margin:0px;margin-bottom:20px;padding:0px;">' . $message_mail . '</p>
-										<a style="width:100%;display:block;margin:0px;border-radius:20px;padding:20px 0px;box-sizing:border-box;font-size:14px;font-weight:400;text-align:center;text-decoration:none;color:#fff;background-color:#201d33;" href="https://exploore.mx">' . $book_now_mail . '</a>
+										<a style="width:100%;display:block;margin:0px;border-radius:20px;padding:20px 0px;box-sizing:border-box;font-size:14px;font-weight:400;text-align:center;text-decoration:none;color:#fff;background-color:#201d33;" href="https://exploore.mx">' . $button_mail . '</a>
 									</td>
 								</tr>
 								<tr style="width:100%;margin:0px;border:0px;padding:0px;">
@@ -140,7 +140,7 @@ class Index_controller extends Controller
 		}
 		else
 		{
-			define('_title', Configuration::$web_page . ' | {$lang.seo_description}');
+			define('_title', 'Exploore | {$lang.seo_description}');
 
 			$template = $this->view->render($this, 'index');
 
@@ -148,14 +148,19 @@ class Index_controller extends Controller
 
 			foreach ($this->model->get_tours() as $value)
 			{
+				if ($this->lang == 'es')
+					$value['price'] = Functions::get_formatted_currency('MXN', Functions::get_currency_exchange('USD', 'MXN', $value['price']['adults']));
+				else if ($this->lang == 'en')
+					$value['price'] = Functions::get_formatted_currency('USD', $value['price']['adults']);
+
 				if ($value['discount']['type'] == '%')
-					$value['discount'] = '<span> + ' . $value['discount']['amount'] . '% {$lang.to_discount_with_promotional_code}</span>';
+					$value['discount'] = '<span> + ' . $value['discount']['amount'] . '% {$lang.to_discount_with_your_promotional_code}</span>';
 				else if ($value['discount']['type'] == '$')
-					$value['discount'] = '<span> + $ ' . $value['discount']['amount'] . ' USD {$lang.to_discount_with_promotional_code}</span>';
+					$value['discount'] = '<span> + $ ' . $value['discount']['amount'] . ' USD {$lang.to_discount_with_your_promotional_code}</span>';
 
 				$art_tours .=
 				'<article data-image-src="{$path.uploads}' . $value['cover'] . '">
-					<p>{$lang.from} $ ' . $value['price']['adults'] . ' USD ' . $value['discount'] . '</p>
+					<p>{$lang.from} ' . $value['price'] . ' ' . $value['discount'] . '</p>
 					<h4>' . $value['name'][$this->lang] . '</h4>
 					<p>' . $value['destination'] . '</p>
 					<a href="/booking/index/' . $value['id'] . '">{$lang.book_now}</a>

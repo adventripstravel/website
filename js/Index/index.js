@@ -37,9 +37,9 @@ $(document).ready(function()
         });
     });
 
-    /* Get promotional discount
+    /* Get promotional code
     ------------------------------------------------------------------------------- */
-    $('form[name="get_promotional_discount"]').on('submit', function(e)
+    $('form[name="get_promotional_code"]').on('submit', function(e)
     {
         e.preventDefault();
 
@@ -47,7 +47,7 @@ $(document).ready(function()
 
         $.ajax({
             type: 'POST',
-            data: form.serialize() + '&action=get_promotional_discount',
+            data: form.serialize() + '&action=get_promotional_code',
             processData: false,
             cache: false,
             dataType: 'json',

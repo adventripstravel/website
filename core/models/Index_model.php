@@ -45,10 +45,10 @@ class Index_model extends Model
 		return Functions::get_decoded_query($query);
 	}
 
-	public function check_exist_booking($token)
+	public function check_exist_booking($booking_number)
 	{
 		$query = $this->database->count('bookings', [
-			'token' => $token,
+			'token' => $booking_number,
 		]);
 
 		return ($query > 0) ? true : false;
