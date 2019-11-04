@@ -47,7 +47,7 @@ class Configuration
 	 *
      * @var string $error_reporting
      */
-	public static $error_reporting = 'development';
+	public static $error_reporting = 'none';
 
 	/**
      * Modo para debuggear errores.
@@ -147,7 +147,7 @@ class Configuration
 	 *
      * @var string $db_name
      */
-	public static $db_name = 'exploore';
+	public static $db_name = 'ex-web-platform';
 
 	/**
      * Usuario de la base de datos
