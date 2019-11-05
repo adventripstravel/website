@@ -18,7 +18,7 @@ class Configuration
 	 *
      * @var string $domain
      */
-	public static $domain = 'exploore.mx';
+	public static $domain = '';
 
 	/**
      * Nombre del sitio web.
@@ -27,7 +27,7 @@ class Configuration
 	 *
      * @var string $web_page
      */
-	public static $web_page = 'Exploore';
+	public static $web_page = '';
 
 	/**
      * Idioma por default
@@ -101,7 +101,7 @@ class Configuration
 	 *
      * @var string $secret
      */
-	public static $secret = 'd[S)]=/+|,sG7Y2v';
+	public static $secret = '';
 
 	/**
      * Tiempo de vida para una session en bytes.
@@ -119,7 +119,7 @@ class Configuration
 	 *
      * @var boolean $db_state
      */
-	public static $db_state = true;
+	public static $db_state = false;
 
 	/**
      * Tipo de base de datos.
@@ -129,7 +129,7 @@ class Configuration
 	 *
      * @var string $db_type
      */
-	public static $db_type = 'mysql';
+	public static $db_type = '';
 
 	/**
      * Dominio o IP para el servidor de base de datos.
@@ -138,7 +138,7 @@ class Configuration
 	 *
      * @var string $db_host
      */
-	public static $db_host = 'exploore.mx';
+	public static $db_host = '';
 
 	/**
      * Nombre de la base de datos
@@ -147,7 +147,7 @@ class Configuration
 	 *
      * @var string $db_name
      */
-	public static $db_name = 'ex-web-platform';
+	public static $db_name = '';
 
 	/**
      * Usuario de la base de datos
@@ -156,7 +156,7 @@ class Configuration
 	 *
      * @var string $db_user
      */
-	public static $db_user = 'exploore';
+	public static $db_user = '';
 
 	/**
      * Contraseña de la base de datos.
@@ -165,7 +165,7 @@ class Configuration
 	 *
      * @var string $db_pass
      */
-	public static $db_pass = '!5ul1A4r';
+	public static $db_pass = '';
 
 	/**
      * Tipo de caracteres para la base de datos. Opcional.
