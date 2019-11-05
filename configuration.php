@@ -101,7 +101,7 @@ class Configuration
 	 *
      * @var string $secret
      */
-	public static $secret = '&Q1EMGR$U?1mMO2k';
+	public static $secret = 'd[S)]=/+|,sG7Y2v';
 
 	/**
      * Tiempo de vida para una session en bytes.
