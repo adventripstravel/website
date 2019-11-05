@@ -13,16 +13,5 @@
 
 $(document).ready(function()
 {
-    /* Main header down
-    ------------------------------------------------------------------------------- */
-    navScrollDown('header.main-header', 'down', 0, null, null);
-
-    /* Open responsive menu
-    ------------------------------------------------------------------------------- */
-    $('[data-action="responsive"]').on('click', function(e)
-    {
-        e.stopPropagation();
-
-        $('header.main-header nav.menu').toggleClass('open');
-    });
+    
 });

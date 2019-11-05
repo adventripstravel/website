@@ -44,18 +44,8 @@ class Placeholders_vkye
 
     private function placeholders()
     {
-        if (Session::get_value('lang') == 'es')
-            $_vkye_email = 'reservaciones@exploore.mx';
-        else if (Session::get_value('lang') == 'en')
-            $_vkye_email = 'reservations@exploore.mx';
-
         $replace = [
-            '{$_vkye_email}' => $_vkye_email,
-            '{$_vkye_phone}' => '+52 (998) 420 90 29',
-            '{$_vkye_facebook}' => 'https://www.facebook.com/exploore.mx/',
-            '{$_vkye_instagram}' => 'https://www.instagram.com/',
-            '{$_vkye_twitter}' => 'https://www.twitter.com/',
-            '{$_vkye_youtube}' => 'https://www.youtube.com/',
+            
         ];
 
         return $this->format->replace($replace, $this->buffer);
