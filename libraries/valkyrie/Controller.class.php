@@ -77,7 +77,7 @@ class Controller
 		$this->module 	 = new Modules();
 		$this->component = new Components();
 
-        $this->_lang = Session::get_value('lang');
+        $this->_lang = Session::get_value('vkye_lang');
 
         if ( Format::check_path_admin() )
             $this->system = new System();

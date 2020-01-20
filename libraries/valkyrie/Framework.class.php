@@ -6,7 +6,7 @@ defined('_EXEC') or die;
  * @package Valkyrie.Libraries
  *
  * @since 1.0.0
- * @version 1.0.0
+ * @version 1.0.1
  * @license You can see LICENSE.txt
  *
  * @author David Miguel Gómez Macías < davidgomezmacias@gmail.com >
@@ -29,7 +29,7 @@ class Framework
 	 *
      * @var const
      */
-	const RELEASE = '1.0.0';
+	const RELEASE = '1.0.1';
 
 	/**
 	 * Estado del framework.
@@ -50,14 +50,14 @@ class Framework
 	 *
      * @var const
      */
-	const RELEASE_DATE = '18 May 16';
+	const RELEASE_DATE = '23 Aug 18';
 
 	/**
 	 * Hora del release.
 	 *
      * @var const
      */
-	const RELEASE_TIME = '12:15';
+	const RELEASE_TIME = '19:32';
 
 	/**
 	 * Zona horaria del release.

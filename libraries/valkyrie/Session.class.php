@@ -125,7 +125,17 @@ class Session
      */
 	static function exists()
 	{
-		return (sizeof($_SESSION) > 0) ? true : false;
+		if ( sizeof($_SESSION) > 0 )
+		{
+			return true;
+		}
+		else
+		{
+			$_tmp = $_SESSION;
+			unset($_tmp['vkye_lang']);
+
+			return ( sizeof($_tmp) > 0 ) ? true : false;
+		}
 	}
 
 	/**
@@ -141,9 +151,9 @@ class Session
 	{
 		self::set_value('_vkye_token', $arr['token']);
 		self::set_value('_vkye_id_user', $arr['id_user']);
-		self::set_value('_vkye_username', $arr['username']);
+		self::set_value('_vkye_user', $arr['user']);
+		self::set_value('_vkye_last_access', Format::get_date_hour());
 		self::set_value('_vkye_level', $arr['level']);
-		self::set_value('_vkye_last_access', $arr['last_access']);
 
 		return true;
 	}

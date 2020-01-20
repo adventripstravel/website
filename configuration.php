@@ -18,7 +18,7 @@ class Configuration
 	 *
      * @var string $domain
      */
-	public static $domain = '';
+	public static $domain = 'adventrips.com';
 
 	/**
      * Nombre del sitio web.
@@ -27,7 +27,7 @@ class Configuration
 	 *
      * @var string $web_page
      */
-	public static $web_page = '';
+	public static $web_page = 'Adventrips';
 
 	/**
      * Idioma por default
@@ -101,7 +101,7 @@ class Configuration
 	 *
      * @var string $secret
      */
-	public static $secret = '';
+	public static $secret = '1e:[7~uJ*T}/CCO3';
 
 	/**
      * Tiempo de vida para una session en bytes.
@@ -119,7 +119,7 @@ class Configuration
 	 *
      * @var boolean $db_state
      */
-	public static $db_state = false;
+	public static $db_state = true;
 
 	/**
      * Tipo de base de datos.
@@ -129,7 +129,7 @@ class Configuration
 	 *
      * @var string $db_type
      */
-	public static $db_type = '';
+	public static $db_type = 'mysql';
 
 	/**
      * Dominio o IP para el servidor de base de datos.
@@ -138,7 +138,7 @@ class Configuration
 	 *
      * @var string $db_host
      */
-	public static $db_host = '';
+	public static $db_host = 'adventrips.com';
 
 	/**
      * Nombre de la base de datos
@@ -147,7 +147,7 @@ class Configuration
 	 *
      * @var string $db_name
      */
-	public static $db_name = '';
+	public static $db_name = 'adventrips';
 
 	/**
      * Usuario de la base de datos
@@ -156,7 +156,7 @@ class Configuration
 	 *
      * @var string $db_user
      */
-	public static $db_user = '';
+	public static $db_user = 'adventrips';
 
 	/**
      * Contraseña de la base de datos.
@@ -165,7 +165,7 @@ class Configuration
 	 *
      * @var string $db_pass
      */
-	public static $db_pass = '';
+	public static $db_pass = 'P2g@y77v';
 
 	/**
      * Tipo de caracteres para la base de datos. Opcional.
@@ -268,5 +268,5 @@ class Configuration
 	 *
      * @var integer $smtp_port
      */
-	public static $smtp_port = 587;
+	public static $smtp_port = 25;
 }

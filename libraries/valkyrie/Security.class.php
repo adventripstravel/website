@@ -6,7 +6,7 @@ defined('_EXEC') or die;
  * @package Valkyrie.Libraries
  *
  * @since 1.0.0
- * @version 1.0.0
+ * @version 1.0.1
  * @license You can see LICENSE.txt
  *
  * @author David Miguel Gómez Macías < davidgomezmacias@gmail.com >
@@ -15,6 +15,46 @@ defined('_EXEC') or die;
 
 class Security
 {
+    /**
+     * Obtiene la url dividida en array.
+     *
+     * @static
+     *
+     * @return  string
+     */
+    public static function url()
+    {
+        if ( isset($_SERVER['PATH_INFO']) )
+            $PATH_INFO = $_SERVER['PATH_INFO'];
+        else if ( isset($_SERVER['ORIG_PATH_INFO']) )
+            $PATH_INFO = $_SERVER['ORIG_PATH_INFO'];
+        else
+            $PATH_INFO = null;
+
+        if ( isset($PATH_INFO) && !is_null($PATH_INFO) )
+        {
+            $url = explode('/', $PATH_INFO);
+
+            $params = [];
+
+            foreach ( $url as $key => $value )
+            {
+                if ( empty($value) )
+                    unset($url[$key]);
+                else
+                    $params[] = strtolower(self::clean_string($value));
+            }
+
+            unset($url);
+
+            $params[0] = "{$params[0]}";
+
+            return $params;
+        }
+        else
+            return ["/"];
+    }
+
     /**
      * Quita caracteres especiales de un string.
      *
@@ -28,16 +68,14 @@ class Security
     {
         if ( $str !== false )
         {
+            $str    = trim($str);
+
             $find   = array('á', 'é', 'í', 'ó', 'ú', 'ñ');
             $repl   = array('a', 'e', 'i', 'o', 'u', 'n');
             $str    = str_replace($find, $repl, $str);
 
             $find   = array(' ', '&', '\r\n', '\n', '+');
             $str    = str_replace ($find, '-', $str);
-
-            // $find   = array('/[^a-z0-9\/-_<>]/', '/[\-]+/', '/<[^>]*>/');
-            // $repl   = array('', '-', '');
-            // $url    = preg_replace($find, $repl, $url);
 
             $str = strtolower($str);
         }
@@ -56,6 +94,7 @@ class Security
     public static function DS( $path )
     {
         $path = str_replace('/', DIRECTORY_SEPARATOR, $path);
+        $first_character = substr($path, 0, 1);
 
         $parts = explode(DIRECTORY_SEPARATOR, $path);
 
@@ -69,7 +108,10 @@ class Security
 
         $return = substr($return, 0, -1);
 
-        return $return;
+        if ( $first_character == DIRECTORY_SEPARATOR )
+            return DIRECTORY_SEPARATOR . $return;
+        else
+            return $return;
     }
 
     /**

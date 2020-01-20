@@ -1,0 +1,1259 @@
+
+/* ------------------------------------------------------------- */
+/* Header
+/* ------------------------------------------------------------- */
+
+/* Main Header */
+header.main-header {
+    width: 100%;
+    position: fixed;
+    z-index: 99;
+}
+
+/* ------ */
+header.main-header > div.topbar {
+    width: 100%;
+    padding: 20px 0px;
+    box-sizing: border-box;
+}
+
+header.main-header.down > div.topbar {
+    width: 60px;
+    height: 100vh;
+    position: absolute;
+    top: 0px;
+    right: -60px;
+    bottom: 0px;
+    background-color: #ffeb3b;
+    z-index: 100;
+}
+
+header.main-header > div.topbar.open {
+    right: 0px;
+    transition: 200ms;
+}
+
+/* @media (max-width: 768px) {
+
+    header.main-header > div.topbar {
+        width: 60px;
+        height: 100vh;
+        position: absolute;
+        top: 0px;
+        right: -60px;
+        bottom: 0px;
+        background-color: #ffeb3b;
+        z-index: 100;
+    }
+} */
+
+header.main-header > div.topbar > .container > nav,
+header.main-header > div.topbar > .container > nav > ul {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+header.main-header.down > div.topbar > .container > nav,
+header.main-header.down > div.topbar > .container > nav > ul {
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+/* @media (max-width: 768px) {
+
+    header.main-header > div.topbar > .container > nav,
+    header.main-header > div.topbar > .container > nav > ul {
+        justify-content: flex-start;
+        flex-direction: column;
+    }
+} */
+
+header.main-header > div.topbar > .container > nav > ul > li {
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header.main-header.down > div.topbar > .container > nav > ul > li.blocked {
+    display: none;
+}
+
+header.main-header > div.topbar > .container > nav > ul > li.unblocked {
+    display: none;
+}
+
+header.main-header.down > div.topbar > .container > nav > ul > li.unblocked {
+    display: flex;
+}
+
+/* @media (max-width: 768px) {
+
+    header.main-header > div.topbar > .container > nav > ul > li.blocked {
+        display: none;
+    }
+
+    header.main-header > div.topbar > .container > nav > ul > li.unblocked {
+        display: flex;
+    }
+} */
+
+header.main-header > div.topbar > .container > nav > ul > li > a {
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 20px;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+    color: #fff;
+}
+
+header.main-header.down > div.topbar > .container > nav > ul > li > a {
+    padding: 10px;
+    color: #212121;
+}
+
+/* @media (max-width: 768px) {
+
+    header.main-header > div.topbar > .container > nav > ul > li > a {
+        padding: 10px;
+        color: #212121;
+    }
+} */
+
+header.main-header > div.topbar > .container > nav > ul > li > a > img {
+    width: auto;
+    height: 20px;
+}
+
+/* ------ */
+header.main-header > div.bottombar,
+header.main-header > div.movilbar {
+    width: 100%;
+    padding: 20px 0px;
+    box-sizing: border-box;
+}
+
+header.main-header > div.movilbar {
+    display: none;
+}
+
+header.main-header.down > div.bottombar {
+    width: 300px;
+    height: 100vh;
+    position: absolute;
+    top: 0px;
+    right: -300px;
+    bottom: 0px;
+    padding: 20px 120px 20px 20px;
+    background-color: #212121;
+    z-index: 99;
+}
+
+header.main-header.down > div.movilbar {
+    display: block;
+    background-color: #ffeb3b;
+    transition: 200ms;
+}
+
+header.main-header > div.bottombar.open {
+    right: 0px;
+    transition: 200ms;
+}
+
+/* @media (max-width: 768px) {
+
+    header.main-header > div.bottombar {
+        width: 300px;
+        height: 100vh;
+        position: absolute;
+        top: 0px;
+        right: -300px;
+        bottom: 0px;
+        padding: 20px 120px 20px 20px;
+        background-color: #212121;
+        z-index: 99;
+    }
+
+    header.main-header > div.movilbar {
+        display: block;
+    }
+} */
+
+header.main-header > div.bottombar > .container > figure,
+header.main-header > div.movilbar > .container > figure {
+    width: auto;
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header.main-header.down > div.bottombar > .container > figure {
+    display: none;
+}
+
+/* @media (max-width: 768px) {
+
+    header.main-header > div.bottombar > .container > figure {
+        display: none;
+    }
+} */
+
+header.main-header > div.bottombar > .container > figure > a,
+header.main-header > div.bottombar > .container > figure > a > img {
+    width: auto;
+    height: 80px;
+}
+
+header.main-header > div.movilbar > .container > figure > a,
+header.main-header > div.movilbar > .container > figure > a > img {
+    width: auto;
+    height: 40px;
+}
+
+header.main-header > div.bottombar > .container > nav,
+header.main-header > div.movilbar > .container > nav,
+header.main-header > div.bottombar > .container > nav > ul,
+header.main-header > div.movilbar > .container > nav > ul {
+    width: auto;
+    float: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+header.main-header > div.movilbar > .container > nav,
+header.main-header > div.movilbar > .container > nav > ul {
+    height: 40px;
+}
+
+header.main-header.down > div.bottombar > .container > nav,
+header.main-header.down > div.bottombar > .container > nav > ul {
+    width: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+/* @media (max-width: 768px) {
+
+    header.main-header > div.bottombar > .container > nav,
+    header.main-header > div.bottombar > .container > nav > ul {
+        width: 100%;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+    }
+} */
+
+header.main-header > div.bottombar > .container > nav > ul > li,
+header.main-header > div.movilbar > .container > nav > ul > li {
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header.main-header > div.bottombar > .container > nav > ul > li > a,
+header.main-header > div.movilbar > .container > nav > ul > li > a {
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 20px;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+    color: #fff;
+}
+
+header.main-header.down > div.bottombar > .container > nav > ul > li > a {
+    padding: 10px;
+    white-space: nowrap;
+    color: #ffeb3b;
+}
+
+header.main-header.down > div.movilbar > .container > nav > ul > li > a {
+    color: #212121;
+}
+
+/* @media (max-width: 768px) {
+
+    header.main-header > div.bottombar > .container > nav > ul > li > a {
+        padding: 10px;
+        white-space: nowrap;
+        color: #ffeb3b;
+    }
+} */
+
+/* ------------------------------------------------------------- */
+/* Main
+/* ------------------------------------------------------------- */
+
+/* Home page -------- */
+
+main.home > section.hm-st-1 {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: column;
+    padding: 100px;
+    box-sizing: border-box;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+main.home > section.hm-st-1::before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+main.home > section.hm-st-1 > * {
+    position: relative;
+}
+
+main.home > section.hm-st-1 > h1 {
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 80px;
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+}
+
+main.home > section.hm-st-1 > h2 {
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 40px;
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+}
+
+main.home > section.hm-st-1 > p {
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center;
+    color: #fff;
+}
+
+main.home > section.hm-st-1 > div {
+    width: auto;
+    margin-bottom: 20px;
+}
+
+main.home > section.hm-st-1 > div > span {
+    width: auto;
+    display: inline-block;
+    margin: 0px 5px;
+    padding: 20px;
+    border-radius: 40px;
+    box-sizing: border-box;
+    background-color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    color: #212121;
+}
+
+main.home > section.hm-st-1 > div > span > i {
+    margin-right: 5px;
+    font-size: 18px;
+}
+
+main.home > section.hm-st-1 > span {
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+}
+
+main.home > section.hm-st-1 > span > i {
+    margin-right: 5px;
+    font-size: 24px;
+}
+
+main.home > section.hm-st-1 > a {
+    width: auto;
+    padding: 20px 40px;
+    border-radius: 40px;
+    box-sizing: border-box;
+    background-color: #ffeb3b;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    color: #212121;
+}
+
+/* --- */
+
+main.home > section.hm-st-2 {
+    width: 100%;
+    background-color: #212121;
+}
+
+main.home > section.hm-st-2 > .container > form {
+    width: 100%;
+    position: relative;
+    padding: 100px;
+    box-sizing: border-box;
+}
+
+main.home > section.hm-st-2 > .container > form::after {
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    bottom: 100%;
+	left: 50%;
+    margin-left: -20px;
+	border: solid transparent;
+    border-width: 20px;
+	border-color: rgba(255, 255, 255, 0);
+	border-bottom-color: #212121;
+    pointer-events: none;
+    content: '';
+}
+
+main.home > section.hm-st-2 > .container > form > h2 {
+    width: 100%;
+    font-size: 40px;
+    font-weight: 600;
+    color: #ffeb3b;
+}
+
+main.home > section.hm-st-2 > .container > form > fieldset > div.text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main.home > section.hm-st-2 > .container > form > fieldset > div.text > input {
+    height: 60px;
+    padding: 0px 20px;
+    border-color: #fff;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+main.home > section.hm-st-2 > .container > form > fieldset > div.text > button {
+    height: 60px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding: 0px 40px;
+    box-sizing: border-box;
+    background-color: #ffeb3b;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+/* --- */
+
+main.home > section.hm-st-3 {
+    width: 100%;
+}
+
+main.home > section.hm-st-3 > article {
+    width: 100%;
+    height: 100vh;
+}
+
+main.home > section.hm-st-3 > article::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+main.home > section.hm-st-3 > article.p-2 > header,
+main.home > section.hm-st-3 > article.p-3 > header {
+    width: 50%;
+    height: 100%;
+}
+
+main.home > section.hm-st-3 > article.p-2 > header {
+    float: left;
+}
+
+main.home > section.hm-st-3 > article.p-3 > header {
+    float: right;
+}
+
+main.home > section.hm-st-3 > article.p-2 > header > figure,
+main.home > section.hm-st-3 > article.p-3 > header > figure {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+main.home > section.hm-st-3 > article.p-2 > header > figure > img,
+main.home > section.hm-st-3 > article.p-3 > header > figure > img {
+    width: auto;
+    height: 100%;
+}
+
+main.home > section.hm-st-3 > article.p-2 > main,
+main.home > section.hm-st-3 > article.p-3 > main {
+    width: 50%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 80px;
+    box-sizing: border-box;
+}
+
+main.home > section.hm-st-3 > article.p-2 > main::after,
+main.home > section.hm-st-3 > article.p-3 > main::after {
+    width: 0px;
+    height: 0px;
+    position: absolute;
+	top: 50%;
+    margin-top: -100px;
+	border: solid transparent;
+    border-width: 100px;
+	border-color: rgba(255, 255, 255, 0);
+    pointer-events: none;
+    content: '';
+}
+
+main.home > section.hm-st-3 > article.p-2 > main::after {
+	right: 100%;
+	border-right-color: #fff;
+}
+
+main.home > section.hm-st-3 > article.p-3 > main::after {
+    left: 100%;
+	border-left-color: #fff;
+}
+
+main.home > section.hm-st-3 > article.p-2 > main {
+    float: left;
+}
+
+main.home > section.hm-st-3 > article.p-3 > main {
+    float: right;
+}
+
+main.home > section.hm-st-3 > article.p-2 > main > h4,
+main.home > section.hm-st-3 > article.p-3 > main > h4 {
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 80px;
+    font-weight: 600;
+    text-align: center;
+    color: #212121;
+}
+
+main.home > section.hm-st-3 > article.p-2 > main > p,
+main.home > section.hm-st-3 > article.p-3 > main > p {
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center;
+    color: #212121;
+}
+
+main.home > section.hm-st-3 > article.p-2 > main > div,
+main.home > section.hm-st-3 > article.p-3 > main > div {
+    width: auto;
+    margin-bottom: 20px;
+}
+
+main.home > section.hm-st-3 > article.p-2 > main > div > span,
+main.home > section.hm-st-3 > article.p-3 > main > div > span {
+    width: auto;
+    display: inline-block;
+    margin: 0px 5px;
+    padding: 20px;
+    border-radius: 40px;
+    box-sizing: border-box;
+    background-color: #212121;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+}
+
+main.home > section.hm-st-3 > article.p-2 > main > div > span > i,
+main.home > section.hm-st-3 > article.p-3 > main > div > span > i {
+    margin-right: 5px;
+    font-size: 14px;
+}
+
+main.home > section.hm-st-3 > article.p-2 > main > span,
+main.home > section.hm-st-3 > article.p-3 > main > span {
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    color: #212121;
+}
+
+main.home > section.hm-st-3 > article.p-2 > main > span > i,
+main.home > section.hm-st-3 > article.p-3 > main > span > i {
+    margin-right: 5px;
+    font-size: 14px;
+}
+
+main.home > section.hm-st-3 > article.p-2 > main > a,
+main.home > section.hm-st-3 > article.p-3 > main > a {
+    width: auto;
+    padding: 20px 40px;
+    border-radius: 40px;
+    box-sizing: border-box;
+    background-color: #ffeb3b;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    color: #212121;
+}
+
+/* Booking page -------- */
+
+main.booking > section.bk-st-1 {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: column;
+    padding: 100px;
+    box-sizing: border-box;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+main.booking > section.bk-st-1::before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+main.booking > section.bk-st-1 > * {
+    position: relative;
+}
+
+main.booking > section.bk-st-1 > h1 {
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 80px;
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+}
+
+main.booking > section.bk-st-1 > p {
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center;
+    color: #fff;
+}
+
+main.booking > section.bk-st-1 > div {
+    width: auto;
+    margin-bottom: 20px;
+}
+
+main.booking > section.bk-st-1 > div > span {
+    width: auto;
+    display: inline-block;
+    margin: 0px 5px;
+    padding: 20px;
+    border-radius: 40px;
+    box-sizing: border-box;
+    background-color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    color: #212121;
+}
+
+main.booking > section.bk-st-1 > div > span > i {
+    margin-right: 5px;
+    font-size: 18px;
+}
+
+main.booking > section.bk-st-1 > span {
+    width: 100%;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+}
+
+main.booking > section.bk-st-1 > span > i {
+    margin-right: 5px;
+    font-size: 24px;
+}
+
+/* --- */
+
+main.booking > section.bk-st-2 {
+    width: 100%;
+    padding: 100px 0px;
+    box-sizing: border-box;
+    background-color: #212121;
+}
+
+main.booking > section.bk-st-2 > .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main.booking > section.bk-st-2 > .container > #map {
+    width: calc(100% - 400px);
+    height: 400px;
+}
+
+main.booking > section.bk-st-2 > .container > div:last-child {
+    width: 400px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+main.booking > section.bk-st-2 > .container > div:last-child > h6 {
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #fff;
+}
+
+main.booking > section.bk-st-2 > .container > div:last-child > h6 > strong {
+    display: block;
+}
+
+main.booking > section.bk-st-2 > .container > div:last-child > h6 > span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+main.booking > section.bk-st-2 > .container > div:last-child > h6 > span > i {
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+/* --- */
+
+main.booking > section.bk-st-3 {
+    width: 100%;
+    position: relative;
+    padding: 100px 0px;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+main.booking > section.bk-st-3 > .container > h6 {
+    width: 100%;
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: justify;
+    text-transform: uppercase;
+    color: #212121;
+}
+
+main.booking > section.bk-st-3 > .container > p {
+    width: 100%;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: justify;
+    line-height: 40px;
+    color: #757575;
+}
+
+main.booking > section.bk-st-3 > .container > ul {
+    width: 100%;
+}
+
+main.booking > section.bk-st-3 > .container > ul > li {
+    width: 100%;
+    margin-left: 40px;
+    box-sizing: border-box;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: justify;
+    line-height: 40px;
+    color: #757575;
+}
+
+/* --- */
+
+main.booking > section.bk-st-4 {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+    background-color: #212121;
+}
+
+main.booking > section.bk-st-4::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+main.booking > section.bk-st-4 > figure {
+    width: auto;
+    height: 200px;
+    float: left;
+    position: relative;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+main.booking > section.bk-st-4 > figure > img {
+    width: auto;
+    height: 100%;
+}
+
+main.booking > section.bk-st-4 > figure > a {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    bottom: 5px;
+    left: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    transition: 200ms;
+}
+
+main.booking > section.bk-st-4 > figure > a:hover {
+    opacity: 1;
+}
+
+main.booking > section.bk-st-4 > figure > a > i {
+    font-size: 40px;
+    color: #fff;
+}
+
+/* --- */
+
+main.booking > section.bk-st-5 {
+    width: 100%;
+    padding: 100px 0px;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+main.booking > section.bk-st-5 > .container > form > fieldset div.text > input,
+main.booking > section.bk-st-5 > .container > form > fieldset div.text > select,
+main.booking > section.bk-st-5 > .container > form > fieldset div.text > textarea {
+    padding: 20px;
+    box-sizing: border-box;
+    border-color: #eee;
+    background-color: #eee;
+}
+
+main.booking > section.bk-st-5 > .container > form > fieldset div.text > input,
+main.booking > section.bk-st-5 > .container > form > fieldset div.text > select {
+    height: 60px;
+}
+
+main.booking > section.bk-st-5 > .container > form > fieldset div.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main.booking > section.bk-st-5 > .container > form > fieldset div.button > button {
+    height: 60px;
+    margin-top: 20px;
+    border-radius: 60px;
+    padding-left: 40px;
+    padding-right: 40px;
+    background-color: #ffeb3b;
+    font-size: 18px;
+    text-transform: none;
+    color: #212121;
+}
+
+/* --- */
+
+main.booking > section.bk-st-6 {
+    width: 100%;
+    padding: 100px 0px;
+    box-sizing: border-box;
+    background-color: #eee;
+}
+
+main.booking > section.bk-st-6 > .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main.booking > section.bk-st-6 > .container > article {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main.booking > section.bk-st-6 > .container > article > main {
+    width: 400px;
+    height: 400px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 40px;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    box-sizing: border-box;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+main.booking > section.bk-st-6 > .container > article > main::before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+main.booking > section.bk-st-6 > .container > article > main > * {
+    position: relative;
+}
+
+main.booking > section.bk-st-6 > .container > article > main > h4 {
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+}
+
+main.booking > section.bk-st-6 > .container > article > main > p {
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    line-height: 18px;
+    color: #fff;
+}
+
+main.booking > section.bk-st-6 > .container > article > main > div > span,
+main.booking > section.bk-st-6 > .container > article > main > span {
+    margin: 0px 10px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+}
+
+main.booking > section.bk-st-6 > .container > article > main > div > span > i,
+main.booking > section.bk-st-6 > .container > article > main > span > i {
+    margin-right: 5px;
+    font-size: 14px;
+}
+
+main.booking > section.bk-st-6 > .container > article > main > a {
+    background-color: #212121;
+    padding: 10px 20px;
+    border-radius: 20px;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    color: #ffeb3b;
+}
+
+/* Voucher page -------- */
+
+main.voucher > section.vo-st-1 {
+    width: 100%;
+    height: 200px;
+    background-color: #212121;
+}
+
+/* --- */
+
+main.voucher > section.vo-st-2 {
+    width: 100%;
+    padding: 100px 0px;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+main.voucher > section.vo-st-2 > .container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+main.voucher > section.vo-st-2 > .container > div:first-child {
+    width: 50%;
+}
+
+main.voucher > section.vo-st-2 > .container > div:first-child > h1 {
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #212121;
+}
+
+main.voucher > section.vo-st-2 > .container > div:first-child > h6,
+main.voucher > section.vo-st-2 > .container > div:first-child > p {
+    width: 100%;
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #212121;
+}
+
+main.voucher > section.vo-st-2 > .container > div:first-child > a {
+    display: inline-block;
+    margin: 40px 10px 0px 0px;
+    padding: 20px 40px;
+    border-radius: 40px;
+    box-sizing: border-box;
+    background-color: #ffeb3b;
+    cursor: pointer;
+    color: #212121;
+}
+
+main.voucher > section.vo-st-2 > .container > div:last-child {
+    width: 50%;
+    height: 400px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 40px;
+    box-sizing: border-box;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+main.voucher > section.vo-st-2 > .container > div:last-child::before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+main.voucher > section.vo-st-2 > .container > div:last-child > * {
+    position: relative;
+}
+
+main.voucher > section.vo-st-2 > .container > div:last-child > h2 {
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 40px;
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+}
+
+main.voucher > section.vo-st-2 > .container > div:last-child > p {
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    color: #fff;
+}
+
+main.voucher > section.vo-st-2 > .container > div:last-child > span {
+    width: 100%;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center;
+    color: #fff;
+}
+
+main.voucher > section.vo-st-2 > .container > div:last-child > span > i {
+    margin-right: 5px;
+    font-size: 18px;
+}
+
+/* Contact page -------- */
+
+main.contact > section.ct-st-1 {
+    width: 100%;
+    height: 200px;
+    background-color: #212121;
+}
+
+/* --- */
+
+main.contact > section.ct-st-2 {
+    width: 100%;
+    padding: 100px 0px;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+main.contact > section.ct-st-2 > .container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+main.contact > section.ct-st-2 > .container > div,
+main.contact > section.ct-st-2 > .container > form {
+    width: 50%;
+}
+
+main.contact > section.ct-st-2 > .container > form > fieldset div.text > input,
+main.contact > section.ct-st-2 > .container > form > fieldset div.text > select,
+main.contact > section.ct-st-2 > .container > form > fieldset div.text > textarea {
+    padding: 20px;
+    box-sizing: border-box;
+    border-color: #eee;
+    background-color: #eee;
+}
+
+main.contact > section.ct-st-2 > .container > form > fieldset div.text > input,
+main.contact > section.ct-st-2 > .container > form > fieldset div.text > select {
+    height: 60px;
+}
+
+main.contact > section.ct-st-2 > .container > form > fieldset div.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main.contact > section.ct-st-2 > .container > form > fieldset div.button > button {
+    height: 60px;
+    margin-top: 20px;
+    border-radius: 60px;
+    padding-left: 40px;
+    padding-right: 40px;
+    background-color: #ffeb3b;
+    font-size: 18px;
+    text-transform: none;
+    color: #212121;
+}
+
+/* ------------------------------------------------------------- */
+/* Footer
+/* ------------------------------------------------------------- */
+footer.main-footer {
+    width: 100%;
+    padding: 20px 0px;
+    box-sizing: border-box;
+    background-color: #212121;
+}
+
+footer.main-footer > .container > nav,
+footer.main-footer > .container > nav > ul {
+    width: auto;
+    height: 40px;
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+footer.main-footer > .container > nav > ul > li {
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer.main-footer > .container > nav > ul > li > span,
+footer.main-footer > .container > nav > ul > li > a {
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 2px;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+footer.main-footer > .container > nav > ul > li > span {
+    color: #fff;
+}
+
+footer.main-footer > .container > nav > ul > li > a {
+    text-decoration: underline;
+    color: #ffeb3b;
+}
+
+footer.main-footer > .container > nav > ul > li > i {
+    margin: 0px 10px;
+    font-size: 5px;
+    color: #fff;
+}
+
+footer.main-footer > .container > figure {
+    width: auto;
+    float: right;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer.main-footer > .container > figure > img {
+    width: auto;
+    height: 40px;
+}
+
+/* ------------------------------------------------------------- */
+/* Generals
+/* ------------------------------------------------------------- */

@@ -53,7 +53,7 @@ class Format
 	public static function get_date_hour()
 	{
 		self::set_time_zone();
-		return date('Y-m-d h:i:s', time());
+		return date('Y-m-d H:i:s', time());
 	}
 
 	/**
@@ -196,7 +196,7 @@ class Format
 
 		if (in_array($file_type, $supported_file_type))
 		{
-			$file = Security::DS("{$path}{$file_name}.{$file_type}");
+			$file = Security::DS("{$path}/{$file_name}.{$file_type}");
 
 			if ( file_exists($file) )
 			{

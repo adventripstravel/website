@@ -4,7 +4,7 @@ defined('_EXEC') or die;
 /**
 * Definimos las extenciones de los ficheros.
 */
-define('ADMINISTRATOR',             'cms');
+define('ADMINISTRATOR',             'panel');
 define('CLASS_PHP',                 '.class.php');
 define('CONTROLLER_PHP',            '_controller');
 define('MODEL_PHP',                 '_model');

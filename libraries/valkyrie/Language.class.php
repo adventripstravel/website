@@ -69,11 +69,11 @@ class Language
          if ( !file_exists($lang_default) )
              Errors::system('language_default_not_found', "File: {$lang_default}");
 
-         if ( Session::exists_var('lang') == false )
-             Session::set_value('lang', Configuration::$lang_default);
+         if ( Session::exists_var('vkye_lang') == false )
+             Session::set_value('vkye_lang', Configuration::$lang_default);
 
- 		if ( !file_exists(Security::DS(self::$path_language . Session::get_value('lang') . '.ini')) )
-             setcookie('lang', Configuration::$lang_default, time() + (86400 * 30), "/");
+ 		if ( !file_exists(Security::DS(self::$path_language . Session::get_value('vkye_lang') . '.ini')) )
+             setcookie('vkye_lang', Configuration::$lang_default, time() + (86400 * 30), "/");
      }
 
     /**
@@ -95,9 +95,9 @@ class Language
         $format = new Format();
 
         if ( $path != false )
-            $ini = $format->import_file($path, Session::get_value('lang'), 'ini');
+            $ini = $format->import_file($path, Session::get_value('vkye_lang'), 'ini');
         else
-            $ini = $format->import_file(self::$path_language, Session::get_value('lang'), 'ini');
+            $ini = $format->import_file(self::$path_language, Session::get_value('vkye_lang'), 'ini');
 
 		foreach ( $ini[$section] as $key => $value )
 		{
@@ -119,10 +119,10 @@ class Language
 	{
 		if ( isset($_GET['lang']) && !empty($_GET['lang']) )
 		{
-            Session::unset_value('lang');
+            Session::unset_value('vkye_lang');
 
-            Session::set_value('lang', $_GET['lang']);
-			setcookie('lang', $_GET['lang'], time() + (86400 * 30), "/");
+            Session::set_value('vkye_lang', $_GET['lang']);
+			setcookie('vkye_lang', $_GET['lang'], time() + (86400 * 30), "/");
 
 			$ref = isset ($_GET['ref']) ? $_GET['ref'] : '';
 

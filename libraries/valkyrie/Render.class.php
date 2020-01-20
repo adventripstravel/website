@@ -41,7 +41,7 @@ class Render
     public function placeholders( $buffer )
     {
         $replace = [
-            '{$vkye_lang}'       => Session::get_value('lang'),
+            '{$vkye_lang}'       => Session::get_value('vkye_lang'),
             '{$vkye_title}'      => Language::get_lang(_title, 'Titles'),
             '{$vkye_webpage}'    => Configuration::$web_page,
             '{$vkye_domain}'     => Security::protocol() . Configuration::$domain,

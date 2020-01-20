@@ -1,0 +1,54 @@
+
+[
+    'logotypes' => json_encode([
+        'color' => 'logotype_color.png',
+        'black' => 'logotype_black.png',
+        'white' => 'logotype_white.png'
+    ]),
+    'icontypes' => json_encode([
+        'color' => 'icontype_color.png',
+        'black' => 'icontype_black.png',
+        'white' => 'icontype_white.png'
+    ]),
+    'contact' => json_encode([
+        'email' => [
+            'es' => 'reservaciones@adventrips.com',
+            'en' => 'reservations@adventrips.com'
+        ],
+        'phone' => [
+            'es' => '+(52) 012 345 67 89',
+            'en' => '+(52) 012 345 67 89'
+        ]
+    ]),
+    'social_media' => json_encode([
+        'tripadvisor' => '',
+        'facebook' => 'https://facebook.com/adventrips',
+        'instagram' => 'https://instagram.com/adventrips',
+        'twitter' => '',
+        'youtube' => ''
+    ]),
+    'terms_and_conditions' => json_encode([
+        'es' => 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a,',
+        'en' => 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a,'
+    ]),
+    'seo' => json_encode([
+        'titles' => [
+            'index' => [
+                'es' => 'Excursiones',
+                'en' => 'Tours'
+            ]
+        ],
+        'keywords' => [
+            'index' => [
+                'es' => 'Lorem, ipsum, dolor, sit.',
+                'en' => 'Lorem, ipsum, dolor, sit.'
+            ]
+        ],
+        'descriptions' => [
+            'index' => [
+                'es' => 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commo.',
+                'en' => 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commo.'
+            ]
+        ]
+    ])
+]

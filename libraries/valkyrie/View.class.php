@@ -55,6 +55,23 @@ class View
      */
 	public function render( $controller, $layouts )
 	{
+		foreach ( $GLOBALS as $key => $value )
+		{
+			if ( $key != 'GLOBALS' ||
+				 $key != '_SERVER' ||
+				 $key != '_GET' ||
+				 $key != '_POST' ||
+			 	 $key != '_FILES' ||
+				 $key != '_COOKIE' ||
+				 $key != '_SESSION' ||
+				 $key != '_REQUEST' ||
+				 $key != '_ENV' ||
+			 	 $key != 'layout' )
+			{
+				global ${$key};
+			}
+		}
+
 		$path_layouts = ( Format::check_path_admin() ) ? PATH_ADMINISTRATOR_LAYOUTS : PATH_LAYOUTS;
 
 		ob_start();
