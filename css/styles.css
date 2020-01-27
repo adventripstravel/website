@@ -408,7 +408,7 @@ main.home > section.hm-st-1 > a {
     box-sizing: border-box;
     background-color: #ffeb3b;
     font-size: 14px;
-    font-weight: 400;
+    font-weight: 600;
     text-align: center;
     color: #212121;
 }
@@ -473,7 +473,7 @@ main.home > section.hm-st-2 > .container > form > fieldset > div.text > button {
     box-sizing: border-box !important;
     background-color: #ffeb3b !important;
     font-size: 14px !important;
-    font-weight: 400 !important;
+    font-weight: 600 !important;
 }
 
 /* --- */
@@ -648,7 +648,7 @@ main.home > section.hm-st-3 > article.p-3 > main > a {
     box-sizing: border-box;
     background-color: #ffeb3b;
     font-size: 14px;
-    font-weight: 400;
+    font-weight: 600;
     text-align: center;
     color: #212121;
 }
@@ -974,6 +974,7 @@ main.booking > section.bk-st-5 > .container > form > fieldset div.button > butto
     padding-right: 40px !important;
     background-color: #ffeb3b !important;
     font-size: 14px !important;
+    font-weight: 600 !important;
     text-transform: none !important;
     color: #212121 !important;
 }
