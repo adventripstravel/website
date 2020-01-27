@@ -34,7 +34,7 @@
             </nav>
         </div>
     </div>
-    <div class="movilbar">
+    <div class="rightbar">
         <div class="container">
             <figure>
                 <a href="/"><img src="{$_vkye_icontype_color}" alt="Logotype"></a>

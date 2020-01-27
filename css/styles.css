@@ -30,7 +30,6 @@ header.main-header.down > div.topbar {
 
 header.main-header > div.topbar.open {
     right: 0px;
-    transition: 200ms;
 }
 
 /* @media (max-width: 768px) {
@@ -133,13 +132,13 @@ header.main-header > div.topbar > .container > nav > ul > li > a > img {
 
 /* ------ */
 header.main-header > div.bottombar,
-header.main-header > div.movilbar {
+header.main-header > div.rightbar {
     width: 100%;
     padding: 20px 0px;
     box-sizing: border-box;
 }
 
-header.main-header > div.movilbar {
+header.main-header > div.rightbar {
     display: none;
 }
 
@@ -155,15 +154,13 @@ header.main-header.down > div.bottombar {
     z-index: 99;
 }
 
-header.main-header.down > div.movilbar {
+header.main-header.down > div.rightbar {
     display: block;
     background-color: #ffeb3b;
-    transition: 200ms;
 }
 
 header.main-header > div.bottombar.open {
     right: 0px;
-    transition: 200ms;
 }
 
 /* @media (max-width: 768px) {
@@ -180,13 +177,13 @@ header.main-header > div.bottombar.open {
         z-index: 99;
     }
 
-    header.main-header > div.movilbar {
+    header.main-header > div.rightbar {
         display: block;
     }
 } */
 
 header.main-header > div.bottombar > .container > figure,
-header.main-header > div.movilbar > .container > figure {
+header.main-header > div.rightbar > .container > figure {
     width: auto;
     float: left;
     display: flex;
@@ -211,16 +208,16 @@ header.main-header > div.bottombar > .container > figure > a > img {
     height: 80px;
 }
 
-header.main-header > div.movilbar > .container > figure > a,
-header.main-header > div.movilbar > .container > figure > a > img {
+header.main-header > div.rightbar > .container > figure > a,
+header.main-header > div.rightbar > .container > figure > a > img {
     width: auto;
     height: 40px;
 }
 
 header.main-header > div.bottombar > .container > nav,
-header.main-header > div.movilbar > .container > nav,
+header.main-header > div.rightbar > .container > nav,
 header.main-header > div.bottombar > .container > nav > ul,
-header.main-header > div.movilbar > .container > nav > ul {
+header.main-header > div.rightbar > .container > nav > ul {
     width: auto;
     float: right;
     display: flex;
@@ -228,8 +225,8 @@ header.main-header > div.movilbar > .container > nav > ul {
     justify-content: flex-end;
 }
 
-header.main-header > div.movilbar > .container > nav,
-header.main-header > div.movilbar > .container > nav > ul {
+header.main-header > div.rightbar > .container > nav,
+header.main-header > div.rightbar > .container > nav > ul {
     height: 40px;
 }
 
@@ -253,7 +250,7 @@ header.main-header.down > div.bottombar > .container > nav > ul {
 } */
 
 header.main-header > div.bottombar > .container > nav > ul > li,
-header.main-header > div.movilbar > .container > nav > ul > li {
+header.main-header > div.rightbar > .container > nav > ul > li {
     width: auto;
     display: flex;
     align-items: center;
@@ -261,7 +258,7 @@ header.main-header > div.movilbar > .container > nav > ul > li {
 }
 
 header.main-header > div.bottombar > .container > nav > ul > li > a,
-header.main-header > div.movilbar > .container > nav > ul > li > a {
+header.main-header > div.rightbar > .container > nav > ul > li > a {
     width: auto;
     display: flex;
     align-items: center;
@@ -280,7 +277,7 @@ header.main-header.down > div.bottombar > .container > nav > ul > li > a {
     color: #ffeb3b;
 }
 
-header.main-header.down > div.movilbar > .container > nav > ul > li > a {
+header.main-header.down > div.rightbar > .container > nav > ul > li > a {
     color: #212121;
 }
 
@@ -307,7 +304,7 @@ main.home > section.hm-st-1 {
     align-items: center;
     justify-content: flex-end;
     flex-direction: column;
-    padding: 100px;
+    padding: 50px 100px;
     box-sizing: border-box;
     background-position: center;
     background-repeat: no-repeat;
@@ -331,8 +328,9 @@ main.home > section.hm-st-1 > * {
 main.home > section.hm-st-1 > h1 {
     width: 100%;
     margin-bottom: 20px;
-    font-size: 80px;
+    font-size: 60px;
     font-weight: 600;
+    line-height: 60px;
     text-align: center;
     color: #fff;
 }
@@ -342,6 +340,7 @@ main.home > section.hm-st-1 > h2 {
     margin-bottom: 20px;
     font-size: 40px;
     font-weight: 600;
+    line-height: 40px;
     text-align: center;
     color: #fff;
 }
@@ -355,14 +354,36 @@ main.home > section.hm-st-1 > p {
     color: #fff;
 }
 
+main.home > section.hm-st-1 > span {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+}
+
+main.home > section.hm-st-1 > span > i {
+    margin-right: 5px;
+    font-size: 24px;
+}
+
 main.home > section.hm-st-1 > div {
-    width: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 20px;
 }
 
 main.home > section.hm-st-1 > div > span {
     width: auto;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 0px 5px;
     padding: 20px;
     border-radius: 40px;
@@ -379,22 +400,9 @@ main.home > section.hm-st-1 > div > span > i {
     font-size: 18px;
 }
 
-main.home > section.hm-st-1 > span {
-    width: 100%;
-    margin-bottom: 20px;
-    font-size: 24px;
-    font-weight: 600;
-    text-align: center;
-    color: #fff;
-}
-
-main.home > section.hm-st-1 > span > i {
-    margin-right: 5px;
-    font-size: 24px;
-}
-
 main.home > section.hm-st-1 > a {
     width: auto;
+    margin-bottom: 20px;
     padding: 20px 40px;
     border-radius: 40px;
     box-sizing: border-box;
@@ -420,51 +428,52 @@ main.home > section.hm-st-2 > .container > form {
 }
 
 main.home > section.hm-st-2 > .container > form::after {
+    content: '';
     width: 0px;
     height: 0px;
     position: absolute;
     bottom: 100%;
 	left: 50%;
-    margin-left: -20px;
+    margin-left: -50px;
 	border: solid transparent;
-    border-width: 20px;
+    border-width: 50px;
 	border-color: rgba(255, 255, 255, 0);
 	border-bottom-color: #212121;
     pointer-events: none;
-    content: '';
 }
 
 main.home > section.hm-st-2 > .container > form > h2 {
     width: 100%;
     font-size: 40px;
     font-weight: 600;
+    line-height: 40px;
     color: #ffeb3b;
 }
 
 main.home > section.hm-st-2 > .container > form > fieldset > div.text {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 }
 
 main.home > section.hm-st-2 > .container > form > fieldset > div.text > input {
-    height: 60px;
-    padding: 0px 20px;
-    border-color: #fff;
-    box-sizing: border-box;
-    font-size: 14px;
-    font-weight: 400;
+    height: 60px !important;
+    padding: 0px 20px !important;
+    border-color: #fff !important;
+    box-sizing: border-box !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
 }
 
 main.home > section.hm-st-2 > .container > form > fieldset > div.text > button {
-    height: 60px;
-    margin-left: 0px;
-    margin-right: 0px;
-    padding: 0px 40px;
-    box-sizing: border-box;
-    background-color: #ffeb3b;
-    font-size: 14px;
-    font-weight: 400;
+    height: 60px !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    padding: 0px 40px !important;
+    box-sizing: border-box !important;
+    background-color: #ffeb3b !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
 }
 
 /* --- */
@@ -563,8 +572,9 @@ main.home > section.hm-st-3 > article.p-2 > main > h4,
 main.home > section.hm-st-3 > article.p-3 > main > h4 {
     width: 100%;
     margin-bottom: 20px;
-    font-size: 80px;
+    font-size: 40px;
     font-weight: 600;
+    line-height: 40px;
     text-align: center;
     color: #212121;
 }
@@ -579,16 +589,40 @@ main.home > section.hm-st-3 > article.p-3 > main > p {
     color: #212121;
 }
 
+main.home > section.hm-st-3 > article.p-2 > main > span,
+main.home > section.hm-st-3 > article.p-3 > main > span {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    color: #212121;
+}
+
+main.home > section.hm-st-3 > article.p-2 > main > span > i,
+main.home > section.hm-st-3 > article.p-3 > main > span > i {
+    margin-right: 5px;
+    font-size: 24px;
+}
+
 main.home > section.hm-st-3 > article.p-2 > main > div,
 main.home > section.hm-st-3 > article.p-3 > main > div {
-    width: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 20px;
 }
 
 main.home > section.hm-st-3 > article.p-2 > main > div > span,
 main.home > section.hm-st-3 > article.p-3 > main > div > span {
     width: auto;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 0px 5px;
     padding: 20px;
     border-radius: 40px;
@@ -603,23 +637,7 @@ main.home > section.hm-st-3 > article.p-3 > main > div > span {
 main.home > section.hm-st-3 > article.p-2 > main > div > span > i,
 main.home > section.hm-st-3 > article.p-3 > main > div > span > i {
     margin-right: 5px;
-    font-size: 14px;
-}
-
-main.home > section.hm-st-3 > article.p-2 > main > span,
-main.home > section.hm-st-3 > article.p-3 > main > span {
-    width: 100%;
-    margin-bottom: 20px;
-    font-size: 14px;
-    font-weight: 600;
-    text-align: center;
-    color: #212121;
-}
-
-main.home > section.hm-st-3 > article.p-2 > main > span > i,
-main.home > section.hm-st-3 > article.p-3 > main > span > i {
-    margin-right: 5px;
-    font-size: 14px;
+    font-size: 18px;
 }
 
 main.home > section.hm-st-3 > article.p-2 > main > a,
@@ -645,7 +663,7 @@ main.booking > section.bk-st-1 {
     align-items: center;
     justify-content: flex-end;
     flex-direction: column;
-    padding: 100px;
+    padding: 50px 100px;
     box-sizing: border-box;
     background-position: center;
     background-repeat: no-repeat;
@@ -669,8 +687,9 @@ main.booking > section.bk-st-1 > * {
 main.booking > section.bk-st-1 > h1 {
     width: 100%;
     margin-bottom: 20px;
-    font-size: 80px;
+    font-size: 40px;
     font-weight: 600;
+    line-height: 40px;
     text-align: center;
     color: #fff;
 }
@@ -684,14 +703,36 @@ main.booking > section.bk-st-1 > p {
     color: #fff;
 }
 
+main.booking > section.bk-st-1 > span {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+}
+
+main.booking > section.bk-st-1 > span > i {
+    margin-right: 5px;
+    font-size: 24px;
+}
+
 main.booking > section.bk-st-1 > div {
-    width: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 20px;
 }
 
 main.booking > section.bk-st-1 > div > span {
     width: auto;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 0px 5px;
     padding: 20px;
     border-radius: 40px;
@@ -708,26 +749,29 @@ main.booking > section.bk-st-1 > div > span > i {
     font-size: 18px;
 }
 
-main.booking > section.bk-st-1 > span {
-    width: 100%;
-    font-size: 24px;
-    font-weight: 600;
-    text-align: center;
-    color: #fff;
-}
-
-main.booking > section.bk-st-1 > span > i {
-    margin-right: 5px;
-    font-size: 24px;
-}
-
 /* --- */
 
 main.booking > section.bk-st-2 {
     width: 100%;
+    position: relative;
     padding: 100px 0px;
     box-sizing: border-box;
     background-color: #212121;
+}
+
+main.booking > section.bk-st-2::after {
+    content: '';
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    bottom: 100%;
+	left: 50%;
+    margin-left: -50px;
+	border: solid transparent;
+    border-width: 50px;
+	border-color: rgba(255, 255, 255, 0);
+	border-bottom-color: #212121;
+    pointer-events: none;
 }
 
 main.booking > section.bk-st-2 > .container {
@@ -737,42 +781,51 @@ main.booking > section.bk-st-2 > .container {
 }
 
 main.booking > section.bk-st-2 > .container > #map {
-    width: calc(100% - 400px);
+    width: calc(100% - 440px);
     height: 400px;
 }
 
 main.booking > section.bk-st-2 > .container > div:last-child {
-    width: 400px;
+    width: 440px;
     height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 20px;
+    padding-left: 40px;
     box-sizing: border-box;
 }
 
-main.booking > section.bk-st-2 > .container > div:last-child > h6 {
+main.booking > section.bk-st-2 > .container > div:last-child > div {
+    width: 100%;
     margin-bottom: 20px;
+}
+
+main.booking > section.bk-st-2 > .container > div:last-child > div:last-child {
+    margin-bottom: 0px;
+}
+
+main.booking > section.bk-st-2 > .container > div:last-child > div > h6 {
+    width: 100%;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 24px;
+    color: #fff;
+}
+
+main.booking > section.bk-st-2 > .container > div:last-child > div > span {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
     font-size: 18px;
     font-weight: 400;
     color: #fff;
 }
 
-main.booking > section.bk-st-2 > .container > div:last-child > h6 > strong {
-    display: block;
-}
-
-main.booking > section.bk-st-2 > .container > div:last-child > h6 > span {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 10px;
-}
-
-main.booking > section.bk-st-2 > .container > div:last-child > h6 > span > i {
-    font-size: 14px;
+main.booking > section.bk-st-2 > .container > div:last-child > div > span > i {
     margin-right: 5px;
+    font-size: 12px;
 }
 
 /* --- */
@@ -790,6 +843,7 @@ main.booking > section.bk-st-3 > .container > h6 {
     margin-top: 20px;
     font-size: 18px;
     font-weight: 400;
+    line-height: 24px;
     text-align: justify;
     text-transform: uppercase;
     color: #212121;
@@ -800,7 +854,6 @@ main.booking > section.bk-st-3 > .container > p {
     font-size: 18px;
     font-weight: 400;
     text-align: justify;
-    line-height: 40px;
     color: #757575;
 }
 
@@ -815,7 +868,6 @@ main.booking > section.bk-st-3 > .container > ul > li {
     font-size: 18px;
     font-weight: 400;
     text-align: justify;
-    line-height: 40px;
     color: #757575;
 }
 
@@ -859,7 +911,6 @@ main.booking > section.bk-st-4 > figure > a {
     justify-content: center;
     opacity: 0;
     background-color: rgba(0, 0, 0, 0.4);
-    transition: 200ms;
 }
 
 main.booking > section.bk-st-4 > figure > a:hover {
@@ -880,62 +931,72 @@ main.booking > section.bk-st-5 {
     background-color: #fff;
 }
 
+main.booking > section.bk-st-5 > .container > h6 {
+    width: 100% !important;
+    font-size: 40px !important;
+    font-weight: 600 !important;
+    line-height: 40px !important;
+    color: #212121 !important;
+}
+
+main.booking > section.bk-st-5 > .container > form > fieldset > p,
+main.booking > section.bk-st-5 > .container > form > fieldset div.text > h6,
+main.booking > section.bk-st-5 > .container > form > fieldset div.text > p {
+    font-size: 14px !important;
+    text-transform: none !important;
+}
+
 main.booking > section.bk-st-5 > .container > form > fieldset div.text > input,
 main.booking > section.bk-st-5 > .container > form > fieldset div.text > select,
 main.booking > section.bk-st-5 > .container > form > fieldset div.text > textarea {
-    padding: 20px;
-    box-sizing: border-box;
-    border-color: #eee;
-    background-color: #eee;
+    padding: 20px !important;
+    box-sizing: border-box !important;
+    border-color: #eee !important;
+    background-color: #eee !important;
 }
 
 main.booking > section.bk-st-5 > .container > form > fieldset div.text > input,
 main.booking > section.bk-st-5 > .container > form > fieldset div.text > select {
-    height: 60px;
+    height: 60px !important;
 }
 
 main.booking > section.bk-st-5 > .container > form > fieldset div.button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
 }
 
 main.booking > section.bk-st-5 > .container > form > fieldset div.button > button {
-    height: 60px;
-    margin-top: 20px;
-    border-radius: 60px;
-    padding-left: 40px;
-    padding-right: 40px;
-    background-color: #ffeb3b;
-    font-size: 18px;
-    text-transform: none;
-    color: #212121;
+    height: 60px !important;
+    margin: 20px 0px 0px 0px !important;
+    border-radius: 60px !important;
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+    background-color: #ffeb3b !important;
+    font-size: 14px !important;
+    text-transform: none !important;
+    color: #212121 !important;
 }
 
 /* --- */
 
 main.booking > section.bk-st-6 {
     width: 100%;
-    padding: 100px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
     box-sizing: border-box;
     background-color: #eee;
 }
 
-main.booking > section.bk-st-6 > .container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+main.booking > section.bk-st-6 > article {
+    width: calc(50% - 20px);
+    margin: 10px;
 }
 
-main.booking > section.bk-st-6 > .container > article {
-    width: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-main.booking > section.bk-st-6 > .container > article > main {
-    width: 400px;
+main.booking > section.bk-st-6 > article > main {
+    width: 100%;
     height: 400px;
     position: relative;
     display: flex;
@@ -943,8 +1004,6 @@ main.booking > section.bk-st-6 > .container > article > main {
     justify-content: center;
     flex-direction: column;
     padding: 40px;
-    border-radius: 50%;
-    border: 5px solid #fff;
     box-sizing: border-box;
     background-position: center;
     background-repeat: no-repeat;
@@ -952,7 +1011,7 @@ main.booking > section.bk-st-6 > .container > article > main {
     overflow: hidden;
 }
 
-main.booking > section.bk-st-6 > .container > article > main::before {
+main.booking > section.bk-st-6 > article > main::before {
     content: '';
     position: absolute;
     top: 0px;
@@ -962,12 +1021,33 @@ main.booking > section.bk-st-6 > .container > article > main::before {
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-main.booking > section.bk-st-6 > .container > article > main > * {
+main.booking > section.bk-st-6 > article > main > * {
     position: relative;
 }
 
-main.booking > section.bk-st-6 > .container > article > main > h4 {
+main.booking > section.bk-st-6 > article > main > h4 {
     width: 100%;
+    margin-bottom: 20px;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+}
+
+main.booking > section.bk-st-6 > article > main > p {
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center;
+    color: #fff;
+}
+
+main.booking > section.bk-st-6 > article > main > span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 20px;
     font-size: 24px;
     font-weight: 600;
@@ -975,36 +1055,40 @@ main.booking > section.bk-st-6 > .container > article > main > h4 {
     color: #fff;
 }
 
-main.booking > section.bk-st-6 > .container > article > main > p {
-    width: 100%;
-    margin-bottom: 20px;
-    font-size: 14px;
-    font-weight: 400;
-    text-align: center;
-    line-height: 18px;
-    color: #fff;
+main.booking > section.bk-st-6 > article > main > span > i {
+    margin-right: 5px;
+    font-size: 24px;
 }
 
-main.booking > section.bk-st-6 > .container > article > main > div > span,
-main.booking > section.bk-st-6 > .container > article > main > span {
-    margin: 0px 10px;
+main.booking > section.bk-st-6 > article > main > div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 20px;
+}
+
+main.booking > section.bk-st-6 > article > main > div > span {
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 10px;
     font-size: 14px;
     font-weight: 600;
     text-align: center;
     color: #fff;
 }
 
-main.booking > section.bk-st-6 > .container > article > main > div > span > i,
-main.booking > section.bk-st-6 > .container > article > main > span > i {
+main.booking > section.bk-st-6 > article > main > div > span > i  {
     margin-right: 5px;
-    font-size: 14px;
+    font-size: 18px;
 }
 
-main.booking > section.bk-st-6 > .container > article > main > a {
+main.booking > section.bk-st-6 > article > main > a {
     background-color: #212121;
-    padding: 10px 20px;
-    border-radius: 20px;
+    padding: 15px 20px;
+    border-radius: 30px;
     box-sizing: border-box;
     font-size: 14px;
     font-weight: 400;
@@ -1037,6 +1121,8 @@ main.voucher > section.vo-st-2 > .container {
 
 main.voucher > section.vo-st-2 > .container > div:first-child {
     width: 50%;
+    padding-right: 40px;
+    box-sizing: border-box;
 }
 
 main.voucher > section.vo-st-2 > .container > div:first-child > h1 {
@@ -1044,25 +1130,37 @@ main.voucher > section.vo-st-2 > .container > div:first-child > h1 {
     margin-bottom: 10px;
     font-size: 24px;
     font-weight: 600;
+    line-height: 24px;
     color: #212121;
 }
 
-main.voucher > section.vo-st-2 > .container > div:first-child > h6,
+main.voucher > section.vo-st-2 > .container > div:first-child > h6 {
+    width: 100%;
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 18px;
+    color: #212121;
+}
+
 main.voucher > section.vo-st-2 > .container > div:first-child > p {
     width: 100%;
     margin-bottom: 5px;
     font-size: 18px;
     font-weight: 400;
+    text-align: justify;
     color: #212121;
 }
 
 main.voucher > section.vo-st-2 > .container > div:first-child > a {
     display: inline-block;
     margin: 40px 10px 0px 0px;
-    padding: 20px 40px;
+    padding: 20px;
     border-radius: 40px;
     box-sizing: border-box;
     background-color: #ffeb3b;
+    font-size: 14px;
+    font-weight: 600;
     cursor: pointer;
     color: #212121;
 }
@@ -1101,6 +1199,7 @@ main.voucher > section.vo-st-2 > .container > div:last-child > h2 {
     margin-bottom: 20px;
     font-size: 40px;
     font-weight: 600;
+    line-height: 40px;
     text-align: center;
     color: #fff;
 }
@@ -1108,7 +1207,7 @@ main.voucher > section.vo-st-2 > .container > div:last-child > h2 {
 main.voucher > section.vo-st-2 > .container > div:last-child > p {
     width: 100%;
     margin-bottom: 20px;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 400;
     text-align: center;
     color: #fff;
@@ -1116,7 +1215,11 @@ main.voucher > section.vo-st-2 > .container > div:last-child > p {
 
 main.voucher > section.vo-st-2 > .container > div:last-child > span {
     width: 100%;
-    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 24px;
     font-weight: 400;
     text-align: center;
     color: #fff;
@@ -1124,7 +1227,18 @@ main.voucher > section.vo-st-2 > .container > div:last-child > span {
 
 main.voucher > section.vo-st-2 > .container > div:last-child > span > i {
     margin-right: 5px;
-    font-size: 18px;
+    font-size: 24px;
+}
+
+main.voucher > section.vo-st-2 > .container > div:last-child > a {
+    padding: 15px 20px;
+    border-radius: 30px;
+    box-sizing: border-box;
+    background-color: #ffeb3b;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    color: #212121;
 }
 
 /* Contact page -------- */
@@ -1150,41 +1264,155 @@ main.contact > section.ct-st-2 > .container {
     justify-content: center;
 }
 
-main.contact > section.ct-st-2 > .container > div,
+main.contact > section.ct-st-2 > .container > div {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+main.contact > section.ct-st-2 > .container > div > h1 {
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 60px;
+    font-weight: 600;
+    line-height: 60px;
+    text-align: center;
+    color: #212121;
+}
+
+main.contact > section.ct-st-2 > .container > div > div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+main.contact > section.ct-st-2 > .container > div > div > span {
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 10px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #757575;
+}
+
+main.contact > section.ct-st-2 > .container > div > div > span > i {
+    margin-right: 5px;
+    font-size: 14px;
+}
+
+main.contact > section.ct-st-2 > .container > div > div > a {
+    width: auto;
+    margin: 0px 10px;
+    font-size: 24px;
+    font-weight: 400;
+    color: #757575;
+}
+
 main.contact > section.ct-st-2 > .container > form {
     width: 50%;
+}
+
+main.contact > section.ct-st-2 > .container > form > fieldset > p,
+main.contact > section.ct-st-2 > .container > form > fieldset div.text > h6 {
+    font-size: 14px !important;
+    text-transform: none !important;
 }
 
 main.contact > section.ct-st-2 > .container > form > fieldset div.text > input,
 main.contact > section.ct-st-2 > .container > form > fieldset div.text > select,
 main.contact > section.ct-st-2 > .container > form > fieldset div.text > textarea {
-    padding: 20px;
-    box-sizing: border-box;
-    border-color: #eee;
-    background-color: #eee;
+    padding: 20px !important;
+    box-sizing: border-box !important;
+    border-color: #eee !important;
+    background-color: #eee !important;
 }
 
 main.contact > section.ct-st-2 > .container > form > fieldset div.text > input,
 main.contact > section.ct-st-2 > .container > form > fieldset div.text > select {
-    height: 60px;
+    height: 60px !important;
 }
 
 main.contact > section.ct-st-2 > .container > form > fieldset div.button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
 }
 
 main.contact > section.ct-st-2 > .container > form > fieldset div.button > button {
-    height: 60px;
-    margin-top: 20px;
-    border-radius: 60px;
-    padding-left: 40px;
-    padding-right: 40px;
-    background-color: #ffeb3b;
+    height: 60px !important;
+    margin-top: 20px !important;
+    border-radius: 60px !important;
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+    background-color: #ffeb3b !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    text-transform: none !important;
+    color: #212121 !important;
+}
+
+/* Terms & Conditions page -------- */
+
+main.terms > section.tr-st-1 {
+    width: 100%;
+    height: 200px;
+    background-color: #212121;
+}
+
+/* --- */
+
+main.terms > section.tr-st-2 {
+    width: 100%;
+    padding: 100px 0px;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+main.terms > section.tr-st-2 > .container > h6 {
+    width: 100%;
+    margin: 20px 0px 5px 0px;
     font-size: 18px;
-    text-transform: none;
+    font-weight: 600;
+    line-height: 18px;
+    text-align: justify;
     color: #212121;
+}
+
+main.terms > section.tr-st-2 > .container > h6:first-child {
+    margin-top: 0px;
+}
+
+main.terms > section.tr-st-2 > .container > p {
+    width: 100%;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: justify;
+    color: #757575;
+}
+
+main.terms > section.tr-st-2 > .container > ul {
+    width: 100%;
+    margin: 20px 0px;
+}
+
+main.terms > section.tr-st-2 > .container > ul:last-child {
+    margin-bottom: 0px;
+}
+
+main.terms > section.tr-st-2 > .container > ul > li {
+    width: 100%;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: justify;
+    color: #757575;
 }
 
 /* ------------------------------------------------------------- */

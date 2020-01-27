@@ -15,19 +15,31 @@ $this->dependencies->add(['other', '<script async defer src="https://maps.google
     <section class="bk-st-1" data-image-src="{$cover}">
         <h1>{$name}</h1>
         <p>{$summary}</p>
+        <span><i class="fas fa-globe-americas"></i>{$destination}</span>
         <div>
             <span><i class="fas fa-baby"></i>{$child_price}</span>
             <span><i class="fas fa-male"></i>{$adult_price}</span>
         </div>
-        <span><i class="fas fa-globe-americas"></i>{$destination}</span>
     </section>
     <section class="bk-st-2">
         <div class="container">
             <div id="map" data-departure-title="{$lang.departure}" data-departure-lat="{$schedule_departure_place_lat}" data-departure-lng="{$schedule_departure_place_lng}" data-arrival-title="{$lang.arrival}" data-arrival-lat="{$schedule_arrival_place_lat}" data-arrival-lng="{$schedule_arrival_place_lng}" data-return-title="{$lang.return}" data-return-lat="{$schedule_return_place_lat}" data-return-lng="{$schedule_return_place_lng}"></div>
             <div>
-                <h6><strong>{$lang.departure}:</strong><span><i class="fas fa-clock"></i>{$schedule_departure_hour} Hrs</span><span><i class="fas fa-map-marker-alt"></i>{$schedule_departure_place_name}</span></h6>
-                <h6><strong>{$lang.arrival}:</strong><span><i class="fas fa-clock"></i>{$schedule_arrival_hour} Hrs</span><span><i class="fas fa-map-marker-alt"></i>{$schedule_arrival_place_name}</span></h6>
-                <h6><strong>{$lang.return}:</strong><span><i class="fas fa-clock"></i>{$schedule_return_hour} Hrs</span><span><i class="fas fa-map-marker-alt"></i>{$schedule_return_place_name}</span></h6>
+                <div>
+                    <h6>{$lang.departure}</h6>
+                    <span><i class="fas fa-clock"></i>{$schedule_departure_hour}</span>
+                    <span><i class="fas fa-map-marker-alt"></i>{$schedule_departure_place_name}</span>
+                </div>
+                <div>
+                    <h6>{$lang.arrival}</h6>
+                    <span><i class="fas fa-clock"></i>{$schedule_arrival_hour}</span>
+                    <span><i class="fas fa-map-marker-alt"></i>{$schedule_arrival_place_name}</span>
+                </div>
+                <div>
+                    <h6>{$lang.return}</h6>
+                    <span><i class="fas fa-clock"></i>{$schedule_return_hour}</span>
+                    <span><i class="fas fa-map-marker-alt"></i>{$schedule_return_place_name}</span>
+                </div>
             </div>
         </div>
     </section>
@@ -39,6 +51,7 @@ $this->dependencies->add(['other', '<script async defer src="https://maps.google
     {$fge_gallery}
     <section class="bk-st-5">
         <div class="container">
+            <h6>¡{$lang.book_now}!</h6>
             <form name="new_booking">
                 <fieldset class="fields-group">
                     <p class="warning"><span class="required-field">*</span>{$lang.required_fields}</p>
@@ -120,15 +133,13 @@ $this->dependencies->add(['other', '<script async defer src="https://maps.google
                 </fieldset>
                 <fieldset class="fields-group">
                     <div class="button">
-                        <button type="submit" class="btn">{$lang.book_now}</button>
+                        <button type="submit">{$lang.book}</button>
                     </div>
                 </fieldset>
             </form>
         </div>
     </section>
     <section class="bk-st-6">
-        <div class="container">
-            {$art_main_tours}
-        </div>
+        {$art_main_tours}
     </section>
 </main>

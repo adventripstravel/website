@@ -66,11 +66,11 @@ class Index_controller extends Controller
 		            <main>
 		                <h4>' . $value['name'][$this->lang] . '</h4>
 						<p>' . $value['summary'][$this->lang] . '</p>
+						<span><i class="fas fa-globe-americas"></i>' . $value['destination'] . '</span>
 						<div>
 							<span><i class="fas fa-baby"></i>' . Functions::get_format_currency(Functions::get_currency_exchange($value['price']['child'], 'USD', Session::get_value('currency')), Session::get_value('currency')) . '</span>
 							<span><i class="fas fa-male"></i>' . Functions::get_format_currency(Functions::get_currency_exchange($value['price']['adult'], 'USD', Session::get_value('currency')), Session::get_value('currency')) . '</span>
 						</div>
-						<span><i class="fas fa-globe-americas"></i>' . $value['destination'] . '</span>
 						<a href="/booking/' . Functions::get_cleaned_string_to_url($value['name'][$this->lang]) . '/' . $value['id'] . '">{$lang.book} | {$lang.view_more}</a>
 					</main>
 		        </article>';

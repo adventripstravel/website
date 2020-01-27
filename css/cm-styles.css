@@ -813,6 +813,12 @@ section.modal footer::after {
 }
 
 /* Success & Alert */
+section.modal.success > .content,
+section.modal.alert > .content {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
+
 section.modal.success header,
 section.modal.alert header {
     border: none !important;
@@ -836,27 +842,32 @@ section.modal.alert main {
     border: none !important;
 }
 
-section.modal.success main {
+section.modal.success main,
+section.modal.alert main {
     padding: 100px 40px !important;
+}
+
+section.modal.success main {
     background-color: #4caf50 !important;
-}
-
-section.modal.success main > i {
-    width: 100%;
-    margin-bottom: 40px;
-    font-size: 140px;
-    text-align: center;
-}
-
-section.modal.success main > p {
-    width: 100%;
-    font-size: 18px;
-    text-align: center;
-    text-transform: uppercase;
 }
 
 section.modal.alert main {
     background-color: #f44336 !important;
+}
+
+section.modal.success main > i,
+section.modal.alert main > i {
+    width: 100%;
+    margin-bottom: 40px;
+    font-size: 180px;
+    text-align: center;
+}
+
+section.modal.success main > p,
+section.modal.alert main > p {
+    width: 100%;
+    font-size: 18px;
+    text-align: center;
 }
 
 section.modal.success main *,

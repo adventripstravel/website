@@ -30,6 +30,7 @@
                     <h4>{$lang.warning}</h4>
                 </header>
                 <main>
+                    <i class="material-icons">warning</i>
                     <p></p>
                 </main>
                 <footer>

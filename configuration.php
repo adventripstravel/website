@@ -18,7 +18,7 @@ class Configuration
 	 *
      * @var string $domain
      */
-	public static $domain = 'adventrips.com';
+	public static $domain = 'dev.adventrips.com';
 
 	/**
      * Nombre del sitio web.
@@ -47,7 +47,7 @@ class Configuration
 	 *
      * @var string $error_reporting
      */
-	public static $error_reporting = 'none';
+	public static $error_reporting = 'development';
 
 	/**
      * Modo para debuggear errores.
@@ -147,7 +147,7 @@ class Configuration
 	 *
      * @var string $db_name
      */
-	public static $db_name = 'adventrips';
+	public static $db_name = 'ad-website-dev';
 
 	/**
      * Usuario de la base de datos

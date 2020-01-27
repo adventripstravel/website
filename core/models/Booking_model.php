@@ -17,6 +17,7 @@ class Booking_model extends Model
 			]
 		], [
 			'tours.id',
+			'tours.type',
 			'tours.name',
 			'tours.summary',
 			'tours.description',
@@ -107,6 +108,9 @@ class Booking_model extends Model
 			]),
 			'language' => $data['language'],
 			'canceled' => false,
+			'request' => json_encode([
+				'type' => 'none'
+			]),
 			'registration_date' => Functions::get_current_date()
 		]);
 

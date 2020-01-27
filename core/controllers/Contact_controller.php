@@ -23,30 +23,37 @@ class Contact_controller extends Controller
 			{
 				$errors = [];
 
-	            if (!isset($_POST['firstname']) OR empty($_POST['firstname']))
+				if (!isset($_POST['firstname']) OR empty($_POST['firstname']))
 	                array_push($errors, ['firstname', '{$lang.dont_leave_this_field_empty}']);
 
 	            if (!isset($_POST['lastname']) OR empty($_POST['lastname']))
 	                array_push($errors, ['lastname', '{$lang.dont_leave_this_field_empty}']);
-
-	            if (!isset($_POST['subject']) OR empty($_POST['subject']))
-	                array_push($errors, ['subject', '{$lang.dont_leave_this_field_empty}']);
 
 	            if (!isset($_POST['email']) OR empty($_POST['email']))
 	                array_push($errors, ['email', '{$lang.dont_leave_this_field_empty}']);
 	            else if (Functions::check_email($_POST['email']) == false)
 	                array_push($errors, ['email', '{$lang.invalid_field}']);
 
+	            if (!isset($_POST['phone']) OR empty($_POST['phone']))
+	                array_push($errors, ['phone', '{$lang.dont_leave_this_field_empty}']);
+	            else if (!is_numeric($_POST['phone']))
+	                array_push($errors, ['phone', '{$lang.invalid_field}']);
+
 	            if (!isset($_POST['message']) OR empty($_POST['message']))
 	                array_push($errors, ['message', '{$lang.dont_leave_this_field_empty}']);
 
 	            if (empty($errors))
 	            {
-	                $mail_header  = 'MIME-Version: 1.0' . "\r\n";
+					$mail_header  = 'MIME-Version: 1.0' . "\r\n";
 					$mail_header .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 					$mail_header .= 'From: ' . $_POST['firstname'] . ' ' . $_POST['lastname'] . ' <' . $_POST['email'] . '>' . "\r\n";
+					$mail_body = 
+					'Nombre completo: ' . $_POST['firstname'] . ' ' . $_POST['lastname'] . '<br>
+					Correo electrónico: ' . $_POST['email'] . '<br>
+					Teléfono: ' . $_POST['phone'] . '<br>
+					Mensaje: ' . $_POST['message'];
 
-					mail(Session::get_value('settings')['contact']['email']['es'], $_POST['subject'], $_POST['message'], $mail_header);
+					mail(Session::get_value('settings')['contact']['email']['es'], 'Nuevo mensaje de contacto', $mail_body, $mail_header);
 
 					echo json_encode([
 						'status' => 'success',

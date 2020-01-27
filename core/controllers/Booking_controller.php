@@ -117,12 +117,12 @@ class Booking_controller extends Controller
 							'Tour: ' . $tour['name']['es'] . '
 							Niños: ' . $query['paxes']['childs'] . ' Paxes<br>
 							Adultos: ' . $query['paxes']['adults'] . ' Paxes<br>
-							Fecha: ' . $query['booked_date'] . '<br>
+							Fecha: ' . Functions::get_format_date($query['booked_date'], 'd/m/Y') . '<br>
 							Nombre: ' . $query['firstname'] . ' ' . $query['lastname'] . '<br>
 							Correo electrónico: ' . $query['email'] . '<br>
 							Teléfono: ' . $query['phone']['lada'] . ' ' . $query['phone']['number'] . '<br>
 							Observaciones: ' . $query['observations'] . '<br>
-							Total: ' . Functions::get_format_currency($query['total'], 'MXN') . '<br>
+							Total: ' . Functions::get_format_currency(Functions::get_currency_exchange($query['total'], 'USD', Session::get_value('currency')), Session::get_value('currency')) . '<br>
 							Número de reservación: ' . $query['token'] . '<br>
 							Idioma: ' . $query['language'] . '<br>';
 
@@ -190,11 +190,11 @@ class Booking_controller extends Controller
 						<main data-image-src="{$path.uploads}' . $value['cover'] . '">
 							<h4>' . $value['name'][$this->lang] . '</h4>
 							<p>' . $value['summary'][$this->lang] . '</p>
+							<span><i class="fas fa-globe-americas"></i>' . $value['destination'] . '</span>
 							<div>
 								<span><i class="fas fa-baby"></i>' . Functions::get_format_currency(Functions::get_currency_exchange($value['price']['child'], 'USD', Session::get_value('currency')), Session::get_value('currency')) . '</span>
 								<span><i class="fas fa-male"></i>' . Functions::get_format_currency(Functions::get_currency_exchange($value['price']['adult'], 'USD', Session::get_value('currency')), Session::get_value('currency')) . '</span>
 							</div>
-							<span><i class="fas fa-globe-americas"></i>' . $value['destination'] . '</span>
 							<a href="/booking/' . Functions::get_cleaned_string_to_url($value['name'][$this->lang]) . '/' . $value['id'] . '">{$lang.book} | {$lang.view_more}</a>
 						</main>
 					</article>';
@@ -210,16 +210,16 @@ class Booking_controller extends Controller
 					'{$child_price}' => Functions::get_format_currency(Functions::get_currency_exchange($tour['price']['child'], 'USD', Session::get_value('currency')), Session::get_value('currency')),
 					'{$adult_price}' => Functions::get_format_currency(Functions::get_currency_exchange($tour['price']['adult'], 'USD', Session::get_value('currency')), Session::get_value('currency')),
                     '{$destination}' => $tour['destination'],
-					'{$schedule_departure_hour}' => $tour['schedules']['departure']['hour'],
-					'{$schedule_departure_place_name}' => $tour['schedules']['departure']['place']['name'],
+					'{$schedule_departure_hour}' => $tour['schedules']['departure']['hour'][$this->lang],
+					'{$schedule_departure_place_name}' => $tour['schedules']['departure']['place']['name'][$this->lang],
 					'{$schedule_departure_place_lat}' => $tour['schedules']['departure']['place']['lat'],
 					'{$schedule_departure_place_lng}' => $tour['schedules']['departure']['place']['lng'],
-					'{$schedule_arrival_hour}' => $tour['schedules']['arrival']['hour'],
-					'{$schedule_arrival_place_name}' => $tour['schedules']['arrival']['place']['name'],
+					'{$schedule_arrival_hour}' => $tour['schedules']['arrival']['hour'][$this->lang],
+					'{$schedule_arrival_place_name}' => $tour['schedules']['arrival']['place']['name'][$this->lang],
 					'{$schedule_arrival_place_lat}' => $tour['schedules']['arrival']['place']['lat'],
 					'{$schedule_arrival_place_lng}' => $tour['schedules']['arrival']['place']['lng'],
-					'{$schedule_return_hour}' => $tour['schedules']['return']['hour'],
-					'{$schedule_return_place_name}' => $tour['schedules']['return']['place']['name'],
+					'{$schedule_return_hour}' => $tour['schedules']['return']['hour'][$this->lang],
+					'{$schedule_return_place_name}' => $tour['schedules']['return']['place']['name'][$this->lang],
 					'{$schedule_return_place_lat}' => $tour['schedules']['return']['place']['lat'],
 					'{$schedule_return_place_lng}' => $tour['schedules']['return']['place']['lng'],
     				'{$description}' => $tour['description'][$this->lang],

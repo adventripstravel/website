@@ -20,6 +20,7 @@ class Voucher_model extends Model
 			]
 		], [
 			'bookings.token',
+			'tours.id(tour_id)',
 			'tours.name(tour_name)',
 			'tours.summary(tour_summary)',
 			'tours.cover(tour_cover)',
@@ -46,7 +47,10 @@ class Voucher_model extends Model
 	public function new_request($data)
 	{
 		$query = $this->database->update('bookings', [
-			'request' => $data['request']
+			'request' => json_encode([
+				'type' => $data['request'],
+				'observations' => $data['observations']
+			]),
 		], [
 			'token' => $data['booking']['token']
 		]);

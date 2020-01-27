@@ -36,7 +36,54 @@ $this->dependencies->add(['js', '{$path.js}Voucher/index.min.js']);
                 <h2>{$tour_name}</h2>
                 <p>{$tour_summary}</p>
                 <span><i class="fas fa-globe-americas"></i>{$tour_destination}</span>
+                <a href="{$tour_url}">{$lang.view_tour_details}</a>
             </div>
         </div>
     </section>
 </main>
+<section class="modal" data-modal="request_update_booking">
+    <div class="content">
+        <header>
+            <h4>{$lang.request_update_booking}</h4>
+        </header>
+        <main>
+            <form name="request_update_booking">
+                <fieldset class="fields-group">
+                    <div class="text">
+                        <h6>{$lang.observations}</h6>
+                        <textarea name="observations"></textarea>
+                    </div>
+                </fieldset>
+            </form>
+        </main>
+        <footer>
+            <div class="action-buttons">
+                <button class="btn btn-flat" button-cancel>{$lang.cancel}</button>
+                <button class="btn" button-success>{$lang.accept}</button>
+            </div>
+        </footer>
+    </div>
+</section>
+<section class="modal" data-modal="request_cancel_booking">
+    <div class="content">
+        <header>
+            <h4>{$lang.request_cancel_booking}</h4>
+        </header>
+        <main>
+            <form name="request_cancel_booking">
+                <fieldset class="fields-group">
+                    <div class="text">
+                        <h6>{$lang.observations}</h6>
+                        <textarea name="observations"></textarea>
+                    </div>
+                </fieldset>
+            </form>
+        </main>
+        <footer>
+            <div class="action-buttons">
+                <button class="btn btn-flat" button-cancel>{$lang.cancel}</button>
+                <button class="btn" button-success>{$lang.accept}</button>
+            </div>
+        </footer>
+    </div>
+</section>
