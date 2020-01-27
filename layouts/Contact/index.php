@@ -19,11 +19,11 @@ $this->dependencies->add(['js', '{$path.js}Contact/index.min.js']);
                 </div>
                 <div>
                     <a href="https://api.whatsapp.com/send?phone={$_vkye_phone}" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                    <a href="{$_vkye_tripadvisor}" target="_blank"><i class="fab fa-tripadvisor"></i></a>
+                    <!-- <a href="{$_vkye_tripadvisor}" target="_blank"><i class="fab fa-tripadvisor"></i></a> -->
                     <a href="{$_vkye_facebook}" target="_blank"><i class="fab fa-facebook"></i></a>
                     <a href="{$_vkye_instagram}" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="{$_vkye_twitter}" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="{$_vkye_youtube}" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <!-- <a href="{$_vkye_twitter}" target="_blank"><i class="fab fa-twitter"></i></a> -->
+                    <!-- <a href="{$_vkye_youtube}" target="_blank"><i class="fab fa-youtube"></i></a> -->
                 </div>
             </div>
             <form name="contact">

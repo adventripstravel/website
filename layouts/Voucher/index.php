@@ -11,6 +11,12 @@ $this->dependencies->add(['js', '{$path.js}Voucher/index.min.js']);
     <section class="vo-st-1"></section>
     <section class="vo-st-2">
         <div class="container">
+            <div data-image-src="{$tour_cover}">
+                <h2>{$tour_name}</h2>
+                <p>{$tour_summary}</p>
+                <span><i class="fas fa-globe-americas"></i>{$tour_destination}</span>
+                <a href="{$tour_url}">{$lang.view_tour_details}</a>
+            </div>
             <div>
                 <h1>{$lang.token}: {$token}</h1>
                 <h6>{$lang.childs}: {$childs} {$lang.paxes}</h6>
@@ -31,12 +37,6 @@ $this->dependencies->add(['js', '{$path.js}Voucher/index.min.js']);
                 <h6>{$lang.registration_date}: {$registration_date}</h6>
                 {$btn_request_update_booking}
                 {$btn_request_cancel_booking}
-            </div>
-            <div data-image-src="{$tour_cover}">
-                <h2>{$tour_name}</h2>
-                <p>{$tour_summary}</p>
-                <span><i class="fas fa-globe-americas"></i>{$tour_destination}</span>
-                <a href="{$tour_url}">{$lang.view_tour_details}</a>
             </div>
         </div>
     </section>

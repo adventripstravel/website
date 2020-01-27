@@ -5,9 +5,9 @@
                 <nav>
                     <ul>
                         <li><span>Copyright (C) Adventrips</span></li>
-                        <li><i class="fas fa-circle"></i></li>
+                        <li class="blocked"><i class="fas fa-circle"></i></li>
                         <li><span>{$lang.development_by}</span><a href="https://codemonkey.com.mx" target="_blank">Code Monkey</a></li>
-                        <li><i class="fas fa-circle"></i></li>
+                        <li class="blocked"><i class="fas fa-circle"></i></li>
                         <li><a href="/terms">{$lang.terms_and_conditions}</a></li>
                     </ul>
                 </nav>

@@ -28,11 +28,7 @@ header.main-header.down > div.topbar {
     z-index: 100;
 }
 
-header.main-header > div.topbar.open {
-    right: 0px;
-}
-
-/* @media (max-width: 768px) {
+@media (max-width: 768px) {
 
     header.main-header > div.topbar {
         width: 60px;
@@ -44,7 +40,11 @@ header.main-header > div.topbar.open {
         background-color: #ffeb3b;
         z-index: 100;
     }
-} */
+}
+
+header.main-header > div.topbar.open {
+    right: 0px;
+}
 
 header.main-header > div.topbar > .container > nav,
 header.main-header > div.topbar > .container > nav > ul {
@@ -60,14 +60,14 @@ header.main-header.down > div.topbar > .container > nav > ul {
     flex-direction: column;
 }
 
-/* @media (max-width: 768px) {
+@media (max-width: 768px) {
 
     header.main-header > div.topbar > .container > nav,
     header.main-header > div.topbar > .container > nav > ul {
         justify-content: flex-start;
         flex-direction: column;
     }
-} */
+}
 
 header.main-header > div.topbar > .container > nav > ul > li {
     width: auto;
@@ -80,6 +80,13 @@ header.main-header.down > div.topbar > .container > nav > ul > li.blocked {
     display: none;
 }
 
+@media (max-width: 768px) {
+
+    header.main-header > div.topbar > .container > nav > ul > li.blocked {
+        display: none;
+    }
+}
+
 header.main-header > div.topbar > .container > nav > ul > li.unblocked {
     display: none;
 }
@@ -88,16 +95,12 @@ header.main-header.down > div.topbar > .container > nav > ul > li.unblocked {
     display: flex;
 }
 
-/* @media (max-width: 768px) {
-
-    header.main-header > div.topbar > .container > nav > ul > li.blocked {
-        display: none;
-    }
+@media (max-width: 768px) {
 
     header.main-header > div.topbar > .container > nav > ul > li.unblocked {
         display: flex;
     }
-} */
+}
 
 header.main-header > div.topbar > .container > nav > ul > li > a {
     width: auto;
@@ -117,13 +120,13 @@ header.main-header.down > div.topbar > .container > nav > ul > li > a {
     color: #212121;
 }
 
-/* @media (max-width: 768px) {
+@media (max-width: 768px) {
 
     header.main-header > div.topbar > .container > nav > ul > li > a {
         padding: 10px;
         color: #212121;
     }
-} */
+}
 
 header.main-header > div.topbar > .container > nav > ul > li > a > img {
     width: auto;
@@ -132,13 +135,13 @@ header.main-header > div.topbar > .container > nav > ul > li > a > img {
 
 /* ------ */
 header.main-header > div.bottombar,
-header.main-header > div.rightbar {
+header.main-header > div.movilbar {
     width: 100%;
     padding: 20px 0px;
     box-sizing: border-box;
 }
 
-header.main-header > div.rightbar {
+header.main-header > div.movilbar {
     display: none;
 }
 
@@ -154,16 +157,7 @@ header.main-header.down > div.bottombar {
     z-index: 99;
 }
 
-header.main-header.down > div.rightbar {
-    display: block;
-    background-color: #ffeb3b;
-}
-
-header.main-header > div.bottombar.open {
-    right: 0px;
-}
-
-/* @media (max-width: 768px) {
+@media (max-width: 768px) {
 
     header.main-header > div.bottombar {
         width: 300px;
@@ -176,14 +170,26 @@ header.main-header > div.bottombar.open {
         background-color: #212121;
         z-index: 99;
     }
+}
 
-    header.main-header > div.rightbar {
+header.main-header.down > div.movilbar {
+    display: block;
+    background-color: #ffeb3b;
+}
+
+@media (max-width: 768px) {
+
+    header.main-header > div.movilbar {
         display: block;
     }
-} */
+}
+
+header.main-header > div.bottombar.open {
+    right: 0px;
+}
 
 header.main-header > div.bottombar > .container > figure,
-header.main-header > div.rightbar > .container > figure {
+header.main-header > div.movilbar > .container > figure {
     width: auto;
     float: left;
     display: flex;
@@ -195,12 +201,12 @@ header.main-header.down > div.bottombar > .container > figure {
     display: none;
 }
 
-/* @media (max-width: 768px) {
+@media (max-width: 768px) {
 
     header.main-header > div.bottombar > .container > figure {
         display: none;
     }
-} */
+}
 
 header.main-header > div.bottombar > .container > figure > a,
 header.main-header > div.bottombar > .container > figure > a > img {
@@ -208,16 +214,16 @@ header.main-header > div.bottombar > .container > figure > a > img {
     height: 80px;
 }
 
-header.main-header > div.rightbar > .container > figure > a,
-header.main-header > div.rightbar > .container > figure > a > img {
+header.main-header > div.movilbar > .container > figure > a,
+header.main-header > div.movilbar > .container > figure > a > img {
     width: auto;
     height: 40px;
 }
 
 header.main-header > div.bottombar > .container > nav,
-header.main-header > div.rightbar > .container > nav,
+header.main-header > div.movilbar > .container > nav,
 header.main-header > div.bottombar > .container > nav > ul,
-header.main-header > div.rightbar > .container > nav > ul {
+header.main-header > div.movilbar > .container > nav > ul {
     width: auto;
     float: right;
     display: flex;
@@ -225,8 +231,8 @@ header.main-header > div.rightbar > .container > nav > ul {
     justify-content: flex-end;
 }
 
-header.main-header > div.rightbar > .container > nav,
-header.main-header > div.rightbar > .container > nav > ul {
+header.main-header > div.movilbar > .container > nav,
+header.main-header > div.movilbar > .container > nav > ul {
     height: 40px;
 }
 
@@ -238,7 +244,7 @@ header.main-header.down > div.bottombar > .container > nav > ul {
     flex-direction: column;
 }
 
-/* @media (max-width: 768px) {
+@media (max-width: 768px) {
 
     header.main-header > div.bottombar > .container > nav,
     header.main-header > div.bottombar > .container > nav > ul {
@@ -247,10 +253,10 @@ header.main-header.down > div.bottombar > .container > nav > ul {
         justify-content: flex-start;
         flex-direction: column;
     }
-} */
+}
 
 header.main-header > div.bottombar > .container > nav > ul > li,
-header.main-header > div.rightbar > .container > nav > ul > li {
+header.main-header > div.movilbar > .container > nav > ul > li {
     width: auto;
     display: flex;
     align-items: center;
@@ -258,7 +264,7 @@ header.main-header > div.rightbar > .container > nav > ul > li {
 }
 
 header.main-header > div.bottombar > .container > nav > ul > li > a,
-header.main-header > div.rightbar > .container > nav > ul > li > a {
+header.main-header > div.movilbar > .container > nav > ul > li > a {
     width: auto;
     display: flex;
     align-items: center;
@@ -277,18 +283,18 @@ header.main-header.down > div.bottombar > .container > nav > ul > li > a {
     color: #ffeb3b;
 }
 
-header.main-header.down > div.rightbar > .container > nav > ul > li > a {
-    color: #212121;
-}
-
-/* @media (max-width: 768px) {
+@media (max-width: 768px) {
 
     header.main-header > div.bottombar > .container > nav > ul > li > a {
         padding: 10px;
         white-space: nowrap;
         color: #ffeb3b;
     }
-} */
+}
+
+header.main-header.down > div.movilbar > .container > nav > ul > li > a {
+    color: #212121;
+}
 
 /* ------------------------------------------------------------- */
 /* Main
@@ -311,6 +317,20 @@ main.home > section.hm-st-1 {
     background-size: cover;
 }
 
+@media (max-width: 768px) {
+
+    main.home > section.hm-st-1 {
+        padding: 50px;
+    }
+}
+
+@media (max-width: 425px) {
+
+    main.home > section.hm-st-1 {
+        padding: 20px;
+    }
+}
+
 main.home > section.hm-st-1::before {
     content: '';
     position: absolute;
@@ -318,7 +338,7 @@ main.home > section.hm-st-1::before {
     right: 0px;
     bottom: 0px;
     left: 0px;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 main.home > section.hm-st-1 > * {
@@ -335,14 +355,11 @@ main.home > section.hm-st-1 > h1 {
     color: #fff;
 }
 
-main.home > section.hm-st-1 > h2 {
-    width: 100%;
-    margin-bottom: 20px;
-    font-size: 40px;
-    font-weight: 600;
-    line-height: 40px;
-    text-align: center;
-    color: #fff;
+@media (max-width: 425px) {
+
+    main.home > section.hm-st-1 > h1 {
+        font-size: 40px;
+    }
 }
 
 main.home > section.hm-st-1 > p {
@@ -379,6 +396,13 @@ main.home > section.hm-st-1 > div {
     margin-bottom: 20px;
 }
 
+@media (max-width: 425px) {
+
+    main.home > section.hm-st-1 > div {
+        margin-bottom: 5px;
+    }
+}
+
 main.home > section.hm-st-1 > div > span {
     width: auto;
     display: flex;
@@ -395,6 +419,23 @@ main.home > section.hm-st-1 > div > span {
     color: #212121;
 }
 
+@media (max-width: 425px) {
+
+    main.home > section.hm-st-1 > div > span {
+        width: calc(50% - 2.5px);
+        margin: 0px;
+        border-radius: 0px;
+    }
+
+    main.home > section.hm-st-1 > div > span:first-child {
+        margin-right: 2.5px;
+    }
+
+    main.home > section.hm-st-1 > div > span:last-child {
+        margin-left: 2.5px;
+    }
+}
+
 main.home > section.hm-st-1 > div > span > i {
     margin-right: 5px;
     font-size: 18px;
@@ -402,7 +443,6 @@ main.home > section.hm-st-1 > div > span > i {
 
 main.home > section.hm-st-1 > a {
     width: auto;
-    margin-bottom: 20px;
     padding: 20px 40px;
     border-radius: 40px;
     box-sizing: border-box;
@@ -413,51 +453,66 @@ main.home > section.hm-st-1 > a {
     color: #212121;
 }
 
+@media (max-width: 425px) {
+
+    main.home > section.hm-st-1 > a {
+        width: 100%;
+        border-radius: 0px;
+    }
+}
+
 /* --- */
 
 main.home > section.hm-st-2 {
     width: 100%;
+    position: relative;
+    padding: 100px 0px;
+    box-sizing: border-box;
     background-color: #212121;
+}
+
+@media (max-width: 425px) {
+
+    main.home > section.hm-st-2 {
+        padding: 20px;
+    }
+
+    main.home > section.hm-st-2 > .container {
+        width: 100%;
+    }
 }
 
 main.home > section.hm-st-2 > .container > form {
     width: 100%;
-    position: relative;
-    padding: 100px;
+    padding: 0px 200px;
     box-sizing: border-box;
 }
 
-main.home > section.hm-st-2 > .container > form::after {
-    content: '';
-    width: 0px;
-    height: 0px;
-    position: absolute;
-    bottom: 100%;
-	left: 50%;
-    margin-left: -50px;
-	border: solid transparent;
-    border-width: 50px;
-	border-color: rgba(255, 255, 255, 0);
-	border-bottom-color: #212121;
-    pointer-events: none;
+@media (max-width: 768px) {
+
+    main.home > section.hm-st-2 > .container > form {
+        padding: 0px 100px;
+    }
 }
 
-main.home > section.hm-st-2 > .container > form > h2 {
-    width: 100%;
-    font-size: 40px;
-    font-weight: 600;
-    line-height: 40px;
-    color: #ffeb3b;
+@media (max-width: 425px) {
+
+    main.home > section.hm-st-2 > .container > form {
+        padding: 0px;
+    }
 }
 
 main.home > section.hm-st-2 > .container > form > fieldset > div.text {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+    padding: 0px !important;
 }
 
 main.home > section.hm-st-2 > .container > form > fieldset > div.text > input {
+    width: calc(100% - 100px) !important;
     height: 60px !important;
+    margin: 0px;
     padding: 0px 20px !important;
     border-color: #fff !important;
     box-sizing: border-box !important;
@@ -466,10 +521,13 @@ main.home > section.hm-st-2 > .container > form > fieldset > div.text > input {
 }
 
 main.home > section.hm-st-2 > .container > form > fieldset > div.text > button {
+    width: 100px !important;
     height: 60px !important;
-    margin-left: 0px !important;
-    margin-right: 0px !important;
-    padding: 0px 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0px !important;
+    padding: 0px !important;
     box-sizing: border-box !important;
     background-color: #ffeb3b !important;
     font-size: 14px !important;
@@ -485,6 +543,13 @@ main.home > section.hm-st-3 {
 main.home > section.hm-st-3 > article {
     width: 100%;
     height: 100vh;
+}
+
+@media (max-width: 768px) {
+
+    main.home > section.hm-st-3 > article {
+        height: auto;
+    }
 }
 
 main.home > section.hm-st-3 > article::after {
@@ -507,6 +572,16 @@ main.home > section.hm-st-3 > article.p-3 > header {
     float: right;
 }
 
+@media (max-width: 768px) {
+
+    main.home > section.hm-st-3 > article.p-2 > header,
+    main.home > section.hm-st-3 > article.p-3 > header {
+        width: 100%;
+        height: 50vh;
+        float: none;
+    }
+}
+
 main.home > section.hm-st-3 > article.p-2 > header > figure,
 main.home > section.hm-st-3 > article.p-3 > header > figure {
     width: 100%;
@@ -523,6 +598,24 @@ main.home > section.hm-st-3 > article.p-3 > header > figure > img {
     height: 100%;
 }
 
+@media (max-width: 768px) {
+
+    main.home > section.hm-st-3 > article.p-2 > header > figure > img,
+    main.home > section.hm-st-3 > article.p-3 > header > figure > img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 425px) {
+
+    main.home > section.hm-st-3 > article.p-2 > header > figure > img,
+    main.home > section.hm-st-3 > article.p-3 > header > figure > img {
+        width: auto;
+        height: 100%;
+    }
+}
+
 main.home > section.hm-st-3 > article.p-2 > main,
 main.home > section.hm-st-3 > article.p-3 > main {
     width: 50%;
@@ -532,12 +625,39 @@ main.home > section.hm-st-3 > article.p-3 > main {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 80px;
+    padding: 50px;
     box-sizing: border-box;
+}
+
+main.home > section.hm-st-3 > article.p-2 > main {
+    float: left;
+}
+
+main.home > section.hm-st-3 > article.p-3 > main {
+    float: right;
+}
+
+@media (max-width: 768px) {
+
+    main.home > section.hm-st-3 > article.p-2 > main,
+    main.home > section.hm-st-3 > article.p-3 > main {
+        width: 100%;
+        height: auto;
+        float: none;
+    }
+}
+
+@media (max-width: 425px) {
+
+    main.home > section.hm-st-3 > article.p-2 > main,
+    main.home > section.hm-st-3 > article.p-3 > main {
+        padding: 20px;
+    }
 }
 
 main.home > section.hm-st-3 > article.p-2 > main::after,
 main.home > section.hm-st-3 > article.p-3 > main::after {
+    content: '';
     width: 0px;
     height: 0px;
     position: absolute;
@@ -547,7 +667,6 @@ main.home > section.hm-st-3 > article.p-3 > main::after {
     border-width: 100px;
 	border-color: rgba(255, 255, 255, 0);
     pointer-events: none;
-    content: '';
 }
 
 main.home > section.hm-st-3 > article.p-2 > main::after {
@@ -560,23 +679,47 @@ main.home > section.hm-st-3 > article.p-3 > main::after {
 	border-left-color: #fff;
 }
 
-main.home > section.hm-st-3 > article.p-2 > main {
-    float: left;
-}
+@media (max-width: 768px) {
 
-main.home > section.hm-st-3 > article.p-3 > main {
-    float: right;
+    main.home > section.hm-st-3 > article.p-2 > main::before,
+    main.home > section.hm-st-3 > article.p-3 > main::before {
+        content: '';
+        width: 0px;
+        height: 0px;
+        position: absolute;
+        bottom: 100%;
+    	left: 50%;
+        margin-left: -50px;
+    	border: solid transparent;
+        border-width: 50px;
+    	border-color: rgba(136, 183, 213, 0);
+    	border-bottom-color: #fff;
+        pointer-events: none;
+    }
+
+    main.home > section.hm-st-3 > article.p-2 > main::after,
+    main.home > section.hm-st-3 > article.p-3 > main::after {
+        display: none;
+    }
 }
 
 main.home > section.hm-st-3 > article.p-2 > main > h4,
 main.home > section.hm-st-3 > article.p-3 > main > h4 {
     width: 100%;
     margin-bottom: 20px;
-    font-size: 40px;
+    font-size: 60px;
     font-weight: 600;
     line-height: 40px;
     text-align: center;
     color: #212121;
+}
+
+@media (max-width: 768px) {
+
+    main.home > section.hm-st-3 > article.p-2 > main > h4,
+    main.home > section.hm-st-3 > article.p-3 > main > h4 {
+        font-size: 40px;
+    }
 }
 
 main.home > section.hm-st-3 > article.p-2 > main > p,
@@ -617,6 +760,14 @@ main.home > section.hm-st-3 > article.p-3 > main > div {
     margin-bottom: 20px;
 }
 
+@media (max-width: 425px) {
+
+    main.home > section.hm-st-3 > article.p-2 > main > div,
+    main.home > section.hm-st-3 > article.p-3 > main > div {
+        margin-bottom: 5px;
+    }
+}
+
 main.home > section.hm-st-3 > article.p-2 > main > div > span,
 main.home > section.hm-st-3 > article.p-3 > main > div > span {
     width: auto;
@@ -632,6 +783,26 @@ main.home > section.hm-st-3 > article.p-3 > main > div > span {
     font-weight: 600;
     text-align: center;
     color: #fff;
+}
+
+@media (max-width: 425px) {
+
+    main.home > section.hm-st-3 > article.p-2 > main > div > span,
+    main.home > section.hm-st-3 > article.p-3 > main > div > span {
+        width: calc(50% - 2.5px);
+        margin: 0px;
+        border-radius: 0px;
+    }
+
+    main.home > section.hm-st-3 > article.p-2 > main > div > span:first-child,
+    main.home > section.hm-st-3 > article.p-3 > main > div > span:first-child {
+        margin-right: 2.5px;
+    }
+
+    main.home > section.hm-st-3 > article.p-2 > main > div > span:last-child,
+    main.home > section.hm-st-3 > article.p-3 > main > div > span:last-child {
+        margin-left: 2.5px;
+    }
 }
 
 main.home > section.hm-st-3 > article.p-2 > main > div > span > i,
@@ -653,6 +824,15 @@ main.home > section.hm-st-3 > article.p-3 > main > a {
     color: #212121;
 }
 
+@media (max-width: 425px) {
+
+    main.home > section.hm-st-3 > article.p-2 > main > a,
+    main.home > section.hm-st-3 > article.p-3 > main > a {
+        width: 100%;
+        border-radius: 0px;
+    }
+}
+
 /* Booking page -------- */
 
 main.booking > section.bk-st-1 {
@@ -670,6 +850,20 @@ main.booking > section.bk-st-1 {
     background-size: cover;
 }
 
+@media (max-width: 768px) {
+
+    main.booking > section.bk-st-1 {
+        padding: 50px;
+    }
+}
+
+@media (max-width: 425px) {
+
+    main.booking > section.bk-st-1 {
+        padding: 20px;
+    }
+}
+
 main.booking > section.bk-st-1::before {
     content: '';
     position: absolute;
@@ -677,7 +871,7 @@ main.booking > section.bk-st-1::before {
     right: 0px;
     bottom: 0px;
     left: 0px;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 main.booking > section.bk-st-1 > * {
@@ -687,11 +881,18 @@ main.booking > section.bk-st-1 > * {
 main.booking > section.bk-st-1 > h1 {
     width: 100%;
     margin-bottom: 20px;
-    font-size: 40px;
+    font-size: 60px;
     font-weight: 600;
-    line-height: 40px;
+    line-height: 60px;
     text-align: center;
     color: #fff;
+}
+
+@media (max-width: 425px) {
+
+    main.booking > section.bk-st-1 > h1 {
+        font-size: 40px;
+    }
 }
 
 main.booking > section.bk-st-1 > p {
@@ -725,7 +926,6 @@ main.booking > section.bk-st-1 > div {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
 }
 
 main.booking > section.bk-st-1 > div > span {
@@ -744,6 +944,23 @@ main.booking > section.bk-st-1 > div > span {
     color: #212121;
 }
 
+@media (max-width: 425px) {
+
+    main.booking > section.bk-st-1 > div > span {
+        width: calc(50% - 2.5px);
+        margin: 0px;
+        border-radius: 0px;
+    }
+
+    main.booking > section.bk-st-1 > div > span:first-child {
+        margin-right: 2.5px;
+    }
+
+    main.booking > section.bk-st-1 > div > span:last-child {
+        margin-left: 2.5px;
+    }
+}
+
 main.booking > section.bk-st-1 > div > span > i {
     margin-right: 5px;
     font-size: 18px;
@@ -759,19 +976,18 @@ main.booking > section.bk-st-2 {
     background-color: #212121;
 }
 
-main.booking > section.bk-st-2::after {
-    content: '';
-    width: 0px;
-    height: 0px;
-    position: absolute;
-    bottom: 100%;
-	left: 50%;
-    margin-left: -50px;
-	border: solid transparent;
-    border-width: 50px;
-	border-color: rgba(255, 255, 255, 0);
-	border-bottom-color: #212121;
-    pointer-events: none;
+@media (max-width: 768px) {
+
+    main.booking > section.bk-st-2 {
+        padding: 50px;
+    }
+}
+
+@media (max-width: 425px) {
+
+    main.booking > section.bk-st-2 {
+        padding: 20px;
+    }
 }
 
 main.booking > section.bk-st-2 > .container {
@@ -780,9 +996,25 @@ main.booking > section.bk-st-2 > .container {
     justify-content: center;
 }
 
+@media (max-width: 768px) {
+
+    main.booking > section.bk-st-2 > .container {
+        width: 100%;
+        flex-direction: column;
+    }
+}
+
 main.booking > section.bk-st-2 > .container > #map {
     width: calc(100% - 440px);
     height: 400px;
+}
+
+@media (max-width: 768px) {
+
+    main.booking > section.bk-st-2 > .container > #map {
+        width: 100%;
+        height: 200px;
+    }
 }
 
 main.booking > section.bk-st-2 > .container > div:last-child {
@@ -794,6 +1026,15 @@ main.booking > section.bk-st-2 > .container > div:last-child {
     flex-direction: column;
     padding-left: 40px;
     box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+
+    main.booking > section.bk-st-2 > .container > div:last-child {
+        width: 100%;
+        height: auto;
+        padding: 20px 0px 0px 0px;
+    }
 }
 
 main.booking > section.bk-st-2 > .container > div:last-child > div {
@@ -838,6 +1079,24 @@ main.booking > section.bk-st-3 {
     background-color: #fff;
 }
 
+@media (max-width: 768px) {
+
+    main.booking > section.bk-st-3 {
+        padding: 50px;
+    }
+
+    main.booking > section.bk-st-3 > .container {
+        width: 100%;
+    }
+}
+
+@media (max-width: 425px) {
+
+    main.booking > section.bk-st-3 {
+        padding: 20px;
+    }
+}
+
 main.booking > section.bk-st-3 > .container > h6 {
     width: 100%;
     margin-top: 20px;
@@ -863,7 +1122,6 @@ main.booking > section.bk-st-3 > .container > ul {
 
 main.booking > section.bk-st-3 > .container > ul > li {
     width: 100%;
-    margin-left: 40px;
     box-sizing: border-box;
     font-size: 18px;
     font-weight: 400;
@@ -895,9 +1153,25 @@ main.booking > section.bk-st-4 > figure {
     box-sizing: border-box;
 }
 
+@media (max-width: 768px) {
+
+    main.booking > section.bk-st-4 > figure {
+        width: 100%;
+        height: auto;
+    }
+}
+
 main.booking > section.bk-st-4 > figure > img {
     width: auto;
     height: 100%;
+}
+
+@media (max-width: 768px) {
+
+    main.booking > section.bk-st-4 > figure > img {
+        width: 100%;
+        height: auto;
+    }
 }
 
 main.booking > section.bk-st-4 > figure > a {
@@ -931,12 +1205,39 @@ main.booking > section.bk-st-5 {
     background-color: #fff;
 }
 
+@media (max-width: 768px) {
+
+    main.booking > section.bk-st-5 {
+        padding: 50px;
+    }
+
+    main.booking > section.bk-st-5 > .container {
+        width: 100%;
+    }
+}
+
+@media (max-width: 425px) {
+
+    main.booking > section.bk-st-5 {
+        padding: 20px;
+    }
+}
+
 main.booking > section.bk-st-5 > .container > h6 {
     width: 100% !important;
+    margin-bottom: 20px;
     font-size: 40px !important;
     font-weight: 600 !important;
     line-height: 40px !important;
+    letter-spacing: 0px !important;
     color: #212121 !important;
+}
+
+@media (max-width: 425px) {
+
+    main.booking > section.bk-st-5 > .container > h6 {
+        text-align: center;
+    }
 }
 
 main.booking > section.bk-st-5 > .container > form > fieldset > p,
@@ -979,6 +1280,14 @@ main.booking > section.bk-st-5 > .container > form > fieldset div.button > butto
     color: #212121 !important;
 }
 
+@media (max-width: 425px) {
+
+    main.booking > section.bk-st-5 > .container > form > fieldset div.button > button {
+        width: 100%;
+        border-radius: 0px !important;
+    }
+}
+
 /* --- */
 
 main.booking > section.bk-st-6 {
@@ -988,12 +1297,26 @@ main.booking > section.bk-st-6 {
     justify-content: center;
     padding: 10px;
     box-sizing: border-box;
-    background-color: #eee;
+    background-color: #212121;
+}
+
+@media (max-width: 768px) {
+
+    main.booking > section.bk-st-6 {
+        flex-direction: column;
+    }
 }
 
 main.booking > section.bk-st-6 > article {
     width: calc(50% - 20px);
     margin: 10px;
+}
+
+@media (max-width: 768px) {
+
+    main.booking > section.bk-st-6 > article {
+        width: calc(100% - 20px);
+    }
 }
 
 main.booking > section.bk-st-6 > article > main {
@@ -1004,12 +1327,20 @@ main.booking > section.bk-st-6 > article > main {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 40px;
+    padding: 50px;
     box-sizing: border-box;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
+}
+
+@media (max-width: 425px) {
+
+    main.booking > section.bk-st-6 > article > main {
+        height: auto;
+        padding: 20px;
+    }
 }
 
 main.booking > section.bk-st-6 > article > main::before {
@@ -1087,14 +1418,22 @@ main.booking > section.bk-st-6 > article > main > div > span > i  {
 }
 
 main.booking > section.bk-st-6 > article > main > a {
-    background-color: #212121;
     padding: 15px 20px;
     border-radius: 30px;
     box-sizing: border-box;
+    background-color: #ffeb3b;
     font-size: 14px;
     font-weight: 400;
     text-align: center;
-    color: #ffeb3b;
+    color: #212121;
+}
+
+@media (max-width: 425px) {
+
+    main.booking > section.bk-st-6 > article > main > a {
+        width: 100%;
+        border-radius: 0px;
+    }
 }
 
 /* Voucher page -------- */
@@ -1103,6 +1442,13 @@ main.voucher > section.vo-st-1 {
     width: 100%;
     height: 200px;
     background-color: #212121;
+}
+
+@media (max-width: 768px) {
+
+    main.voucher > section.vo-st-1 {
+        height: 80px;
+    }
 }
 
 /* --- */
@@ -1114,59 +1460,35 @@ main.voucher > section.vo-st-2 {
     background-color: #fff;
 }
 
+@media (max-width: 768px) {
+
+    main.voucher > section.vo-st-2 {
+        padding: 50px;
+    }
+}
+
+@media (max-width: 425px) {
+
+    main.voucher > section.vo-st-2 {
+        padding: 20px;
+    }
+}
+
 main.voucher > section.vo-st-2 > .container {
     display: flex;
     align-items: flex-start;
     justify-content: center;
 }
 
+@media (max-width: 768px) {
+
+    main.voucher > section.vo-st-2 > .container {
+        width: 100%;
+        flex-direction: column;
+    }
+}
+
 main.voucher > section.vo-st-2 > .container > div:first-child {
-    width: 50%;
-    padding-right: 40px;
-    box-sizing: border-box;
-}
-
-main.voucher > section.vo-st-2 > .container > div:first-child > h1 {
-    width: 100%;
-    margin-bottom: 10px;
-    font-size: 24px;
-    font-weight: 600;
-    line-height: 24px;
-    color: #212121;
-}
-
-main.voucher > section.vo-st-2 > .container > div:first-child > h6 {
-    width: 100%;
-    margin-bottom: 5px;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 18px;
-    color: #212121;
-}
-
-main.voucher > section.vo-st-2 > .container > div:first-child > p {
-    width: 100%;
-    margin-bottom: 5px;
-    font-size: 18px;
-    font-weight: 400;
-    text-align: justify;
-    color: #212121;
-}
-
-main.voucher > section.vo-st-2 > .container > div:first-child > a {
-    display: inline-block;
-    margin: 40px 10px 0px 0px;
-    padding: 20px;
-    border-radius: 40px;
-    box-sizing: border-box;
-    background-color: #ffeb3b;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    color: #212121;
-}
-
-main.voucher > section.vo-st-2 > .container > div:last-child {
     width: 50%;
     height: 400px;
     position: relative;
@@ -1174,14 +1496,31 @@ main.voucher > section.vo-st-2 > .container > div:last-child {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 40px;
+    padding: 50px;
     box-sizing: border-box;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-main.voucher > section.vo-st-2 > .container > div:last-child::before {
+@media (max-width: 768px) {
+
+    main.voucher > section.vo-st-2 > .container > div:first-child {
+        width: 100%;
+        margin-bottom: 50px;
+    }
+}
+
+@media (max-width: 425px) {
+
+    main.voucher > section.vo-st-2 > .container > div:first-child {
+        height: auto;
+        margin-bottom: 20px;
+        padding: 20px;
+    }
+}
+
+main.voucher > section.vo-st-2 > .container > div:first-child::before {
     content: '';
     position: absolute;
     top: 0px;
@@ -1191,11 +1530,11 @@ main.voucher > section.vo-st-2 > .container > div:last-child::before {
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-main.voucher > section.vo-st-2 > .container > div:last-child > * {
+main.voucher > section.vo-st-2 > .container > div:first-child > * {
     position: relative;
 }
 
-main.voucher > section.vo-st-2 > .container > div:last-child > h2 {
+main.voucher > section.vo-st-2 > .container > div:first-child > h2 {
     width: 100%;
     margin-bottom: 20px;
     font-size: 40px;
@@ -1205,7 +1544,7 @@ main.voucher > section.vo-st-2 > .container > div:last-child > h2 {
     color: #fff;
 }
 
-main.voucher > section.vo-st-2 > .container > div:last-child > p {
+main.voucher > section.vo-st-2 > .container > div:first-child > p {
     width: 100%;
     margin-bottom: 20px;
     font-size: 18px;
@@ -1214,7 +1553,7 @@ main.voucher > section.vo-st-2 > .container > div:last-child > p {
     color: #fff;
 }
 
-main.voucher > section.vo-st-2 > .container > div:last-child > span {
+main.voucher > section.vo-st-2 > .container > div:first-child > span {
     width: 100%;
     display: flex;
     align-items: center;
@@ -1226,12 +1565,12 @@ main.voucher > section.vo-st-2 > .container > div:last-child > span {
     color: #fff;
 }
 
-main.voucher > section.vo-st-2 > .container > div:last-child > span > i {
+main.voucher > section.vo-st-2 > .container > div:first-child > span > i {
     margin-right: 5px;
     font-size: 24px;
 }
 
-main.voucher > section.vo-st-2 > .container > div:last-child > a {
+main.voucher > section.vo-st-2 > .container > div:first-child > a {
     padding: 15px 20px;
     border-radius: 30px;
     box-sizing: border-box;
@@ -1242,12 +1581,93 @@ main.voucher > section.vo-st-2 > .container > div:last-child > a {
     color: #212121;
 }
 
+@media (max-width: 425px) {
+
+    main.voucher > section.vo-st-2 > .container > div:first-child > a {
+        width: 100%;
+        border-radius: 0px;
+    }
+}
+
+main.voucher > section.vo-st-2 > .container > div:last-child {
+    width: 50%;
+    padding-right: 40px;
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+
+    main.voucher > section.vo-st-2 > .container > div:last-child {
+        width: 100%;
+        padding-right: 0px;
+    }
+}
+
+main.voucher > section.vo-st-2 > .container > div:last-child > h1 {
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 24px;
+    color: #212121;
+}
+
+main.voucher > section.vo-st-2 > .container > div:last-child > h6 {
+    width: 100%;
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 18px;
+    color: #212121;
+}
+
+main.voucher > section.vo-st-2 > .container > div:last-child > p {
+    width: 100%;
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: justify;
+    color: #212121;
+}
+
+main.voucher > section.vo-st-2 > .container > div:last-child > a {
+    display: inline-block;
+    margin: 50px 10px 0px 0px;
+    padding: 20px;
+    border-radius: 40px;
+    box-sizing: border-box;
+    background-color: #ffeb3b;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #212121;
+}
+
+@media (max-width: 425px) {
+
+    main.voucher > section.vo-st-2 > .container > div:last-child > a {
+        width: 100%;
+        display: block;
+        margin: 20px 0px 0px 0px;
+        border-radius: 0px;
+        text-align: center;
+    }
+}
+
+
 /* Contact page -------- */
 
 main.contact > section.ct-st-1 {
     width: 100%;
     height: 200px;
     background-color: #212121;
+}
+
+@media (max-width: 768px) {
+
+    main.contact > section.ct-st-1 {
+        height: 80px;
+    }
 }
 
 /* --- */
@@ -1259,10 +1679,32 @@ main.contact > section.ct-st-2 {
     background-color: #fff;
 }
 
+@media (max-width: 768px) {
+
+    main.contact > section.ct-st-2 {
+        padding: 50px;
+    }
+}
+
+@media (max-width: 425px) {
+
+    main.contact > section.ct-st-2 {
+        padding: 20px;
+    }
+}
+
 main.contact > section.ct-st-2 > .container {
     display: flex;
     align-items: flex-start;
     justify-content: center;
+}
+
+@media (max-width: 768px) {
+
+    main.contact > section.ct-st-2 > .container {
+        width: 100%;
+        flex-direction: column;
+    }
 }
 
 main.contact > section.ct-st-2 > .container > div {
@@ -1275,6 +1717,22 @@ main.contact > section.ct-st-2 > .container > div {
     box-sizing: border-box;
 }
 
+@media (max-width: 768px) {
+
+    main.contact > section.ct-st-2 > .container > div {
+        width: 100%;
+        margin-bottom: 50px;
+        padding: 0px;
+    }
+}
+
+@media (max-width: 425px) {
+
+    main.contact > section.ct-st-2 > .container > div {
+        margin-bottom: 20px;
+    }
+}
+
 main.contact > section.ct-st-2 > .container > div > h1 {
     width: 100%;
     margin-bottom: 20px;
@@ -1285,12 +1743,30 @@ main.contact > section.ct-st-2 > .container > div > h1 {
     color: #212121;
 }
 
+@media (max-width: 425px) {
+
+    main.contact > section.ct-st-2 > .container > div > h1 {
+        font-size: 40px;
+    }
+}
+
 main.contact > section.ct-st-2 > .container > div > div {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 20px;
+}
+
+@media (max-width: 425px) {
+
+    main.contact > section.ct-st-2 > .container > div > div {
+        flex-direction: column;
+    }
+
+    main.contact > section.ct-st-2 > .container > div > div:last-child {
+        flex-direction: row;
+    }
 }
 
 main.contact > section.ct-st-2 > .container > div > div > span {
@@ -1319,6 +1795,13 @@ main.contact > section.ct-st-2 > .container > div > div > a {
 
 main.contact > section.ct-st-2 > .container > form {
     width: 50%;
+}
+
+@media (max-width: 768px) {
+
+    main.contact > section.ct-st-2 > .container > form {
+        width: 100%;
+    }
 }
 
 main.contact > section.ct-st-2 > .container > form > fieldset > p,
@@ -1360,12 +1843,28 @@ main.contact > section.ct-st-2 > .container > form > fieldset div.button > butto
     color: #212121 !important;
 }
 
+@media (max-width: 425px) {
+
+    main.contact > section.ct-st-2 > .container > form > fieldset div.button > button {
+        width: 100%;
+        border-radius: 0px !important;
+        margin: 20px 0px 0px 0px;
+    }
+}
+
 /* Terms & Conditions page -------- */
 
 main.terms > section.tr-st-1 {
     width: 100%;
     height: 200px;
     background-color: #212121;
+}
+
+@media (max-width: 768px) {
+
+    main.terms > section.tr-st-1 {
+        height: 80px;
+    }
 }
 
 /* --- */
@@ -1375,6 +1874,24 @@ main.terms > section.tr-st-2 {
     padding: 100px 0px;
     box-sizing: border-box;
     background-color: #fff;
+}
+
+@media (max-width: 768px) {
+
+    main.terms > section.tr-st-2 {
+        padding: 50px;
+    }
+
+    main.terms > section.tr-st-2 > .container {
+        width: 100%;
+    }
+}
+
+@media (max-width: 425px) {
+
+    main.terms > section.tr-st-2 {
+        padding: 20px;
+    }
 }
 
 main.terms > section.tr-st-2 > .container > h6 {
@@ -1436,11 +1953,29 @@ footer.main-footer > .container > nav > ul {
     justify-content: flex-start;
 }
 
+@media (max-width: 425px) {
+
+    footer.main-footer > .container > nav,
+    footer.main-footer > .container > nav > ul {
+        height: auto;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+    }
+}
+
 footer.main-footer > .container > nav > ul > li {
     width: auto;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+@media (max-width: 425px) {
+
+    footer.main-footer > .container > nav > ul > li.blocked {
+        display: none;
+    }
 }
 
 footer.main-footer > .container > nav > ul > li > span,
@@ -1476,6 +2011,13 @@ footer.main-footer > .container > figure {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+@media (max-width: 425px) {
+
+    footer.main-footer > .container > figure {
+        display: none;
+    }
 }
 
 footer.main-footer > .container > figure > img {
