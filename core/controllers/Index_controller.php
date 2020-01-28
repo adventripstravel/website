@@ -64,9 +64,9 @@ class Index_controller extends Controller
 		                </figure>
 		            </header>
 		            <main>
-		                <h4>' . $value['name'][$this->lang] . '</h4>
+		                <h2>' . $value['name'][$this->lang] . '</h2>
 						<p>' . $value['summary'][$this->lang] . '</p>
-						<span><i class="fas fa-globe-americas"></i>' . $value['destination'] . '</span>
+						<span><i class="fas fa-map-marker-alt"></i>' . $value['destination'] . '</span>
 						<div>
 							<span><i class="fas fa-baby"></i>' . Functions::get_format_currency(Functions::get_currency_exchange($value['price']['child'], 'USD', Session::get_value('currency')), Session::get_value('currency')) . '</span>
 							<span><i class="fas fa-male"></i>' . Functions::get_format_currency(Functions::get_currency_exchange($value['price']['adult'], 'USD', Session::get_value('currency')), Session::get_value('currency')) . '</span>

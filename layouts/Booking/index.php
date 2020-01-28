@@ -15,7 +15,7 @@ $this->dependencies->add(['other', '<script async defer src="https://maps.google
     <section class="bk-st-1" data-image-src="{$cover}">
         <h1>{$name}</h1>
         <p>{$summary}</p>
-        <span><i class="fas fa-globe-americas"></i>{$destination}</span>
+        <span><i class="fas fa-map-marker-alt"></i>{$destination}</span>
         <div>
             <span><i class="fas fa-baby"></i>{$child_price}</span>
             <span><i class="fas fa-male"></i>{$adult_price}</span>
@@ -130,6 +130,9 @@ $this->dependencies->add(['other', '<script async defer src="https://maps.google
                         <h6>{$lang.observations}</h6>
                         <textarea name="observations"></textarea>
                     </div>
+                </fieldset>
+                <fieldset class="fields-group">
+                    <p>{$lang.booking_accept_terms_and_conditions} <a href="/terms" target="_blank">{$lang.terms_and_conditions}</a></p>
                 </fieldset>
                 <fieldset class="fields-group">
                     <div class="button">

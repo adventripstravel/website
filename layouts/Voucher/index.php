@@ -14,27 +14,27 @@ $this->dependencies->add(['js', '{$path.js}Voucher/index.min.js']);
             <div data-image-src="{$tour_cover}">
                 <h2>{$tour_name}</h2>
                 <p>{$tour_summary}</p>
-                <span><i class="fas fa-globe-americas"></i>{$tour_destination}</span>
+                <span><i class="fas fa-map-marker-alt"></i>{$tour_destination}</span>
                 <a href="{$tour_url}">{$lang.view_tour_details}</a>
             </div>
             <div>
                 <h1>{$lang.token}: {$token}</h1>
-                <h6>{$lang.childs}: {$childs} {$lang.paxes}</h6>
-                <h6>{$lang.adults}: {$adults} {$lang.paxes}</h6>
-                <h6>{$lang.booked_date}: {$booked_date}</h6>
-                <p>{$lang.observations}: {$observations}</p>
-                <h6>{$lang.firstname}: {$firstname}</h6>
-                <h6>{$lang.lastname}: {$lastname}</h6>
-                <h6>{$lang.email}: {$email}</h6>
-                <h6>{$lang.phone}: {$phone}</h6>
-                <h6>{$lang.total}: {$total}</h6>
-                <h6>{$lang.payment_status}: {$payment_status}</h6>
-                <h6>{$lang.payment_date}: {$payment_date}</h6>
-                <h6>{$lang.payment_method}: {$payment_method}</h6>
-                <h6>{$lang.payment_currency}: {$payment_currency}</h6>
-                <h6>{$lang.language}: {$language}</h6>
-                <h6>{$lang.status}: {$status}</h6>
-                <h6>{$lang.registration_date}: {$registration_date}</h6>
+                <h6><strong>{$lang.childs}:</strong> {$childs} {$lang.paxes}</h6>
+                <h6><strong>{$lang.adults}:</strong> {$adults} {$lang.paxes}</h6>
+                <h6><strong>{$lang.booked_date}:</strong> {$booked_date}</h6>
+                <p><strong>{$lang.observations}:</strong> {$observations}</p>
+                <h6><strong>{$lang.firstname}:</strong> {$firstname}</h6>
+                <h6><strong>{$lang.lastname}:</strong> {$lastname}</h6>
+                <h6><strong>{$lang.email}:</strong> {$email}</h6>
+                <h6><strong>{$lang.phone}:</strong> {$phone}</h6>
+                <h6><strong>{$lang.total}:</strong> {$total}</h6>
+                <h6><strong>{$lang.payment_status}:</strong> {$payment_status}</h6>
+                <h6><strong>{$lang.payment_date}:</strong> {$payment_date}</h6>
+                <h6><strong>{$lang.payment_method}:</strong> {$payment_method}</h6>
+                <h6><strong>{$lang.payment_currency}:</strong> {$payment_currency}</h6>
+                <h6><strong>{$lang.language}:</strong> {$language}</h6>
+                <h6><strong>{$lang.status}:</strong> {$status}</h6>
+                <h6><strong>{$lang.registration_date}:</strong> {$registration_date}</h6>
                 {$btn_request_update_booking}
                 {$btn_request_cancel_booking}
             </div>

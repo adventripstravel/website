@@ -819,6 +819,17 @@ section.modal.alert > .content {
     margin-bottom: 0px !important;
 }
 
+@media (max-width: 768px) {
+
+    section.modal.success > .content,
+    section.modal.alert > .content {
+        width: 100% !important;
+        min-width: 100% !important;
+        margin-right: 0px !important;
+        margin-left: 0px !important;
+    }
+}
+
 section.modal.success header,
 section.modal.alert header {
     border: none !important;
