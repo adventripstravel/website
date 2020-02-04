@@ -16,15 +16,11 @@
         'discounts' => [
             'national' => [
                 'type' => '%',
-                'babies' => 0,
-                'childs' => 50,
-                'adults' => 50
+                'amount' => 50
             ],
             'foreign' => [
                 'type' => '%',
-                'babies' => 0,
-                'childs' => 0,
-                'adults' => 0
+                'amount' => 30
             ]
         ],
         'deposit' => [
@@ -65,15 +61,11 @@
         'discounts' => [
             'national' => [
                 'type' => '%',
-                'babies' => 0,
-                'min' => 50,
-                'max' => 50
+                'amount' => 50
             ],
             'foreign' => [
                 'type' => '%',
-                'babies' => 0,
-                'min' => 0,
-                'max' => 0
+                'amount' => 30
             ]
         ],
         'deposit' => [
