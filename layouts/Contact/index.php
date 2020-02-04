@@ -28,7 +28,9 @@ $this->dependencies->add(['js', '{$path.js}Contact/index.min.js']);
             </div>
             <form name="contact">
                 <fieldset class="fields-group">
-                    <p class="warning"><span class="required-field">*</span>{$lang.required_fields}</p>
+                    <div class="warning">
+                        <p><span class="required-field">*</span>{$lang.required_fields}</p>
+                    </div>
                 </fieldset>
                 <fieldset class="fields-group">
                     <div class="row">

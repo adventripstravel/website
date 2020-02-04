@@ -9,116 +9,137 @@ class Bookings_model extends Model
 		parent::__construct();
 	}
 
-	/* Selects
-	------------------------------------------------------------------------------- */
-	public function get($id = '*', $fields = '*', $time = 'today')
+	public function get_bookings()
 	{
-		if ($id == '*')
-	    {
-	       if ($time == 'today')
-		   {
-			   $condition = [
-				   'bookings.date_booking[>=]' => Functions::get_date(),
-				   'ORDER' => [
-					   'bookings.date_booking' => 'ASC'
-				   ]
-			   ];
-		   }
-	       else if ($time == 'past')
-		   {
-			   $condition = [
-				   'bookings.date_booking[<]' => Functions::get_date(),
-				   'ORDER' => [
-					   'bookings.date_booking' => 'ASC'
-				   ]
-			   ];
-		   }
-	    }
-	    else
-	    {
-	        $condition = [
-	            'bookings.id_booking' => $id
-	        ];
-	    }
+		$query = $this->database->select('bookings', [
+			'[>]tours' => [
+				'tour' => 'id'
+			]
+		], [
+			'bookings.id',
+			'bookings.token',
+			'tours.name(tour)',
+			'bookings.paxes',
+			'bookings.booked_date',
+			'bookings.firstname',
+			'bookings.lastname',
+			'bookings.email',
+			'bookings.phone',
+			'bookings.total',
+			'bookings.payment',
+			'bookings.canceled',
+			'bookings.request'
+		]);
 
-	    if ($fields == '*')
-	    {
-	        $fields = [
-	            'bookings.id_booking',
-	            'bookings.token',
-	            'bookings.name',
-	            'bookings.email',
-	            'bookings.cellphone',
-	            'bookings.id_tour',
-	            'tours.name(tour)',
-	            'bookings.date_booking',
-	            'bookings.observations',
-	            'bookings.paxes',
-	            'bookings.totals',
-	            'bookings.payment',
-	            'bookings.language',
-	            'bookings.canceled',
-	            'bookings.date_booked',
-	            'bookings.id_airbnb',
-	            'airbnbs.name(airbnb)',
-	            'users.name(user)',
-	        ];
-	    }
-	    else
-	    {
-	        foreach ($fields as $key => $value)
-	        {
-	            $explode = explode('.', $value);
-
-	            if (count($explode) == 3)
-	                $fields[$key] = $explode[0] . '.' . $explode[1] . ' (' . $explode[2] . ')';
-	            else
-	                $fields[$key] = 'bookings.' . $value;
-	        }
-	    }
-
-	    $query = $this->database->select('bookings', [
-	        '[>]tours' => [
-	            'id_tour' => 'id_tour'
-	        ],
-	        '[>]airbnbs' => [
-	            'id_airbnb' => 'id_airbnb'
-	        ],
-	        '[>]users' => [
-	            'airbnbs.id_user' => 'id_user'
-	        ],
-	    ], $fields, $condition);
-
-	    if ($id == '*')
-	        return Functions::get_decoded_query($query);
-	    else
-	        return !empty($query) ? Functions::get_decoded_query($query[0]) : null;
+		return Functions::get_array_json_decoded($query);
 	}
 
-	/* Inserts
-	------------------------------------------------------------------------------- */
-
-	/* Updates
-	------------------------------------------------------------------------------- */
-	public function edit($data)
+	public function get_booking($id)
 	{
-		$query = $this->database->update('bookings', [
-			'name' => $data['name'],
-			'email' => $data['email'],
-			'cellphone' => $data['cellphone'],
-			'observations' => $data['observations'],
-			'language' => $data['language'],
-			'canceled' => $data['canceled'],
+		$query = $this->database->select('bookings', [
+			'id',
+			'token',
+			'tour',
+			'paxes',
+			'booked_date',
+			'observations',
+			'firstname',
+			'lastname',
+			'email',
+			'phone',
+			'price',
+			'total',
+			'payment',
+			'language',
+			'canceled',
+			'request',
+			'registration_date'
 		], [
-			'id_booking' => $data['id_booking']
+			'id' => $id
+		]);
+
+		return !empty($query) ? Functions::get_array_json_decoded($query[0]) : null;
+	}
+
+	public function get_tours()
+	{
+		$query = $this->database->select('tours', [
+			'id',
+			'name'
+		]);
+
+		return Functions::get_array_json_decoded($query);
+	}
+
+	public function get_tour($id)
+	{
+		$query = $this->database->select('tours', [
+			'id',
+			'price'
+		], [
+			'id' => $id
+		]);
+
+		return !empty($query) ? Functions::get_array_json_decoded($query[0]) : null;
+	}
+
+	public function get_total($data)
+	{
+		$tour = $this->get_tour($data['tour']);
+
+		return (($data['paxes_childs'] * $tour['price']['child']) + ($data['paxes_adults'] * $tour['price']['adult']));
+	}
+
+	public function get_phone_ladas()
+	{
+		$query = $this->database->select('phone_ladas', [
+			'name',
+			'code'
+		]);
+
+		return Functions::get_array_json_decoded($query);
+	}
+
+	public function create_booking($data)
+	{
+		$data['tour'] = $this->get_tour($data['tour']);
+
+		$query = $this->database->insert('bookings', [
+			'token' => Functions::get_random_string(),
+			'tour' => $data['tour']['id'],
+			'paxes' => json_encode([
+				'childs' => $data['paxes_childs'],
+				'adults' => $data['paxes_adults']
+			]),
+			'booked_date' => $data['booked_date'],
+			'observations' => !empty($data['observations']) ? $data['observations'] : null,
+			'firstname' => $data['firstname'],
+			'lastname' => $data['lastname'],
+			'email' => $data['email'],
+			'phone' => json_encode([
+				'lada' => $data['phone_lada'],
+				'number' => $data['phone_number']
+			]),
+			'price' => json_encode([
+				'child' => $data['tour']['price']['child'],
+				'adult' => $data['tour']['price']['adult']
+			]),
+			'total' => $data['total'],
+			'payment' => json_encode([
+				'status' => !empty($data['payment_status']) ? true : false,
+				'date' => !empty($data['payment_date']) ? $data['payment_date'] : null,
+				'method' => !empty($data['payment_method']) ? $data['payment_method'] : null,
+				'currency' => $data['payment_currency'],
+				'exchange' => Functions::get_currency_exchange(1, 'USD', 'MXN')
+			]),
+			'language' => $data['language'],
+			'canceled' => !empty($data['canceled']) ? true : false,
+			'request' => json_encode([
+				'type' => 'none'
+			]),
+			'registration_date' => Functions::get_current_date()
 		]);
 
 		return $query;
 	}
-
-	/* Deletes
-	------------------------------------------------------------------------------- */
-
-	/* Others
-	------------------------------------------------------------------------------- */
 }

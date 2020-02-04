@@ -21,7 +21,7 @@ $(document).ready(function()
         get_total();
     });
 
-    $('form[name="new_booking"]').on('submit', function(e)
+    $('form[name="create_booking"]').on('submit', function(e)
     {
         e.preventDefault();
 
@@ -29,7 +29,7 @@ $(document).ready(function()
 
         $.ajax({
             type: 'POST',
-            data: form.serialize() + '&action=new_booking',
+            data: form.serialize() + '&action=create_booking',
             processData: false,
             cache: false,
             dataType: 'json',
@@ -37,9 +37,10 @@ $(document).ready(function()
             {
                 checkFormDataErrors(form, response, function()
                 {
-                    $('[data-modal="success"] main > p').html(response.message);
                     $('[data-modal="success"]').addClass('view');
-                    setTimeout(function() { location.reload(); }, 4000);
+                    $('[data-modal="success"]').find('main > p').html(response.message);
+
+                    setTimeout(function() { location.reload(); }, 3000);
                 });
             }
         });
@@ -136,11 +137,11 @@ function map()
 
 function get_total()
 {
-    var form = $('form[name="new_booking"]');
+    var form = $('form[name="create_booking"]');
 
     $.ajax({
         type: 'POST',
-        data: 'childs=' + $('[name="childs"]').val() + '&adults=' + $('[name="adults"]').val() + '&action=get_total',
+        data: 'childs=' + $('[name="childs"]').val() + '&adults=' + $('[name="adults"]').val() + '&apply_national_discount=' + $('[name="apply_national_discount"]').val() + '&action=get_total',
         processData: false,
         cache: false,
         dataType: 'json',

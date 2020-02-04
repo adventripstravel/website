@@ -2,61 +2,48 @@
 
 defined('_EXEC') or die;
 
-/**
-* @package valkyrie.cms.libraries
-*
-* @author Gersón Aarón Gómez Macías <Chief Technology Officer, ggomez@codemonkey.com.mx>
-* @since August 01 - 18, 2018 <@create>
-* @version 1.0.0
-* @summary cm-valkyrie-platform-website-template
-*
-* @author Gersón Aarón Gómez Macías <Chief Technology Officer, ggomez@codemonkey.com.mx>
-* @since December 01 - 15, 2018 <@update>
-* @version 1.1.0
-* @summary cm-valkyrie-platform-website-template
-*
-* @copyright Copyright (C) Code Monkey <legal@codemonkey.com.mx, wwww.codemonkey.com.mx>. All rights reserved.
-*/
-
 class User_level_vkye_adm
 {
-    static public function redirection()
-    {
-        $level = Session::get_value('_vkye_level');
-
-        switch ($level)
-        {
-            case '{owner}':
-                return 'index.php?c=bookings&m=index&p=today';
-            break;
-
-            default:
-                return 'index.php?c=index&m=logout';
-            break;
-        }
-    }
-
     static public function access($path)
     {
-        $level = Session::get_value('_vkye_level');
+        $paths = [];
 
-        switch ($level)
+        foreach (Session::get_value('user')['user_permissions'] as $value)
         {
-            case '{owner}':
-                return true;
-            break;
+            switch ($value)
+            {
+                case '{bookings_view}':
+                    array_push($paths, '/Bookings/index');
+                    break;
 
-            default:
-                return false;
-            break;
+                case '{bookings_create}':
+                    array_push($paths, '/Bookings/index');
+                    break;
+
+                case '{bookings_update}':
+                    array_push($paths, '/Bookings/index');
+                    break;
+
+                case '{bookings_cancel}':
+                    array_push($paths, '/Bookings/index');
+                    break;
+
+                default:
+                    break;
+            }
         }
+
+        $paths = array_unique($paths);
+        $paths = array_values($paths);
+
+        return in_array($path, $paths) ? true : false;
     }
 
-    private function check_access_path($path, $access)
+    static public function redirection()
     {
-        if (in_array($path, $access))
-            return true;
+        if (Functions::check_access(['{bookings_view}','{bookings_create}','{bookings_update}','{bookings_cancel}']) == true)
+            return 'index.php?c=bookings&m=index';
         else
-            return false;
+            return 'index.php?c=index&m=logout';
     }
 }

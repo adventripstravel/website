@@ -132,6 +132,18 @@ class Functions
     }
 
     /**
+    * @summary Entrega la fecha y hora actual.
+    *
+    * @param string $format: Formato en el que retornará la fecha y hora.
+    *
+    * @return date
+    */
+    static public function get_current_datehour($format = 'Y-m-d H:i:s')
+    {
+		return date($format, time());
+    }
+
+    /**
     * @summary Entrega la diferencia entre dos fechas, horas o fechas y horas.
     *
     * @param date-time-datetime $datehour1: Fecha inicial.
@@ -265,9 +277,9 @@ class Functions
     *
     * @return string
     */
-    public static function get_format_currency($number = 0, $currency = 'MXN')
+    public static function get_format_currency($number = 0, $currency = 'MXN', $decimals = 2)
     {
-        return '$ ' . number_format($number, 2, '.', ',') . ' ' . $currency;
+        return '$ ' . number_format($number, $decimals, '.', ',') . ' ' . $currency;
     }
 
     /**
@@ -285,16 +297,24 @@ class Functions
     /**
     * @summary: Valida el permiso de acceso a un módulo o funcionalidad cuando existe una sesión activa.
     *
-    * @param string $user_level: Nivel de usuario a validar.
+    * @param array $permissions: Permisos a revisar.
     *
     * @return boolean
     */
-    public static function check_access($user_level)
+    static public function check_access($permissions)
     {
-		if (in_array(Session::get_value('_vkye_user_level'), $user_level))
-            return true;
-        else
-            return false;
+        $access = false;
+
+        if (Session::exists_var('session') == true)
+        {
+            foreach ($permissions as $value)
+            {
+                if (in_array($value, Session::get_value('user')['user_permissions']))
+                    $access = true;
+            }
+        }
+
+        return $access;
     }
 
     /**

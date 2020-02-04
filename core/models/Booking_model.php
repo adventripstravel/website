@@ -17,7 +17,6 @@ class Booking_model extends Model
 			]
 		], [
 			'tours.id',
-			'tours.type',
 			'tours.name',
 			'tours.summary',
 			'tours.description',
@@ -26,7 +25,8 @@ class Booking_model extends Model
 			'tours.cover',
 			'tours.gallery',
 			'destinations.name(destination)',
-			'tours.seo'
+			'tours.seo',
+			'tours.available'
 		], [
             'tours.id' => $id
         ]);
@@ -34,9 +34,9 @@ class Booking_model extends Model
 		return !empty($query) ? Functions::get_array_json_decoded($query[0]) : null;
 	}
 
-	public function get_ladas()
+	public function get_phone_ladas()
 	{
-		$query = $this->database->select('ladas', [
+		$query = $this->database->select('phone_ladas', [
 			'name',
 			'code'
 		]);
@@ -56,7 +56,8 @@ class Booking_model extends Model
 			'tours.summary',
 			'tours.price',
 			'tours.cover',
-			'destinations.name(destination)'
+			'destinations.name(destination)',
+			'tours.available'
 		], [
             'AND' => [
 				'tours.id[!]' => $id,
@@ -71,19 +72,50 @@ class Booking_model extends Model
 		return Functions::get_array_json_decoded($query);
 	}
 
-	public function get_total($data)
+	public function get_price($data, $type = 'foreign')
 	{
-		return (($data['adults'] * $data['tour']['price']['adult']) + ($data['childs'] * $data['tour']['price']['child']));
+		if ($data['type'] == 'regular')
+		{
+			if ($type == 'foreign')
+			{
+				if ($data['discounts']['foreign']['amount'] > 0)
+				{
+					$data['discounts']['foreign']['amount'] = $data['discounts']['foreign']['amount'] / 100;
+					$data['public']['childs'] = $data['public']['childs'] - ($data['public']['childs'] * $data['discounts']['foreign']['amount']);
+					$data['public']['adults'] = $data['public']['adults'] - ($data['public']['adults'] * $data['discounts']['foreign']['amount']);
+				}
+			}
+		}
+		else if ($data['type'] == 'height')
+		{
+			if ($type == 'foreign')
+			{
+				if ($data['discounts']['foreign']['amount'] > 0)
+				{
+					$data['discounts']['foreign']['amount'] = $data['discounts']['foreign']['amount'] / 100;
+					$data['public']['min'] = $data['public']['min'] - ($data['public']['min'] * $data['discounts']['foreign']['amount']);
+					$data['public']['max'] = $data['public']['max'] - ($data['public']['max'] * $data['discounts']['foreign']['amount']);
+				}
+			}
+		}
+
+		return $data['public'];
 	}
 
-	public function new_booking($data)
+	public function get_total($data)
+	{
+		print_r($data);
+		// return (($data['childs'] * $data['tour']['price']['child']) + ($data['adults'] * $data['tour']['price']['adult']));
+	}
+
+	public function create_booking($data)
 	{
 		$query = $this->database->insert('bookings', [
 			'token' => Functions::get_random_string(8),
 			'tour' => $data['tour']['id'],
 			'paxes' => json_encode([
 				'childs' => $data['childs'],
-				'adults' => $data['adults'],
+				'adults' => $data['adults']
 			]),
 			'booked_date' => $data['date'],
 			'observations' => $data['observations'],
@@ -92,11 +124,11 @@ class Booking_model extends Model
 			'email' => $data['email'],
 			'phone' => json_encode([
 				'lada' => $data['phone_lada'],
-				'number' => $data['phone_number'],
+				'number' => $data['phone_number']
 			]),
 			'price' => json_encode([
 				'child' => $data['tour']['price']['child'],
-				'adult' => $data['tour']['price']['adult'],
+				'adult' => $data['tour']['price']['adult']
 			]),
 			'total' => $this->get_total($data),
 			'payment' => json_encode([

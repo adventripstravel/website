@@ -1,14 +1,16 @@
 'use strict';
 
 /**
-* @package valkyrie.cms.js
+* @package valkyrie.panel.js
 *
-* @author Gersón Aarón Gómez Macías <Chief Technology Officer, ggomez@codemonkey.com.mx>
-* @since August 01 - 18, 2018 <@create>
-* @version 1.0.0
-* @summary cm-valkyrie-framework
+* @summary Controlador del Dashboard general.
 *
-* @copyright Copyright (C) Code Monkey <legal@codemonkey.com.mx, wwww.codemonkey.com.mx>. All rights reserved.
+* @author Gersón Aarón Gómez Macías <ggomez@codemonkey.com.mx>
+* <@create> 01 de enero, 2019.
+*
+* @version 1.0.0.
+*
+* @copyright Code Monkey <contacto@codemonkey.com.mx>
 */
 
 $(document).ready(function()

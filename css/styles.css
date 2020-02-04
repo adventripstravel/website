@@ -159,7 +159,6 @@ header.main-header.down > div.topbar > .container > nav > ul > li > a {
     }
 }
 
-/*  */
 header.main-header > div.topbar > .container > nav > ul > li > a > img {
     width: auto;
     height: 20px;
@@ -235,7 +234,6 @@ header.main-header.down > div.bottombar > .container > figure {
     }
 }
 
-/*  */
 header.main-header > div.bottombar > .container > figure > a,
 header.main-header > div.bottombar > .container > figure > a > img {
     width: auto;
@@ -354,7 +352,6 @@ header.main-header > div.movilbar > .container > figure {
     justify-content: center;
 }
 
-/*  */
 header.main-header > div.movilbar > .container > figure > a,
 header.main-header > div.movilbar > .container > figure > a > img {
     width: auto;
@@ -399,7 +396,6 @@ header.main-header.down > div.movilbar > .container > nav > ul > li > a {
     color: #212121;
 }
 
-/*  */
 header.main-header > div.movilbar > .container > nav > ul > li > a > i {
     font-size: 24px;
     font-weight: 600;
@@ -487,6 +483,15 @@ main.home > section.hm-st-1 > p {
     color: #fff;
 }
 
+main.home > section.hm-st-1 > p > strong {
+    margin: 0px 5px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    box-sizing: border-box;
+    background-color: #f44336;
+    color: #fff;
+}
+
 /*  */
 main.home > section.hm-st-1 > span {
     width: 100%;
@@ -538,6 +543,11 @@ main.home > section.hm-st-1 > div > span {
     color: #212121;
 }
 
+main.home > section.hm-st-1 > div > span.discount {
+    background-color: #f44336;
+    color: #fff;
+}
+
 @media (max-width: 425px) {
 
     main.home > section.hm-st-1 > div > span {
@@ -555,10 +565,14 @@ main.home > section.hm-st-1 > div > span {
     }
 }
 
-/*  */
 main.home > section.hm-st-1 > div > span > i {
     margin-right: 5px;
     font-size: 18px;
+}
+
+main.home > section.hm-st-1 > div > span.height > i {
+    margin: 0px 10px;
+    font-size: 12px;
 }
 
 /*  */
@@ -636,7 +650,6 @@ main.home > section.hm-st-2 > .container > form > fieldset > div.text {
     padding: 0px !important;
 }
 
-/*  */
 main.home > section.hm-st-2 > .container > form > fieldset > div.text > input {
     width: calc(100% - 100px) !important;
     height: 60px !important;
@@ -648,7 +661,6 @@ main.home > section.hm-st-2 > .container > form > fieldset > div.text > input {
     font-weight: 400 !important;
 }
 
-/*  */
 main.home > section.hm-st-2 > .container > form > fieldset > div.text > button {
     width: 100px !important;
     height: 60px !important;
@@ -689,24 +701,24 @@ main.home > section.hm-st-3 > article::after {
 }
 
 /*  */
-main.home > section.hm-st-3 > article.p-2 > header,
-main.home > section.hm-st-3 > article.p-3 > header {
+main.home > section.hm-st-3 > article.p2 > header,
+main.home > section.hm-st-3 > article.p3 > header {
     width: 50%;
     height: 100%;
 }
 
-main.home > section.hm-st-3 > article.p-2 > header {
+main.home > section.hm-st-3 > article.p2 > header {
     float: left;
 }
 
-main.home > section.hm-st-3 > article.p-3 > header {
+main.home > section.hm-st-3 > article.p3 > header {
     float: right;
 }
 
 @media (max-width: 768px) {
 
-    main.home > section.hm-st-3 > article.p-2 > header,
-    main.home > section.hm-st-3 > article.p-3 > header {
+    main.home > section.hm-st-3 > article.p2 > header,
+    main.home > section.hm-st-3 > article.p3 > header {
         width: 100%;
         height: 50vh;
         float: none;
@@ -714,8 +726,8 @@ main.home > section.hm-st-3 > article.p-3 > header {
 }
 
 /*  */
-main.home > section.hm-st-3 > article.p-2 > header > figure,
-main.home > section.hm-st-3 > article.p-3 > header > figure {
+main.home > section.hm-st-3 > article.p2 > header > figure,
+main.home > section.hm-st-3 > article.p3 > header > figure {
     width: 100%;
     height: 100%;
     display: flex;
@@ -725,17 +737,16 @@ main.home > section.hm-st-3 > article.p-3 > header > figure {
     overflow: hidden;
 }
 
-/*  */
-main.home > section.hm-st-3 > article.p-2 > header > figure > img,
-main.home > section.hm-st-3 > article.p-3 > header > figure > img {
+main.home > section.hm-st-3 > article.p2 > header > figure > img,
+main.home > section.hm-st-3 > article.p3 > header > figure > img {
     width: auto;
     min-width: 100%;
     height: 100%;
 }
 
 /*  */
-main.home > section.hm-st-3 > article.p-2 > main,
-main.home > section.hm-st-3 > article.p-3 > main {
+main.home > section.hm-st-3 > article.p2 > main,
+main.home > section.hm-st-3 > article.p3 > main {
     width: 50%;
     height: 100%;
     position: relative;
@@ -747,18 +758,18 @@ main.home > section.hm-st-3 > article.p-3 > main {
     box-sizing: border-box;
 }
 
-main.home > section.hm-st-3 > article.p-2 > main {
+main.home > section.hm-st-3 > article.p2 > main {
     float: left;
 }
 
-main.home > section.hm-st-3 > article.p-3 > main {
+main.home > section.hm-st-3 > article.p3 > main {
     float: right;
 }
 
 @media (max-width: 768px) {
 
-    main.home > section.hm-st-3 > article.p-2 > main,
-    main.home > section.hm-st-3 > article.p-3 > main {
+    main.home > section.hm-st-3 > article.p2 > main,
+    main.home > section.hm-st-3 > article.p3 > main {
         width: 100%;
         height: auto;
         float: none;
@@ -767,14 +778,14 @@ main.home > section.hm-st-3 > article.p-3 > main {
 
 @media (max-width: 425px) {
 
-    main.home > section.hm-st-3 > article.p-2 > main,
-    main.home > section.hm-st-3 > article.p-3 > main {
+    main.home > section.hm-st-3 > article.p2 > main,
+    main.home > section.hm-st-3 > article.p3 > main {
         padding: 20px;
     }
 }
 
-main.home > section.hm-st-3 > article.p-2 > main::after,
-main.home > section.hm-st-3 > article.p-3 > main::after {
+main.home > section.hm-st-3 > article.p2 > main::after,
+main.home > section.hm-st-3 > article.p3 > main::after {
     content: '';
     width: 0px;
     height: 0px;
@@ -787,20 +798,20 @@ main.home > section.hm-st-3 > article.p-3 > main::after {
     pointer-events: none;
 }
 
-main.home > section.hm-st-3 > article.p-2 > main::after {
+main.home > section.hm-st-3 > article.p2 > main::after {
 	right: 100%;
 	border-right-color: #fff;
 }
 
-main.home > section.hm-st-3 > article.p-3 > main::after {
+main.home > section.hm-st-3 > article.p3 > main::after {
     left: 100%;
 	border-left-color: #fff;
 }
 
 @media (max-width: 768px) {
 
-    main.home > section.hm-st-3 > article.p-2 > main::before,
-    main.home > section.hm-st-3 > article.p-3 > main::before {
+    main.home > section.hm-st-3 > article.p2 > main::before,
+    main.home > section.hm-st-3 > article.p3 > main::before {
         content: '';
         width: 0px;
         height: 0px;
@@ -815,15 +826,15 @@ main.home > section.hm-st-3 > article.p-3 > main::after {
         pointer-events: none;
     }
 
-    main.home > section.hm-st-3 > article.p-2 > main::after,
-    main.home > section.hm-st-3 > article.p-3 > main::after {
+    main.home > section.hm-st-3 > article.p2 > main::after,
+    main.home > section.hm-st-3 > article.p3 > main::after {
         display: none;
     }
 }
 
 /*  */
-main.home > section.hm-st-3 > article.p-2 > main > h2,
-main.home > section.hm-st-3 > article.p-3 > main > h2 {
+main.home > section.hm-st-3 > article.p2 > main > h2,
+main.home > section.hm-st-3 > article.p3 > main > h2 {
     width: 100%;
     margin-bottom: 20px;
     font-size: 60px;
@@ -834,15 +845,15 @@ main.home > section.hm-st-3 > article.p-3 > main > h2 {
 
 @media (max-width: 425px) {
 
-    main.home > section.hm-st-3 > article.p-2 > main > h2,
-    main.home > section.hm-st-3 > article.p-3 > main > h2 {
+    main.home > section.hm-st-3 > article.p2 > main > h2,
+    main.home > section.hm-st-3 > article.p3 > main > h2 {
         font-size: 40px;
     }
 }
 
 /*  */
-main.home > section.hm-st-3 > article.p-2 > main > p,
-main.home > section.hm-st-3 > article.p-3 > main > p {
+main.home > section.hm-st-3 > article.p2 > main > p,
+main.home > section.hm-st-3 > article.p3 > main > p {
     width: 100%;
     margin-bottom: 20px;
     font-size: 18px;
@@ -851,9 +862,19 @@ main.home > section.hm-st-3 > article.p-3 > main > p {
     color: #212121;
 }
 
+main.home > section.hm-st-3 > article.p2 > main > p > strong,
+main.home > section.hm-st-3 > article.p3 > main > p > strong {
+    margin: 0px 5px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    box-sizing: border-box;
+    background-color: #f44336;
+    color: #fff;
+}
+
 /*  */
-main.home > section.hm-st-3 > article.p-2 > main > span,
-main.home > section.hm-st-3 > article.p-3 > main > span {
+main.home > section.hm-st-3 > article.p2 > main > span,
+main.home > section.hm-st-3 > article.p3 > main > span {
     width: 100%;
     display: flex;
     align-items: center;
@@ -865,16 +886,15 @@ main.home > section.hm-st-3 > article.p-3 > main > span {
     color: #212121;
 }
 
-/*  */
-main.home > section.hm-st-3 > article.p-2 > main > span > i,
-main.home > section.hm-st-3 > article.p-3 > main > span > i {
+main.home > section.hm-st-3 > article.p2 > main > span > i,
+main.home > section.hm-st-3 > article.p3 > main > span > i {
     margin-right: 5px;
     font-size: 24px;
 }
 
 /*  */
-main.home > section.hm-st-3 > article.p-2 > main > div,
-main.home > section.hm-st-3 > article.p-3 > main > div {
+main.home > section.hm-st-3 > article.p2 > main > div,
+main.home > section.hm-st-3 > article.p3 > main > div {
     width: 100%;
     display: flex;
     align-items: center;
@@ -884,15 +904,14 @@ main.home > section.hm-st-3 > article.p-3 > main > div {
 
 @media (max-width: 425px) {
 
-    main.home > section.hm-st-3 > article.p-2 > main > div,
-    main.home > section.hm-st-3 > article.p-3 > main > div {
+    main.home > section.hm-st-3 > article.p2 > main > div,
+    main.home > section.hm-st-3 > article.p3 > main > div {
         margin-bottom: 5px;
     }
 }
 
-/*  */
-main.home > section.hm-st-3 > article.p-2 > main > div > span,
-main.home > section.hm-st-3 > article.p-3 > main > div > span {
+main.home > section.hm-st-3 > article.p2 > main > div > span,
+main.home > section.hm-st-3 > article.p3 > main > div > span {
     width: auto;
     display: flex;
     align-items: center;
@@ -908,36 +927,46 @@ main.home > section.hm-st-3 > article.p-3 > main > div > span {
     color: #fff;
 }
 
+main.home > section.hm-st-3 > article.p2 > main > div > span.discount,
+main.home > section.hm-st-3 > article.p3 > main > div > span.discount {
+    background-color: #f44336;
+}
+
 @media (max-width: 425px) {
 
-    main.home > section.hm-st-3 > article.p-2 > main > div > span,
-    main.home > section.hm-st-3 > article.p-3 > main > div > span {
+    main.home > section.hm-st-3 > article.p2 > main > div > span,
+    main.home > section.hm-st-3 > article.p3 > main > div > span {
         width: calc(50% - 2.5px);
         margin: 0px;
         border-radius: 0px;
     }
 
-    main.home > section.hm-st-3 > article.p-2 > main > div > span:first-child,
-    main.home > section.hm-st-3 > article.p-3 > main > div > span:first-child {
+    main.home > section.hm-st-3 > article.p2 > main > div > span:first-child,
+    main.home > section.hm-st-3 > article.p3 > main > div > span:first-child {
         margin-right: 2.5px;
     }
 
-    main.home > section.hm-st-3 > article.p-2 > main > div > span:last-child,
-    main.home > section.hm-st-3 > article.p-3 > main > div > span:last-child {
+    main.home > section.hm-st-3 > article.p2 > main > div > span:last-child,
+    main.home > section.hm-st-3 > article.p3 > main > div > span:last-child {
         margin-left: 2.5px;
     }
 }
 
-/*  */
-main.home > section.hm-st-3 > article.p-2 > main > div > span > i,
-main.home > section.hm-st-3 > article.p-3 > main > div > span > i {
+main.home > section.hm-st-3 > article.p2 > main > div > span > i,
+main.home > section.hm-st-3 > article.p3 > main > div > span > i {
     margin-right: 5px;
     font-size: 18px;
 }
 
+main.home > section.hm-st-3 > article.p2 > main > div > span.height > i,
+main.home > section.hm-st-3 > article.p3 > main > div > span.height > i {
+    margin: 0px 10px;
+    font-size: 12px;
+}
+
 /*  */
-main.home > section.hm-st-3 > article.p-2 > main > a,
-main.home > section.hm-st-3 > article.p-3 > main > a {
+main.home > section.hm-st-3 > article.p2 > main > a,
+main.home > section.hm-st-3 > article.p3 > main > a {
     width: auto;
     padding: 20px 40px;
     border-radius: 40px;
@@ -951,8 +980,8 @@ main.home > section.hm-st-3 > article.p-3 > main > a {
 
 @media (max-width: 425px) {
 
-    main.home > section.hm-st-3 > article.p-2 > main > a,
-    main.home > section.hm-st-3 > article.p-3 > main > a {
+    main.home > section.hm-st-3 > article.p2 > main > a,
+    main.home > section.hm-st-3 > article.p3 > main > a {
         width: 100%;
         border-radius: 0px;
     }
@@ -1004,6 +1033,10 @@ main.booking > section.bk-st-1 > * {
     position: relative;
 }
 
+main.booking > section.bk-st-1 > *:last-child {
+    margin-bottom: 0px;
+}
+
 /*  */
 main.booking > section.bk-st-1 > h1 {
     width: 100%;
@@ -1031,6 +1064,15 @@ main.booking > section.bk-st-1 > p {
     color: #fff;
 }
 
+main.booking > section.bk-st-1 > p > strong {
+    margin: 0px 5px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    box-sizing: border-box;
+    background-color: #f44336;
+    color: #fff;
+}
+
 /*  */
 main.booking > section.bk-st-1 > span {
     width: 100%;
@@ -1044,7 +1086,6 @@ main.booking > section.bk-st-1 > span {
     color: #fff;
 }
 
-/*  */
 main.booking > section.bk-st-1 > span > i {
     margin-right: 5px;
     font-size: 24px;
@@ -1056,6 +1097,14 @@ main.booking > section.bk-st-1 > div {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 425px) {
+
+    main.booking > section.bk-st-1 > div {
+        margin-bottom: 5px;
+    }
 }
 
 /*  */
@@ -1068,11 +1117,16 @@ main.booking > section.bk-st-1 > div > span {
     padding: 20px;
     border-radius: 40px;
     box-sizing: border-box;
-    background-color: #fff;
+    background-color: #ffeb3b;
     font-size: 14px;
     font-weight: 600;
     text-align: center;
     color: #212121;
+}
+
+main.booking > section.bk-st-1 > div > span.discount {
+    background-color: #f44336;
+    color: #fff;
 }
 
 @media (max-width: 425px) {
@@ -1092,10 +1146,14 @@ main.booking > section.bk-st-1 > div > span {
     }
 }
 
-/*  */
 main.booking > section.bk-st-1 > div > span > i {
     margin-right: 5px;
     font-size: 18px;
+}
+
+main.booking > section.bk-st-1 > div > span.height > i {
+    margin: 0px 10px;
+    font-size: 12px;
 }
 
 /* --- */
@@ -1209,7 +1267,6 @@ main.booking > section.bk-st-2 > .container > div:last-child > div > span {
     color: #fff;
 }
 
-/*  */
 main.booking > section.bk-st-2 > .container > div:last-child > div > span > i {
     margin-right: 5px;
     font-size: 12px;
@@ -1270,7 +1327,6 @@ main.booking > section.bk-st-3 > .container > ul {
     width: 100%;
 }
 
-/*  */
 main.booking > section.bk-st-3 > .container > ul > li {
     width: calc(100% - 20px);
     margin-left: 20px;
@@ -1309,12 +1365,10 @@ main.booking > section.bk-st-4 > figure {
     box-sizing: border-box;
 }
 
-/*  */
 main.booking > section.bk-st-4 > figure > img {
     width: 100%;
 }
 
-/*  */
 main.booking > section.bk-st-4 > figure > a {
     position: absolute;
     top: 0px;
@@ -1332,7 +1386,6 @@ main.booking > section.bk-st-4 > figure > a:hover {
     opacity: 1;
 }
 
-/*  */
 main.booking > section.bk-st-4 > figure > a > i {
     font-size: 40px;
     color: #fff;
@@ -1387,7 +1440,11 @@ main.booking > section.bk-st-5 > .container > h6 {
 }
 
 /*  */
-main.booking > section.bk-st-5 > .container > form > fieldset > p,
+main.booking > section.bk-st-5 > .container > form > fieldset div.text {
+    position: relative !important;
+}
+
+main.booking > section.bk-st-5 > .container > form > fieldset div.warning > p,
 main.booking > section.bk-st-5 > .container > form > fieldset div.text > h6,
 main.booking > section.bk-st-5 > .container > form > fieldset div.text > p {
     font-size: 14px !important;
@@ -1395,20 +1452,24 @@ main.booking > section.bk-st-5 > .container > form > fieldset div.text > p {
     color: #212121 !important;
 }
 
-main.booking > section.bk-st-5 > .container > form > fieldset > p {
-    text-align: right !important;
-}
-
-@media (max-width: 425px) {
-
-    main.booking > section.bk-st-5 > .container > form > fieldset > p {
-        text-align: center !important;
-    }
-}
-
-main.booking > section.bk-st-5 > .container > form > fieldset > p > a {
+main.booking > section.bk-st-5 > .container > form > fieldset div.warning > p > a {
     text-decoration: underline;
     color: #ffeb3b;
+}
+
+main.booking > section.bk-st-5 > .container > form > fieldset div.text > span {
+    width: auto;
+    height: 60px;
+    position: absolute;
+    right: 2.5px;
+    bottom: 0px;
+    display: flex;
+    align-items: center;
+    padding: 0px 20px;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: 400;
+    color: #f44336;
 }
 
 main.booking > section.bk-st-5 > .container > form > fieldset div.text > input,
@@ -1416,20 +1477,11 @@ main.booking > section.bk-st-5 > .container > form > fieldset div.text > select,
 main.booking > section.bk-st-5 > .container > form > fieldset div.text > textarea {
     padding: 20px !important;
     box-sizing: border-box !important;
-    border-color: #eee !important;
-    background-color: #eee !important;
 }
 
 main.booking > section.bk-st-5 > .container > form > fieldset div.text > input,
 main.booking > section.bk-st-5 > .container > form > fieldset div.text > select {
     height: 60px !important;
-}
-
-/*  */
-main.booking > section.bk-st-5 > .container > form > fieldset div.button {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: flex-end !important;
 }
 
 main.booking > section.bk-st-5 > .container > form > fieldset div.button > button {
@@ -1488,7 +1540,7 @@ main.booking > section.bk-st-6 > article {
 /*  */
 main.booking > section.bk-st-6 > article > main {
     width: 100%;
-    height: 400px;
+    height: 450px;
     position: relative;
     display: flex;
     align-items: center;
@@ -1534,7 +1586,7 @@ main.booking > section.bk-st-6 > article > main > * {
 /*  */
 main.booking > section.bk-st-6 > article > main > h2 {
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-size: 40px;
     font-weight: 600;
     text-align: center;
@@ -1544,10 +1596,19 @@ main.booking > section.bk-st-6 > article > main > h2 {
 /*  */
 main.booking > section.bk-st-6 > article > main > p {
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-size: 18px;
     font-weight: 400;
     text-align: center;
+    color: #fff;
+}
+
+main.booking > section.bk-st-6 > article > main > p > strong {
+    margin: 0px 5px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    box-sizing: border-box;
+    background-color: #f44336;
     color: #fff;
 }
 
@@ -1556,14 +1617,13 @@ main.booking > section.bk-st-6 > article > main > span {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-size: 24px;
     font-weight: 600;
     text-align: center;
     color: #fff;
 }
 
-/*  */
 main.booking > section.bk-st-6 > article > main > span > i {
     margin-right: 5px;
     font-size: 24px;
@@ -1575,7 +1635,7 @@ main.booking > section.bk-st-6 > article > main > div {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 /*  */
@@ -1591,14 +1651,28 @@ main.booking > section.bk-st-6 > article > main > div > span {
     color: #fff;
 }
 
-/*  */
+main.booking > section.bk-st-6 > article > main > div > span.discount {
+    margin: 0px 5px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    box-sizing: border-box;
+    background-color: #f44336;
+    color: #fff;
+}
+
 main.booking > section.bk-st-6 > article > main > div > span > i  {
     margin-right: 5px;
     font-size: 18px;
 }
 
+main.booking > section.bk-st-6 > article > main > div > span.height > i  {
+    margin: 0px 10px;
+    font-size: 12px;
+}
+
 /*  */
 main.booking > section.bk-st-6 > article > main > a {
+    margin-top: 10px;
     padding: 15px 20px;
     border-radius: 30px;
     box-sizing: border-box;

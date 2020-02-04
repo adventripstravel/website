@@ -2,17 +2,6 @@
 
 defined('_EXEC') or die;
 
-/**
-* @package valkyrie.cms.core.models
-*
-* @author Gersón Aarón Gómez Macías <Chief Technology Officer, ggomez@codemonkey.com.mx>
-* @since August 01 - 18, 2018 <@create>
-* @version 1.0.0
-* @summary cm-valkyrie-platform-website-template
-*
-* @copyright Copyright (C) Code Monkey <legal@codemonkey.com.mx, wwww.codemonkey.com.mx>. All rights reserved.
-*/
-
 class Index_model extends Model
 {
 	public function __construct()
@@ -20,27 +9,40 @@ class Index_model extends Model
 		parent::__construct();
 	}
 
-	public function get_user($username)
+	public function get_login($email)
 	{
-		$query = $this->database->select('users', [
-			'[>]users_levels' => [
-				'id_user_level' => 'id_user_level'
-			]
+		$query = Functions::get_array_json_decoded($this->database->select('users', [
+			'id',
+			'firstname',
+			'lastname',
+			'email',
+			'password',
+			'user_permissions',
+			'avatar',
+			'status'
 		], [
-			'users.id_user',
-			'users.name',
-			'users.email',
-			'users.username',
-			'users.password',
-			'users_levels.code(level)',
-			'users.avatar',
-		], [
-			'AND' => [
-				'users.username' => $username,
-				'users.status' => true
-			]
-		]);
+			'email' => $email
+		]));
 
-		return !empty($query) ? $query[0] : null;
+		if (!empty($query))
+		{
+			foreach ($query[0]['user_permissions'] as $key => $value)
+			{
+				$value = $this->database->select('user_permissions', [
+					'code'
+				], [
+					'id' => $value
+				]);
+
+				if (!empty($value))
+					$query[0]['user_permissions'][$key] = $value[0]['code'];
+				else
+					unset($query[0]['user_permissions'][$key]);
+			}
+
+			return $query[0];
+		}
+		else
+			return null;
 	}
 }

@@ -130,8 +130,8 @@ function checkFormDataErrors(target, response, callback)
         }
         else
         {
-            $('[data-modal="alert"] main > p').html(response.errors);
-            $('[data-modal="alert"]').addClass('view').animate({scrollTop: 0}, 0);
+            $('[data-modal="alert"]').addClass('view');
+            $('[data-modal="alert"]').find('main > p').html(response.errors);
         }
     }
 }
@@ -198,15 +198,15 @@ function uploader(target, type, multiple, action)
                     {
                         if (response.status == 'success')
                         {
-                            $('[data-modal="success"] main > p').html(response.message);
-                            $('[data-modal="success"]').addClass('view').animate({scrollTop: 0}, 0);
+                            $('[data-modal="success"]').addClass('view');
+                            $('[data-modal="success"]').find('main > p').html(response.message);
 
                             setTimeout(function() { location.reload() }, 1500);
                         }
                         else if (response.status == 'error')
                         {
-                            $('[data-modal="alert"] main > p').html(response.message);
-                            $('[data-modal="alert"]').addClass('view').animate({scrollTop: 0}, 0);
+                            $('[data-modal="alert"]').addClass('view');
+                            $('[data-modal="alert"]').find('main > p').html(response.message);
                         }
                     }
                 });
@@ -214,8 +214,8 @@ function uploader(target, type, multiple, action)
         }
         else
         {
-            $('[data-modal="alert"] main > p').html('ERROR');
-            $('[data-modal="alert"]').addClass('view').animate({scrollTop: 0}, 0);
+            $('[data-modal="alert"]').addClass('view');
+            $('[data-modal="alert"]').find('main > p').html('ERROR');
         }
 
         // if (type == 'multiple')
@@ -241,23 +241,23 @@ function uploader(target, type, multiple, action)
         //         dataType: 'json',
         //         success: function(response)
         //         {
-        //             // if (response.status == 'success')
-        //             // {
-        //             //     target.find('[data-preview]').remove();
-        //             //
-        //             //     if (response.data.length > 0)
-        //             //     {
-        //             //         $.each(response.data, function(key, value)
-        //             //         {
-        //             //             target.prepend('<figure data-preview><img src="../uploads/' + value + '"><a data-delete="' + key + '"><i class="material-icons">delete</i></a></figure>');
-        //             //         });
-        //             //     }
-        //             // }
-        //             // else if (response.status == 'error')
-        //             // {
-        //             //     $('[data-modal="alert"] main > p').html(response.message);
-        //             //     $('[data-modal="alert"]').addClass('view').animate({scrollTop: 0}, 0);
-        //             // }
+        //             if (response.status == 'success')
+        //             {
+        //                 target.find('[data-preview]').remove();
+        //
+        //                 if (response.data.length > 0)
+        //                 {
+        //                     $.each(response.data, function(key, value)
+        //                     {
+        //                         target.prepend('<figure data-preview><img src="../uploads/' + value + '"><a data-delete="' + key + '"><i class="material-icons">delete</i></a></figure>');
+        //                     });
+        //                 }
+        //             }
+        //             else if (response.status == 'error')
+        //             {
+        //                 $('[data-modal="alert"]').addClass('view');
+        //                 $('[data-modal="alert"]').find('main > p').html(response.message);
+        //             }
         //         }
         //     });
         // }

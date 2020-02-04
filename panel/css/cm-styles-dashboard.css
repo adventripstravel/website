@@ -1,72 +1,69 @@
 
 /**
-* @package valkyrie.cms.css
+* @package valkyrie.panel.css
 *
-* @author Gersón Aarón Gómez Macías <Chief Technology Officer, ggomez@codemonkey.com.mx>
-* @since August 01 - 18, 2018 <@create>
-* @version 1.0.0
-* @summary cm-valkyrie-framework
+* @summary Estilos del Dasboard general.
 *
-* @copyright Copyright (C) Code Monkey <legal@codemonkey.com.mx, wwww.codemonkey.com.mx>. All rights reserved.
+* @author Gersón Aarón Gómez Macías <ggomez@codemonkey.com.mx>
+* <@create> 01 de enero, 2019.
+*
+* @version 1.0.0.
+*
+* @copyright Code Monkey <contacto@codemonkey.com.mx>
 */
 
 /* Login
 ------------------------------------------------------------------------------*/
-section.login {
+main.login {
+    width: 100%;
     position: relative;
     top: 0px;
     left:  0px;
     right:  0px;
-    width: 100%;
-    background-color: #3f51b5;
-}
-
-section.login form[name="login"] {
-    position: relative;
-    max-width: 400px;
-    width: 90%;
-    min-height: 500px;
-    height: 100vh;
-    margin: 0 auto;
-    display: -webkit-box;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #fff;
-    padding: 30px;
+    background-color: #212121;
+}
+
+main.login > form {
+    width: 100%;
+    max-width: 400px;
+    height: 100vh;
+    min-height: 600px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 40px;
     box-sizing: border-box;
+    background-color: #fff;
 }
 
-section.login form[name="login"] > figure {
-    width: 100%;
-    line-height: 0;
+main.login > form > figure {
+    width: auto;
     margin-bottom: 40px;
+}
+
+main.login > form > figure > img {
+    width: auto;
+    height: 100px;
+}
+
+main.login > form > fieldset.fields-group {
+    width: 100% !important;
+}
+
+main.login > form > p {
+    font-size: 12px;
+    font-weight: 400;
     text-align: center;
+    color: #757575;
 }
 
-section.login form[name="login"] > figure > img {
-    width: 100%;
-    max-width: 200px;
-}
-
-section.login form[name="login"] > fieldset {
-    width: 100%;
-}
-
-section.login form[name="login"] > button {
-    width: 100%;
-    margin: 10px 0px 10px 0px;
-}
-
-section.login form[name="login"] > button:hover {
-    cursor: pointer;
-}
-
-section.login form[name="login"] > p {
-    margin: 0px;
-    padding: 0px;
-    text-align: center;
+main.login > form > p > a {
+    color: #212121;
 }
 
 /* Topbar

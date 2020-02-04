@@ -2,39 +2,40 @@
 
 defined('_EXEC') or die;
 
-/**
-* @package valkyrie.cms.libraries
-*
-* @author Gersón Aarón Gómez Macías <Chief Technology Officer, ggomez@codemonkey.com.mx>
-* @since August 01 - 18, 2018 <@create>
-* @version 1.0.0
-* @summary cm-valkyrie-platform-website-template
-*
-* @copyright Copyright (C) Code Monkey <legal@codemonkey.com.mx, wwww.codemonkey.com.mx>. All rights reserved.
-*/
-
 class Route_vkye_adm
 {
     private $path;
+    private $database;
 
     public function __construct($path)
     {
         $this->path = $path;
+        $this->database = new Medoo();
     }
 
     public function on_change_start()
     {
-        $free_paths = [
-            '/Index/index',
-            '/Index/logout',
+        Session::unset_value('settings');
+        Session::unset_value('currency');
+
+        $settings = Functions::get_array_json_decoded($this->database->select('settings', [
+            'logotypes',
+            'icontypes'
+        ]));
+
+        if (!empty($settings))
+            Session::set_value('settings', $settings[0]);
+
+        $paths = [
+            '/Index/index'
         ];
 
-        if (!in_array($this->path, $free_paths) AND User_level_vkye_adm::access($this->path) == false)
+        if (!in_array($this->path, $paths) AND User_level_vkye_adm::access($this->path) == false)
             header('Location: ' . User_level_vkye_adm::redirection());
     }
 
     public function on_change_end()
     {
-
+        
     }
 }

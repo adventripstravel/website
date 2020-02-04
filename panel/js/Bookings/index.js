@@ -2,53 +2,11 @@
 
 $(document).ready(function()
 {
-    var id;
-
-    /* Table
-    ------------------------------------------------------------------------------- */
-    $(document).find('table').DataTable({
-        dom: 'Bfrtip',
-        buttons: [
-
-        ],
-        'columnDefs': [
-            {
-                'orderable': false,
-                'targets': '_all'
-            },
-            {
-                'className': 'text-left',
-                'targets': '_all'
-            }
-        ],
-        'order': [
-
-        ],
-        'searching': true,
-        'info': true,
-        'paging': true,
-        'language': {
-
-        }
-    });
-
-    /* Select time
-    ------------------------------------------------------------------------------- */
-    $('[name="time"]').on('change', function()
+    $('[name="tour"]').on('change', function()
     {
-        window.location.href = 'index.php?c=bookings&m=index&p=' + $('[name="time"]').val();
-    });
-
-    /* Get
-    ------------------------------------------------------------------------------- */
-    $('[data-action="get"]').on('click', function()
-    {
-        id = $(this).data('id');
-
         $.ajax({
-            url: '',
             type: 'POST',
-            data: 'id=' + id + '&action=get',
+            data: 'id=' + $(this).val() + '&action=get_tour_price',
             processData: false,
             cache: false,
             dataType: 'json',
@@ -56,85 +14,214 @@ $(document).ready(function()
             {
                 if (response.status == 'success')
                 {
-                    console.log(response.data);
-
-                    $('[name="token"]').val(response.data.token);
-                    $('[name="name"]').val(response.data.name);
-                    $('[name="email"]').val(response.data.email);
-                    $('[name="cellphone"]').val(response.data.cellphone);
-                    $('[name="tour"]').val(response.data.tour.es);
-                    $('[name="date_booking"]').val(response.data.date_booking);
-                    $('[name="paxes"]').val((response.data.paxes.adults + response.data.paxes.children) + ' Paxes' + ' (' + response.data.paxes.adults + ' Adultos, ' + response.data.paxes.children + ' Niños)');
-                    $('[name="totals_amount"]').val('$ ' + response.data.totals.amount + ' USD');
-
-                    if (response.data.totals.discount != null)
-                    {
-                        if (response.data.totals.discount.type == '$')
-                            $('[name="totals_discount"]').val('$ ' + response.data.totals.discount.amount + ' USD');
-                        else if (response.data.totals.discount.type == '%')
-                            $('[name="totals_discount"]').val(response.data.totals.discount.amount + '%');
-                    }
-                    else
-                        $('[name="totals_discount"]').val('Sin descuento');
-
-                    $('[name="payment_method"]').val(response.data.payment.method);
-                    $('[name="payment_currency"]').val(response.data.payment.currency);
-                    $('[name="language"]').val(response.data.language);
-                    $('[name="canceled"]').val(response.data.canceled);
-                    $('[name="observations"]').val(response.data.observations);
-                    $('[name="date_booked"]').val(response.data.date_booked);
-                    $('[name="airbnb"]').val(response.data.airbnb + ' (' + response.data.user + ')');
-                    $('[data-modal="datas"]').addClass('view').animate({scrollTop: 0}, 0);
+                    $('[name="price_child"]').val(response.data.price.child);
+                    $('[name="price_adult"]').val(response.data.price.adult);
                 }
                 else if (response.status == 'error')
                 {
-                    $('[data-modal="alert"] main > p').html(response.message);
-                    $('[data-modal="alert"]').addClass('view').animate({scrollTop: 0}, 0);
+                    $('[data-modal="alert"]').addClass('view');
+                    $('[data-modal="alert"]').find('main > p').html(response.message);
                 }
             }
         });
+
+        get_total();
     });
 
-    /* Modal to edit
-    ------------------------------------------------------------------------------- */
-    $('[data-modal="datas"]').modal().onSuccess(function()
+    $('[name="paxes_childs"]').on('change', function()
     {
-        $('form[name="datas"]').submit();
+        get_total();
     });
 
-    $('[data-modal="datas"]').modal().onCancel(function()
+    $('[name="paxes_adults"]').on('change', function()
     {
-        $('[data-modal="datas"] main > form')[0].reset();
-        $('[data-modal="datas"] main > form [name]').parents('.error').find('p.error').remove();
-        $('[data-modal="datas"] main > form [name]').parents('.error').removeClass('error');
+        get_total();
     });
 
-    /* Edit
-    ------------------------------------------------------------------------------- */
-    $('form[name="datas"]').on('submit', function(e)
+    $('[name="payment_currency"]').on('change', function()
+    {
+        get_total();
+    });
+
+    $('[name="booked_date"]').on('change', function()
+    {
+        $('[name="payment_date"]').attr('min', $(this).val());
+    });
+
+    var id = null;
+    var update = false;
+
+    $('[data-modal="create_booking"]').modal().onCancel(function()
+    {
+        id = null;
+        update = false;
+
+        $('[data-modal="create_booking"]').find('header > h3').html('Crear');
+        $('[data-modal="create_booking"]').find('form')[0].reset();
+        $('[data-modal="create_booking"]').find('[name="token"]').parents('fieldset').addClass('hidden');
+        $('[data-modal="create_booking"]').find('[name="request_type"]').parents('fieldset').addClass('hidden');
+        $('[data-modal="create_booking"]').find('[name="request_details"]').parents('fieldset').addClass('hidden');
+        $('[data-modal="create_booking"]').find('[name="language"]').parent().parent().removeClass('span4');
+        $('[data-modal="create_booking"]').find('[name="language"]').parent().parent().addClass('span12');
+        $('[data-modal="create_booking"]').find('[name="registration_date"]').parent().parent().addClass('hidden');
+        $('[data-modal="create_booking"]').find('[name="status"]').parent().parent().addClass('hidden');
+        $('[data-modal="create_booking"]').find('label.error').removeClass('error');
+        $('[data-modal="create_booking"]').find('p.error').remove();
+    });
+
+    $('[data-modal="create_booking"]').modal().onSuccess(function()
+    {
+        $('[data-modal="create_booking"]').find('form').submit();
+    });
+
+    $('form[name="create_booking"]').on('submit', function(e)
     {
         e.preventDefault();
 
         var form = $(this);
 
+        if (update == false)
+            var data = '&action=create_booking';
+        else if (update == true)
+            var data = '&id=' + id + '&action=update_booking';
+
         $.ajax({
             url: '',
             type: 'POST',
-            data: form.serialize() + '&id=' + id + '&action=edit',
+            data: form.serialize() + data,
             processData: false,
             cache: false,
             dataType: 'json',
             success: function(response)
             {
-                checkFormValidations(form, response, function()
+                checkFormDataErrors(form, response, function()
                 {
-                    $('[data-modal="datas"]').removeClass('view').animate({scrollTop: 0}, 0);
-                    $('[data-modal="success"] main > p').html(response.message);
-                    $('[data-modal="success"]').addClass('view').animate({scrollTop: 0}, 0);
+                    $('[data-modal="create_booking"]').removeClass('view');
+                    $('[data-modal="success"]').addClass('view');
+                    $('[data-modal="success"]').find('main > p').html(response.message);
 
-                    setTimeout(function() { location.reload() }, 1000);
+                    setTimeout(function() { location.reload(); }, 1500);
                 });
             }
         });
     });
+
+    $(document).on('click', '[data-action="update_booking"]', function()
+    {
+        id = $(this).data('id');
+        update = true;
+
+        $.ajax({
+            type: 'POST',
+            data: 'id=' + id + '&action=get_booking',
+            processData: false,
+            cache: false,
+            dataType: 'json',
+            success: function(response)
+            {
+                if (response.status == 'success')
+                {
+                    $('[data-modal="create_booking"]').addClass('view');
+                    $('[data-modal="create_booking"]').find('header > h3').html('Ver detalles | Actualizar');
+                    $('[data-modal="create_booking"]').find('[name="token"]').parents('fieldset').removeClass('hidden');
+                    $('[data-modal="create_booking"]').find('[name="token"]').val(response.data.token);
+                    $('[data-modal="create_booking"]').find('[name="tour"]').val(response.data.tour);
+                    $('[data-modal="create_booking"]').find('[name="price_child"]').val(response.data.price.child);
+                    $('[data-modal="create_booking"]').find('[name="price_adult"]').val(response.data.price.adult);
+                    $('[data-modal="create_booking"]').find('[name="paxes_childs"]').val(response.data.paxes.childs);
+                    $('[data-modal="create_booking"]').find('[name="paxes_adults"]').val(response.data.paxes.adults);
+                    $('[data-modal="create_booking"]').find('[name="total"]').val(response.data.total);
+                    $('[data-modal="create_booking"]').find('[name="payment_currency"]').val(response.data.payment.currency);
+                    $('[data-modal="create_booking"]').find('[name="payment_exchange"]').val(response.data.payment.exchange);
+                    $('[data-modal="create_booking"]').find('[name="firstname"]').val(response.data.firstname);
+                    $('[data-modal="create_booking"]').find('[name="lastname"]').val(response.data.lastname);
+                    $('[data-modal="create_booking"]').find('[name="email"]').val(response.data.email);
+                    $('[data-modal="create_booking"]').find('[name="phone_lada"]').val(response.data.phone.lada);
+                    $('[data-modal="create_booking"]').find('[name="phone_number"]').val(response.data.phone.number);
+                    $('[data-modal="create_booking"]').find('[name="observations"]').val(response.data.observations);
+                    $('[data-modal="create_booking"]').find('[name="payment_date"]').val(response.data.payment.date);
+                    $('[data-modal="create_booking"]').find('[name="payment_method"]').val(response.data.payment.method);
+
+                    if (response.data.payment.status == true)
+                        $('[data-modal="create_booking"]').find('[name="payment_status"]').val('1');
+                    else if (response.data.payment.status == false)
+                        $('[data-modal="create_booking"]').find('[name="payment_status"]').val('0');
+
+                    if (response.data.request.type == 'update' || response.data.request.type == 'cancel')
+                    {
+                        $('[data-modal="create_booking"]').find('[name="request_type"]').parents('fieldset').removeClass('hidden');
+
+                        if (response.data.request.type == 'update')
+                            $('[data-modal="create_booking"]').find('[name="request_type"]').val('Actualización');
+                        else if (response.data.request.type == 'cancel')
+                            $('[data-modal="create_booking"]').find('[name="request_type"]').val('Cancelación');
+
+                        $('[data-modal="create_booking"]').find('[name="request_details"]').parents('fieldset').removeClass('hidden');
+                        $('[data-modal="create_booking"]').find('[name="request_details"]').val(response.data.request.details);
+                    }
+
+                    $('[data-modal="create_booking"]').find('[name="language"]').parent().parent().removeClass('span12');
+                    $('[data-modal="create_booking"]').find('[name="language"]').parent().parent().addClass('span4');
+                    $('[data-modal="create_booking"]').find('[name="language"]').val(response.data.language);
+                    $('[data-modal="create_booking"]').find('[name="registration_date"]').parent().parent().removeClass('hidden');
+                    $('[data-modal="create_booking"]').find('[name="registration_date"]').val(response.data.registration_date);
+                    $('[data-modal="create_booking"]').find('[name="status"]').parent().parent().removeClass('hidden');
+
+                    if (response.data.canceled == true)
+                        $('[data-modal="create_booking"]').find('[name="status"]').val('Cancelada');
+                    else if (response.data.canceled == false)
+                    {
+                        var date = new Date();
+
+                        var months = [
+                            '01',
+                            '02',
+                            '03',
+                            '04',
+                            '05',
+                            '06',
+                            '07',
+                            '08',
+                            '09',
+                            '10',
+                            '11',
+                            '12'
+                        ];
+
+                        var today = date.getFullYear() + '-' + months[date.getMonth()] + '-' + date.getDate();
+
+                        if (response.data.booked_date >= today)
+                            $('[data-modal="create_booking"]').find('[name="status"]').val('Activa');
+                        else if (response.data.booked_date < today)
+                            $('[data-modal="create_booking"]').find('[name="status"]').val('Terminada');
+                    }
+                }
+                else if (response.status == 'error')
+                {
+                    $('[data-modal="error"]').addClass('view');
+                    $('[data-modal="error"]').find('main > p').html(response.message);
+                }
+            }
+        });
+    });
 });
+
+function get_total()
+{
+    var form = $('form[name="create_booking"]');
+
+    $.ajax({
+        type: 'POST',
+        data: 'tour=' + $('[name="tour"]').val() + '&paxes_childs=' + $('[name="paxes_childs"]').val() + '&paxes_adults=' + $('[name="paxes_adults"]').val() + '&payment_currency=' + $('[name="payment_currency"]').val() + '&action=get_total',
+        processData: false,
+        cache: false,
+        dataType: 'json',
+        success: function(response)
+        {
+            checkFormDataErrors(form, response, function()
+            {
+                $('[name="total"]').val(response.data.total);
+            });
+        }
+    });
+}

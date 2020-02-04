@@ -2,17 +2,6 @@
 
 defined('_EXEC') or die;
 
-/**
-* @package valkyrie.cms.core.controllers
-*
-* @author Gersón Aarón Gómez Macías <Chief Technology Officer, ggomez@codemonkey.com.mx>
-* @since August 01 - 18, 2018 <@create>
-* @version 1.0.0
-* @summary cm-valkyrie-platform-website-template
-*
-* @copyright Copyright (C) Code Monkey <legal@codemonkey.com.mx, wwww.codemonkey.com.mx>. All rights reserved.
-*/
-
 class Index_controller extends Controller
 {
 	public function __construct()
@@ -28,48 +17,56 @@ class Index_controller extends Controller
 			{
 				$errors = [];
 
-				if (!isset($_POST['username']) OR empty($_POST['username']))
-					array_push($errors, ['username','Ingrese su usuario o correo electrónico']);
+				if (!isset($_POST['email']) OR empty($_POST['email']))
+					array_push($errors, ['email','No deje este campo vacío']);
 
 				if (!isset($_POST['password']) OR empty($_POST['password']))
-					array_push($errors, ['password','Ingrese su contraseña']);
+					array_push($errors, ['password','No deje este campo vacío']);
 
 				if (empty($errors))
 				{
-					$user = $this->model->get_user($_POST);
+					$query = $this->model->get_login($_POST);
 
-					if (!empty($user))
+					if (!empty($query))
 					{
-						$password = explode(':', $user['password']);
-						$password = ($this->security->create_hash('sha1', $_POST['password'] . $password[1]) === $password[0]) ? true : false;
-
-						if ($password == true)
+						if ($query['status'] == true)
 						{
-							Session::init();
+							$query['password'] = explode(':', $query['password']);
+							$query['password'] = ($this->security->create_hash('sha1', $_POST['password'] . $query['password'][1]) === $query['password'][0]) ? true : false;
 
-							Session::create_session_login([
-								'token' => $this->security->random_string(16),
-								'id_user' => $user['id_user'],
-								'username' => $user['username'],
-								'level' => $user['level'],
-								'last_access' => Functions::get_date_hour()
-							]);
+							if ($query['password'] == true)
+							{
+								unset($query['password']);
+								unset($query['status']);
 
-							Session::set_value('_vkye_name', $user['name']);
-							Session::set_value('_vkye_email', $user['email']);
-							Session::set_value('_vkye_avatar', $user['avatar']);
+								Session::init();
+								Session::set_value('session', true);
+								Session::set_value('user', $query);
+								Session::set_value('_vkye_token', Functions::get_random_string());
+								Session::set_value('_vkye_id_user', $query['id']);
+								Session::set_value('_vkye_last_access', Functions::get_current_date());
 
-							echo json_encode([
-								'status' => 'success',
-								'path' => User_level_vkye_adm::redirection()
-							]);
+								echo json_encode([
+									'status' => 'success',
+									'path' => User_level_vkye_adm::redirection()
+								]);
+							}
+							else
+							{
+								echo json_encode([
+									'status' => 'error',
+									'errors' => [
+										['password','Contraseña incorrecta']
+									]
+								]);
+							}
 						}
 						else
 						{
 							echo json_encode([
 								'status' => 'error',
-								'message' => [
-									['password','Contraseña incorrecta']
+								'errors' => [
+									['email','Este usuario no está activado']
 								]
 							]);
 						}
@@ -78,8 +75,8 @@ class Index_controller extends Controller
 					{
 						echo json_encode([
 							'status' => 'error',
-							'message' => [
-								['username','Usuario incorrecto']
+							'errors' => [
+								['email','Este usuario no exíste']
 							]
 						]);
 					}
@@ -88,7 +85,7 @@ class Index_controller extends Controller
 				{
 					echo json_encode([
 						'status' => 'error',
-						'message' => $errors
+						'errors' => $errors
 					]);
 				}
 			}
@@ -98,6 +95,12 @@ class Index_controller extends Controller
 			define('_title', '{$lang.title} | ' . Configuration::$web_page);
 
 			$template = $this->view->render($this, 'index');
+
+			$replace = [
+
+			];
+
+			$template = $this->format->replace($replace, $template);
 
 			echo $template;
 		}

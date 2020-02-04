@@ -9,6 +9,15 @@ class Voucher_model extends Model
 		parent::__construct();
 	}
 
+	public function check_exist_voucher($token)
+	{
+		$query = $this->database->count('bookings', [
+			'token' => $token
+		]);
+
+		return ($query >= 1) ? true : false;
+	}
+
 	public function get_booking($token)
 	{
 		$query = $this->database->select('bookings', [
@@ -44,12 +53,12 @@ class Voucher_model extends Model
 		return !empty($query) ? Functions::get_array_json_decoded($query[0]) : null;
 	}
 
-	public function new_request($data)
+	public function create_request($data)
 	{
 		$query = $this->database->update('bookings', [
 			'request' => json_encode([
 				'type' => $data['request'],
-				'observations' => $data['observations']
+				'details' => $data['details']
 			]),
 		], [
 			'token' => $data['booking']['token']

@@ -29,6 +29,7 @@
             <nav>
                 <ul>
                     <li><a href="/">{$lang.index}</a></li>
+                    <li><a href="/voucher">{$lang.voucher}</a></li>
                     <li><a href="/contact">{$lang.contact}</a></li>
                 </ul>
             </nav>

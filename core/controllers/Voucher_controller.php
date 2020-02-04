@@ -17,6 +17,53 @@ class Voucher_controller extends Controller
 
 	public function index($params)
 	{
+        if (Format::exist_ajax_request() == true)
+		{
+			if ($_POST['action'] == 'search_voucher')
+			{
+				$errors = [];
+
+				if (!isset($_POST['token']) OR empty($_POST['token']))
+					array_push($errors, ['token','{$lang.dont_leave_this_field_empty}']);
+				else if ($this->model->check_exist_voucher($_POST['token']) == false)
+					array_push($errors, ['token','{$lang.invalid_field}']);
+
+				if (empty($errors))
+				{
+					echo json_encode([
+						'status' => 'success',
+						'path' => '/voucher/' . $_POST['token']
+					]);
+				}
+				else
+				{
+					echo json_encode([
+						'status' => 'error',
+						'errors' => $errors
+					]);
+				}
+			}
+		}
+		else
+		{
+			define('_title', '{$lang.voucher} | ' . Configuration::$web_page);
+
+			$template = $this->view->render($this, 'index');
+
+			$replace = [
+				'{$seo_title}' => '',
+				'{$seo_keywords}' => '',
+				'{$seo_description}' => ''
+			];
+
+			$template = $this->format->replace($replace, $template);
+
+			echo $template;
+		}
+	}
+
+	public function details($params)
+	{
         $booking = $this->model->get_booking($params[0]);
 
         if (!empty($booking))
@@ -27,8 +74,8 @@ class Voucher_controller extends Controller
 				{
 					$errors = [];
 
-					if (!isset($_POST['observations']) OR empty($_POST['observations']))
-                        array_push($errors, ['observations','{$lang.dont_leave_this_field_empty}']);
+					if (!isset($_POST['details']) OR empty($_POST['details']))
+                        array_push($errors, ['details','{$lang.dont_leave_this_field_empty}']);
 
 					if (empty($errors))
 					{
@@ -39,7 +86,7 @@ class Voucher_controller extends Controller
 						else if ($_POST['action'] == 'request_cancel_booking')
 							$_POST['request'] = 'cancel';
 
-						$query = $this->model->new_request($_POST);
+						$query = $this->model->create_request($_POST);
 
 						if (!empty($query))
 						{
@@ -51,8 +98,14 @@ class Voucher_controller extends Controller
 							$mail_header  = 'MIME-Version: 1.0' . "\r\n";
 							$mail_header .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 							$mail_header .= 'From: ' . $booking['firstname'] . ' ' . $booking['lastname'] . ' <' . $booking['email'] . '>' . "\r\n";
-							$mail_body =
-							'Asunto: ' . $mail_subject . '<br>
+
+							if ($_POST['action'] == 'request_update_booking')
+								$mail_body = 'Tipo de solicitud: Actualización<br>';
+							if ($_POST['action'] == 'request_cancel_booking')
+								$mail_body = 'Tipo de solicitud: Cancelación<br>';
+
+							$mail_body .=
+							'Detalles de solicitud: ' . $_POST['details'] . '<br>
 							Número de reservación: ' . $booking['token'] . '<br>
 							Excursión: ' . $booking['tour']['es'] . '<br>
 							Niños: ' . $booking['paxes']['childs'] . ' Paxes<br>
@@ -68,9 +121,9 @@ class Voucher_controller extends Controller
 							Fecha de pago: ' . (($booking['payment']['status'] == true) ? Functions::get_format_date($booking['payment']['date'], 'd/m/Y') : 'Pago pendiente') . '<br>
 							Método de pago: ' . (($booking['payment']['status'] == true) ? $booking['payment']['method'] : 'Pago pendiente') . '<br>
 							Moneda de pago: ' . $booking['payment']['currency'] . '<br>
-							Idioma: ' . $booking['language'] . '<br>
-							Estado de reservación: ' . (($booking['canceled'] == true) ? 'Cancelada' : 'Activa') . '<br>
-							Fecha de registro: ' . Functions::get_format_date($booking['registration_date'], 'd/m/Y');
+							Idioma de registro: ' . $booking['language'] . '<br>
+							Fecha de registro: ' . Functions::get_format_date($booking['registration_date'], 'd/m/Y') . '<br>
+							Estado de reservación: ' . (($booking['canceled'] == true) ? 'Cancelada' : 'Activa');
 
 							mail(Session::get_value('settings')['contact']['email']['es'], $mail_subject, $mail_body, $mail_header);
 
