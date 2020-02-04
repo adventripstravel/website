@@ -2,7 +2,19 @@
 
 $(document).ready(function()
 {
-    $('form[name="search_voucher"]').on('submit', function(e)
+    $('[data-modal="request_update_booking"]').modal().onCancel(function()
+    {
+        $('[data-modal="request_update_booking"]').find('form')[0].reset();
+        $('[data-modal="request_update_booking"]').find('label.error').removeClass('error');
+        $('[data-modal="request_update_booking"]').find('p.error').remove();
+    });
+
+    $('[data-modal="request_update_booking"]').modal().onSuccess(function()
+    {
+        $('[data-modal="request_update_booking"]').find('form').submit();
+    });
+
+    $('form[name="request_update_booking"]').on('submit', function(e)
     {
         e.preventDefault();
 
@@ -10,7 +22,7 @@ $(document).ready(function()
 
         $.ajax({
             type: 'POST',
-            data: form.serialize() + '&action=search_voucher',
+            data: form.serialize() + '&action=request_update_booking',
             processData: false,
             cache: false,
             dataType: 'json',
@@ -18,7 +30,47 @@ $(document).ready(function()
             {
                 checkFormDataErrors(form, response, function()
                 {
-                    window.location.href = response.path;
+                    $('[data-modal="success"]').addClass('view');
+                    $('[data-modal="success"]').find('main > p').html(response.message);
+
+                    setTimeout(function() { location.reload(); }, 1500);
+                });
+            }
+        });
+    });
+
+    $('[data-modal="request_cancel_booking"]').modal().onCancel(function()
+    {
+        $('[data-modal="request_cancel_booking"]').find('form')[0].reset();
+        $('[data-modal="request_cancel_booking"]').find('label.error').removeClass('error');
+        $('[data-modal="request_cancel_booking"]').find('p.error').remove();
+    });
+
+    $('[data-modal="request_cancel_booking"]').modal().onSuccess(function()
+    {
+        $('[data-modal="request_cancel_booking"]').find('form').submit();
+    });
+
+    $('form[name="request_cancel_booking"]').on('submit', function(e)
+    {
+        e.preventDefault();
+
+        var form = $(this);
+
+        $.ajax({
+            type: 'POST',
+            data: form.serialize() + '&action=request_cancel_booking',
+            processData: false,
+            cache: false,
+            dataType: 'json',
+            success: function(response)
+            {
+                checkFormDataErrors(form, response, function()
+                {
+                    $('[data-modal="success"]').addClass('view');
+                    $('[data-modal="success"]').find('main > p').html(response.message);
+
+                    setTimeout(function() { location.reload(); }, 1500);
                 });
             }
         });

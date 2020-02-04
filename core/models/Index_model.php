@@ -98,4 +98,13 @@ class Index_model extends Model
 
 		return $data['public'];
 	}
+
+	public function check_exist_voucher($token)
+	{
+		$query = $this->database->count('bookings', [
+			'token' => $token
+		]);
+
+		return ($query >= 1) ? true : false;
+	}
 }

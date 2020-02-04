@@ -15,7 +15,7 @@ $this->dependencies->add(['js', '{$path.js}Index/index.min.js']);
         {$div_main_tour_price}
         <a href="{$main_tour_url}">{$lang.book_now}</a>
     </section>
-    <!-- <section class="hm-st-2">
+    <section class="hm-st-2">
         <div class="container">
             <form name="search_voucher">
                 <fieldset class="fields-group">
@@ -26,7 +26,7 @@ $this->dependencies->add(['js', '{$path.js}Index/index.min.js']);
                 </fieldset>
             </form>
         </div>
-    </section> -->
+    </section>
     <section class="hm-st-3">
         {$art_tours}
     </section>

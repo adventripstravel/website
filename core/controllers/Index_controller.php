@@ -19,7 +19,30 @@ class Index_controller extends Controller
 	{
 		if (Format::exist_ajax_request() == true)
 		{
+			if ($_POST['action'] == 'search_voucher')
+			{
+				$errors = [];
 
+				if (!isset($_POST['token']) OR empty($_POST['token']))
+					array_push($errors, ['token','{$lang.dont_leave_this_field_empty}']);
+				else if ($this->model->check_exist_voucher($_POST['token']) == false)
+					array_push($errors, ['token','{$lang.invalid_field}']);
+
+				if (empty($errors))
+				{
+					echo json_encode([
+						'status' => 'success',
+						'path' => '/voucher/' . $_POST['token']
+					]);
+				}
+				else
+				{
+					echo json_encode([
+						'status' => 'error',
+						'errors' => $errors
+					]);
+				}
+			}
 		}
 		else
 		{
