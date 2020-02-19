@@ -1,7 +1,32 @@
 'use strict';
 
+get_total();
+
 $(document).ready(function()
 {
+    const DOM = $(this);
+
+    $("input[name='babies']").TouchSpin({
+        min: 0,
+        max: 10,
+        stepinterval: 1
+    });
+    $("input[name='childs']").TouchSpin({
+        min: 0,
+        max: 20,
+        stepinterval: 1
+    });
+    $("input[name='adults']").TouchSpin({
+        min: 1,
+        max: 20,
+        stepinterval: 1
+    });
+    $("input[name='paxes']").TouchSpin({
+        min: 1,
+        max: 30,
+        stepinterval: 1
+    });
+
     $('.fancybox-thumb').fancybox({
         openEffect  : 'elastic',
 		closeEffect  : 'elastic',
@@ -11,12 +36,15 @@ $(document).ready(function()
         padding: 0
     });
 
-    $('[name="childs"]').on('change', function()
+    DOM.on('change', 'select[name="nationality"]', function ()
     {
+        DOM.find('[data-discount-text]').hide();
+        DOM.find('[data-discount-text="'+ $(this).val() +'"]').show();
+
         get_total();
     });
 
-    $('[name="adults"]').on('change', function()
+    $('[name="childs"],[name="adults"],[name="paxes"]').on('change', function()
     {
         get_total();
     });
@@ -25,21 +53,25 @@ $(document).ready(function()
     {
         e.preventDefault();
 
-        var form = $(this);
+        const form = $(this);
+        let post = new FormData(this);
+
+        post.append('action', 'create_booking');
 
         $.ajax({
             type: 'POST',
-            data: form.serialize() + '&action=create_booking',
+            data: post,
+            contentType: false,
             processData: false,
             cache: false,
             dataType: 'json',
-            success: function(response)
+            success: function ( response )
             {
                 checkFormDataErrors(form, response, function()
                 {
                     $('[data-modal="success"]').addClass('view');
-                    $('[data-modal="success"]').find('main > p').html(response.message);
-
+                    // $('[data-modal="success"]').find('main > p').html(response.message);
+                    //
                     setTimeout(function() { location.reload(); }, 3000);
                 });
             }
@@ -137,20 +169,49 @@ function map()
 
 function get_total()
 {
-    var form = $('form[name="create_booking"]');
+    const form = $('form[name="create_booking"]');
+    let post = new FormData();
+
+    post.append('babies', $('[name="babies"]').val());
+    post.append('childs', $('[name="childs"]').val());
+    post.append('adults', $('[name="adults"]').val());
+    post.append('paxes', $('[name="paxes"]').val());
+    post.append('nationality', $('[name="nationality"]').val());
+    post.append('action', 'get_total');
 
     $.ajax({
         type: 'POST',
-        data: 'childs=' + $('[name="childs"]').val() + '&adults=' + $('[name="adults"]').val() + '&apply_national_discount=' + $('[name="apply_national_discount"]').val() + '&action=get_total',
+        data: post,
+        contentType: false,
         processData: false,
         cache: false,
         dataType: 'json',
-        success: function(response)
+        success: function ( response )
         {
             checkFormDataErrors(form, response, function()
             {
-                $('[name="total"]').val(response.data.total);
+                $( document ).find('[name="total"]').val(response.total);
             });
         }
     });
+
+
+
+
+    // var form = $('form[name="create_booking"]');
+    //
+    // $.ajax({
+    //     type: 'POST',
+    //     data: 'childs=' + $('[name="childs"]').val() + '&adults=' + $('[name="adults"]').val() + '&apply_national_discount=' + $('[name="apply_national_discount"]').val() + '&action=get_total',
+    //     processData: false,
+    //     cache: false,
+    //     dataType: 'json',
+    //     success: function(response)
+    //     {
+    //         checkFormDataErrors(form, response, function()
+    //         {
+    //             $('[name="total"]').val(response.data.total);
+    //         });
+    //     }
+    // });
 }

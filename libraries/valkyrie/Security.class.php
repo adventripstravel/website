@@ -76,8 +76,6 @@ class Security
 
             $find   = array(' ', '&', '\r\n', '\n', '+');
             $str    = str_replace ($find, '-', $str);
-
-            $str = strtolower($str);
         }
 
         return $str;

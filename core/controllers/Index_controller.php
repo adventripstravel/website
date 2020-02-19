@@ -164,7 +164,7 @@ class Index_controller extends Controller
 				}
 
 				$art_tours .=
-				'		<a href="/booking/' . Functions::get_cleaned_string_to_url($value['name'][$this->lang]) . '/' . $value['id'] . '">' . (($value['available'] == true) ? '{$lang.book_now}' : '{$lang.not_available} | {$lang.view_more}') . '</a>
+				'		<a href="/booking/' . $value['url'] . '">' . (($value['available'] == true) ? '{$lang.book_now}' : '{$lang.not_available} | {$lang.view_more}') . '</a>
 					</main>
 		        </article>';
 			}
@@ -178,7 +178,7 @@ class Index_controller extends Controller
 				'{$main_tour_summary}' => $main_tour['summary'][$this->lang],
 				'{$main_tour_destination}' => $main_tour['destination'],
 				'{$div_main_tour_price}' => $div_main_tour_price,
-				'{$main_tour_url}' => '/booking/' . Functions::get_cleaned_string_to_url($main_tour['name'][$this->lang]) . '/' . $main_tour['id'],
+				'{$main_tour_url}' => '/booking/' . $main_tour['url'],
 				'{$art_tours}' => $art_tours
 			];
 

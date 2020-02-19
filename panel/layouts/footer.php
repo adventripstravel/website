@@ -1,34 +1,29 @@
 <?php defined('_EXEC') or die; ?>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">© 2020 <b>Adventrips</b> <span class="d-none d-sm-inline-block"> - By <a href="codemonkey.com.mx" target="_blank">codemonkey.com.mx</a>.</span></div>
+                </div>
+            </div>
+        </footer>
+        <!-- End Footer -->
 
-        <section class="modal success" data-modal="success">
-            <div class="content">
-                <main>
-                    <i class="material-icons">check_circle</i>
-                    <p></p>
-                </main>
-            </div>
-        </section>
-        <section class="modal alert" data-modal="alert">
-            <div class="content">
-                <header>
-                    <h4>{$lang.warning}</h4>
-                </header>
-                <main>
-                    <i class="material-icons">warning</i>
-                    <p></p>
-                </main>
-                <footer>
-                    <a class="btn btn-colored" button-close>{$lang.accept}</a>
-                </footer>
-            </div>
-        </section>
-        <script src="../{$path.js}jquery-2.1.4.min.js"></script>
-        <script src="../{$path.js}valkyrie.min.js"></script>
-        <script src="../{$path.js}cm-scripts.min.js"></script>
-        <script src="{$path.js}cm-scripts-dashboard.min.js"></script>
-        <script src="{$path.js}scripts.min.js"></script>
-        <script defer src="https://kit.fontawesome.com/743152b0c5.js"></script> <!-- Font awenson icons -->
+        <!-- jQuery  -->
+        <script src="{$path.js}jquery.min.js"></script>
+        <script src="{$path.js}bootstrap.bundle.min.js"></script>
+        <script src="{$path.js}modernizr.min.js"></script>
+        <script src="{$path.js}detect.js"></script>
+        <script src="{$path.js}fastclick.js"></script>
+        <script src="{$path.js}jquery.slimscroll.js"></script>
+        <script src="{$path.js}jquery.blockUI.js"></script>
+        <script src="{$path.js}waves.js"></script>
+
+        <!-- App js -->
+        <script src="{$path.js}app.js"></script>
+
         {$dependencies.js}
+
         {$dependencies.other}
     </body>
 </html>

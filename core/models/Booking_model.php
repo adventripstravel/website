@@ -9,29 +9,35 @@ class Booking_model extends Model
 		parent::__construct();
 	}
 
-	public function get_tour($id)
+	public function get_tour( $url = null )
 	{
+		if ( is_null($url) )
+			return false;
+
 		$query = $this->database->select('tours', [
 			'[>]destinations' => [
 				'destination' => 'id'
 			]
 		], [
 			'tours.id',
-			'tours.name',
-			'tours.summary',
-			'tours.description',
-			'tours.schedules',
-			'tours.price',
+			'tours.url',
+			'tours.name [JSON]',
+			'tours.summary [JSON]',
+			'tours.description [JSON]',
+			'tours.schedules [JSON]',
+			'tours.price [JSON]',
 			'tours.cover',
-			'tours.gallery',
-			'destinations.name(destination)',
-			'tours.seo',
+			'tours.gallery [JSON]',
+			'destinations.name (destination)',
+			'tours.seo [JSON]',
 			'tours.available'
 		], [
-            'tours.id' => $id
+            'tours.url' => $url
         ]);
 
-		return !empty($query) ? Functions::get_array_json_decoded($query[0]) : null;
+		return ( isset($query[0]) ) ? $query[0] : null;
+
+		// return !empty($query) ? Functions::get_array_json_decoded($query[0]) : null;
 	}
 
 	public function get_phone_ladas()
@@ -44,7 +50,7 @@ class Booking_model extends Model
 		return Functions::get_array_json_decoded($query);
 	}
 
-	public function get_main_tours($id)
+	public function get_main_tours($url)
 	{
 		$query = $this->database->select('tours', [
 			'[>]destinations' => [
@@ -52,6 +58,7 @@ class Booking_model extends Model
 			]
 		], [
 			'tours.id',
+			'tours.url',
 			'tours.name',
 			'tours.summary',
 			'tours.price',
@@ -60,7 +67,7 @@ class Booking_model extends Model
 			'tours.available'
 		], [
             'AND' => [
-				'tours.id[!]' => $id,
+				'tours.url[!]' => $url,
 				'tours.priority[>=]' => 1
 			],
 			'ORDER' => [
@@ -108,64 +115,76 @@ class Booking_model extends Model
 		// return (($data['childs'] * $data['tour']['price']['child']) + ($data['adults'] * $data['tour']['price']['adult']));
 	}
 
-	public function create_booking($data)
+	public function create_booking($data = null)
 	{
-		$query = $this->database->insert('bookings', [
-			'token' => Functions::get_random_string(8),
-			'tour' => $data['tour']['id'],
-			'paxes' => json_encode([
-				'childs' => $data['childs'],
-				'adults' => $data['adults']
-			]),
-			'booked_date' => $data['date'],
+		if ( is_null($data) )
+			return null;
+
+		$tour = $data['tour'];
+		unset($data['tour']);
+
+		$this->database->insert('bookings', [
+			'folio' => strtoupper(Functions::get_random_string(8)),
+			'customer' => $data['customer'],
+			'paxes' => $data['paxes'],
 			'observations' => $data['observations'],
-			'firstname' => $data['firstname'],
-			'lastname' => $data['lastname'],
-			'email' => $data['email'],
-			'phone' => json_encode([
-				'lada' => $data['phone_lada'],
-				'number' => $data['phone_number']
-			]),
-			'price' => json_encode([
-				'child' => $data['tour']['price']['child'],
-				'adult' => $data['tour']['price']['adult']
-			]),
-			'total' => $this->get_total($data),
-			'payment' => json_encode([
-				'status' => false,
-				'date' => null,
-				'method' => null,
-				'currency' => Session::get_value('currency'),
-				'exchange' => Functions::get_currency_exchange(1, 'USD', 'MXN')
-			]),
-			'language' => $data['language'],
-			'canceled' => false,
-			'request' => json_encode([
-				'type' => 'none'
-			]),
-			'registration_date' => Functions::get_current_date()
+			'data' => $data,
+			'tour' => $tour,
+			'creation_date' => date('Y-m-d H:i:s')
 		]);
 
-		if (!empty($query))
-		{
-			$query = $this->database->select('bookings', [
-				'token',
-				'paxes',
-				'booked_date',
-				'observations',
-				'firstname',
-				'lastname',
-				'email',
-				'phone',
-				'total',
-				'language'
-			], [
-				'id' => $this->database->id()
-			]);
 
-			return !empty($query) ? Functions::get_array_json_decoded($query[0]) : null;
-		}
-		else
-			return null;
+		return $this->database->id();
+
+		// $query = $this->database->insert('bookings', [
+		// 	'token' => Functions::get_random_string(8),
+		// 	'tour' => $data['tour']['id'],
+		// 	'paxes' => $data['total_paxes'],
+		// 	'booked_date' => $data['date'],
+		// 	'observations' => $data['observations'],
+		// 	'firstname' => $data['firstname'],
+		// 	'lastname' => $data['lastname'],
+		// 	'email' => $data['email'],
+		// 	'phone' => json_encode([
+		// 		'lada' => $data['phone_lada'],
+		// 		'number' => $data['phone_number']
+		// 	]),
+		// 	'total' => $data['total'],
+		// 	'payment' => json_encode([
+		// 		'status' => false,
+		// 		'date' => null,
+		// 		'method' => null,
+		// 		'currency' => Session::get_value('currency'),
+		// 		'exchange' => Functions::get_currency_exchange(1, 'USD', 'MXN')
+		// 	]),
+		// 	'language' => $data['language'],
+		// 	'canceled' => false,
+		// 	'request' => json_encode([
+		// 		'type' => 'none'
+		// 	]),
+		// 	'registration_date' => Functions::get_current_date()
+		// ]);
+		//
+		// if (!empty($query))
+		// {
+		// 	$query = $this->database->select('bookings', [
+		// 		'token',
+		// 		'paxes',
+		// 		'booked_date',
+		// 		'observations',
+		// 		'firstname',
+		// 		'lastname',
+		// 		'email',
+		// 		'phone',
+		// 		'total',
+		// 		'language'
+		// 	], [
+		// 		'id' => $this->database->id()
+		// 	]);
+		//
+		// 	return !empty($query) ? Functions::get_array_json_decoded($query[0]) : null;
+		// }
+		// else
+		// 	return null;
 	}
 }

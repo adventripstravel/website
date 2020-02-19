@@ -490,4 +490,131 @@ class Functions
                 unlink($upload_directory . $file);
         }
     }
+
+    static public function get_browser()
+    {
+        $browser = "OTHER";
+
+        foreach ( ["IE","OPERA","MOZILLA","NETSCAPE","FIREFOX","SAFARI","CHROME"] as $parent )
+        {
+            $s = strpos(strtoupper($_SERVER['HTTP_USER_AGENT']), $parent);
+            $f = $s + strlen($parent);
+            $version = substr($_SERVER['HTTP_USER_AGENT'], $f, 15);
+            $version = preg_replace('/[^0-9,.]/','',$version);
+
+            if ( $s )
+                $browser = $parent;
+        }
+
+        return $browser;
+    }
+
+    static public function get_ip()
+    {
+        if (getenv('HTTP_CLIENT_IP'))
+            return getenv('HTTP_CLIENT_IP');
+        else if(getenv('HTTP_X_FORWARDED_FOR'))
+            return getenv('HTTP_X_FORWARDED_FOR');
+        else if(getenv('HTTP_X_FORWARDED'))
+            return getenv('HTTP_X_FORWARDED');
+        else if(getenv('HTTP_FORWARDED_FOR'))
+            return getenv('HTTP_FORWARDED_FOR');
+        else if(getenv('HTTP_FORWARDED'))
+            return getenv('HTTP_FORWARDED');
+        else if(getenv('REMOTE_ADDR'))
+            return getenv('REMOTE_ADDR');
+        else
+            return 'UNKNOWN';
+    }
+
+    static function get_os()
+    {
+        $os = 'OTHER';
+
+        foreach ( ["WIN","MAC","LINUX"] as $val )
+        {
+            if ( strpos(strtoupper($_SERVER['HTTP_USER_AGENT']),$val) !== false )
+                $os = $val;
+        }
+
+        return $os;
+    }
+
+    static public function get_device()
+    {
+        if ( stristr($_SERVER['HTTP_USER_AGENT'],'ipad') )
+            return "iPad";
+        else if( stristr($_SERVER['HTTP_USER_AGENT'],'iphone') || strstr($_SERVER['HTTP_USER_AGENT'],'iphone') )
+            return "iPhone";
+        else if( stristr($_SERVER['HTTP_USER_AGENT'],'blackberry') )
+            return "BlackBerry";
+        else if( stristr($_SERVER['HTTP_USER_AGENT'],'android') )
+            return "Android";
+        else
+            return "Otro";
+    }
+
+    static public function device()
+    {
+        $tablet_browser = 0;
+        $mobile_browser = 0;
+
+        if ( preg_match( '/(tablet|ipad|playbook)|(android(?!.*(mobi|opera mini)))/i', strtolower( $_SERVER['HTTP_USER_AGENT'] ) ) )
+            $tablet_browser++;
+
+        if ( preg_match( '/(up.browser|up.link|mmp|symbian|smartphone|midp|wap|phone|android|iemobile)/i', strtolower( $_SERVER['HTTP_USER_AGENT'] ) ) )
+            $mobile_browser++;
+
+        if ( ( strpos( strtolower( $_SERVER['HTTP_ACCEPT'] ), 'application/vnd.wap.xhtml+xml' ) > 0 ) or ( ( isset( $_SERVER['HTTP_X_WAP_PROFILE'] ) or isset( $_SERVER['HTTP_PROFILE'] ) ) ) )
+            $mobile_browser++;
+
+        $mobile_ua = strtolower( substr( $_SERVER['HTTP_USER_AGENT'], 0, 4 ) );
+        $mobile_agents = [
+            'w3c ','acs-','alav','alca','amoi','audi','avan','benq','bird','blac',
+            'blaz','brew','cell','cldc','cmd-','dang','doco','eric','hipt','inno',
+            'ipaq','java','jigs','kddi','keji','leno','lg-c','lg-d','lg-g','lge-',
+            'maui','maxo','midp','mits','mmef','mobi','mot-','moto','mwbp','nec-',
+            'newt','noki','palm','pana','pant','phil','play','port','prox',
+            'qwap','sage','sams','sany','sch-','sec-','send','seri','sgh-','shar',
+            'sie-','siem','smal','smar','sony','sph-','symb','t-mo','teli','tim-',
+            'tosh','tsm-','upg1','upsi','vk-v','voda','wap-','wapa','wapi','wapp',
+            'wapr','webc','winw','winw','xda ','xda-'
+        ];
+
+        if ( in_array( $mobile_ua, $mobile_agents ) )
+            $mobile_browser++;
+
+        if ( strpos( strtolower( $_SERVER['HTTP_USER_AGENT'] ), 'opera mini' ) > 0 )
+        {
+            $mobile_browser++;
+
+            $stock_ua = strtolower( isset( $_SERVER['HTTP_X_OPERAMINI_PHONE_UA'] ) ? $_SERVER['HTTP_X_OPERAMINI_PHONE_UA'] : ( isset( $_SERVER['HTTP_DEVICE_STOCK_UA'] ) ? $_SERVER['HTTP_DEVICE_STOCK_UA'] : '' ) );
+
+            if ( preg_match('/(tablet|ipad|playbook)|(android(?!.*mobile))/i', $stock_ua) )
+                $tablet_browser++;
+		}
+
+        if ( $tablet_browser > 0 )
+            return 'tablet';
+        else if ( $mobile_browser > 0 )
+            return 'mobile';
+        else
+            return 'desktop';
+    }
+
+    static public function get_client_info()
+    {
+        $info['ip'] = Functions::get_ip();
+		$info['browser'] = Functions::get_browser();
+		$info['device'] = ucfirst(Functions::device());
+
+		if ( $info['device'] == ucfirst('tablet') || $info['device'] == ucfirst('mobile') )
+			$info['so'] = Functions::get_device();
+		else
+			$info['so'] = Functions::get_os();
+
+		$info['HTTP_USER_AGENT'] = $_SERVER['HTTP_USER_AGENT'];
+
+        return $info;
+    }
 }

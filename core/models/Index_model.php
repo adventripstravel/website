@@ -17,6 +17,7 @@ class Index_model extends Model
 			]
 		], [
 			'tours.id',
+			'tours.url',
 			'tours.name',
 			'tours.summary',
 			'tours.price',
@@ -38,6 +39,7 @@ class Index_model extends Model
 			]
 		], [
 			'tours.id',
+			'tours.url',
 			'tours.name',
 			'tours.summary',
 			'tours.price',

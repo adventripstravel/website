@@ -1,14 +1,14 @@
 <?php
 /**
- * @package    Valkyrie.Platform.Administrator
  *
- * @copyright  Copyright (C) CodeMonkey - Platform. All Rights Reserved.
+ * @package Valkyrie.Platform.Administrator
+ *
+ * @since 1.0.0
+ * @version 1.0.0
  * @license    You can see LICENSE.txt
- * @version    1.0
- * Build date  27 Jul 15
  *
- * @author     CodeMonkey <info@codemonkey.com.mx>
- * Website     https://www.codemonkey.com.mx/
+ * @author     David Miguel Gómez Macías < davidgomezmacias@gmail.com >
+ * @copyright  Copyright (C) CodeMonkey - Platform. All Rights Reserved.
  */
 
 define('_EXEC', 1);
