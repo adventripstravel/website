@@ -30,8 +30,9 @@ $(document).ready(function()
             {
                 checkFormDataErrors(form, response, function()
                 {
-                    $('[data-modal="success"] main > p').html(response.message);
                     $('[data-modal="success"]').addClass('view');
+                    $('[data-modal="success"]').find('main > p').html(response.message);
+
                     setTimeout(function() { location.reload(); }, 1500);
                 });
             }
@@ -66,8 +67,9 @@ $(document).ready(function()
             {
                 checkFormDataErrors(form, response, function()
                 {
-                    $('[data-modal="success"] main > p').html(response.message);
                     $('[data-modal="success"]').addClass('view');
+                    $('[data-modal="success"]').find('main > p').html(response.message);
+
                     setTimeout(function() { location.reload(); }, 1500);
                 });
             }

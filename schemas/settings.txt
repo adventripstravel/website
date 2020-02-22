@@ -16,8 +16,8 @@
             'en' => 'reservations@adventrips.com'
         ],
         'phone' => [
-            'es' => '+(52) 012 345 67 89',
-            'en' => '+(52) 012 345 67 89'
+            'es' => '+(52) 998 337 59 18',
+            'en' => '+(52) 998 337 59 18'
         ]
     ]),
     'social_media' => json_encode([

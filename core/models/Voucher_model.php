@@ -44,12 +44,12 @@ class Voucher_model extends Model
 		return !empty($query) ? Functions::get_array_json_decoded($query[0]) : null;
 	}
 
-	public function new_request($data)
+	public function create_request($data)
 	{
 		$query = $this->database->update('bookings', [
 			'request' => json_encode([
 				'type' => $data['request'],
-				'observations' => $data['observations']
+				'details' => $data['details']
 			]),
 		], [
 			'token' => $data['booking']['token']

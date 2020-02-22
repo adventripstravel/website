@@ -132,6 +132,18 @@ class Functions
     }
 
     /**
+    * @summary Entrega la fecha y hora actual.
+    *
+    * @param string $format: Formato en el que retornará la fecha y hora.
+    *
+    * @return date
+    */
+    static public function get_current_datehour($format = 'Y-m-d H:i:s')
+    {
+		return date($format, time());
+    }
+
+    /**
     * @summary Entrega la diferencia entre dos fechas, horas o fechas y horas.
     *
     * @param date-time-datetime $datehour1: Fecha inicial.
@@ -265,9 +277,9 @@ class Functions
     *
     * @return string
     */
-    public static function get_format_currency($number = 0, $currency = 'MXN')
+    public static function get_format_currency($number = 0, $currency = 'MXN', $decimals = 2)
     {
-        return '$ ' . number_format($number, 2, '.', ',') . ' ' . $currency;
+        return '$ ' . number_format($number, $decimals, '.', ',') . ' ' . $currency;
     }
 
     /**
@@ -285,16 +297,24 @@ class Functions
     /**
     * @summary: Valida el permiso de acceso a un módulo o funcionalidad cuando existe una sesión activa.
     *
-    * @param string $user_level: Nivel de usuario a validar.
+    * @param array $permissions: Permisos a revisar.
     *
     * @return boolean
     */
-    public static function check_access($user_level)
+    static public function check_access($permissions)
     {
-		if (in_array(Session::get_value('_vkye_user_level'), $user_level))
-            return true;
-        else
-            return false;
+        $access = false;
+
+        if (Session::exists_var('session') == true)
+        {
+            foreach ($permissions as $value)
+            {
+                if (in_array($value, Session::get_value('user')['user_permissions']))
+                    $access = true;
+            }
+        }
+
+        return $access;
     }
 
     /**
@@ -469,5 +489,132 @@ class Functions
             else
                 unlink($upload_directory . $file);
         }
+    }
+
+    static public function get_browser()
+    {
+        $browser = "OTHER";
+
+        foreach ( ["IE","OPERA","MOZILLA","NETSCAPE","FIREFOX","SAFARI","CHROME"] as $parent )
+        {
+            $s = strpos(strtoupper($_SERVER['HTTP_USER_AGENT']), $parent);
+            $f = $s + strlen($parent);
+            $version = substr($_SERVER['HTTP_USER_AGENT'], $f, 15);
+            $version = preg_replace('/[^0-9,.]/','',$version);
+
+            if ( $s )
+                $browser = $parent;
+        }
+
+        return $browser;
+    }
+
+    static public function get_ip()
+    {
+        if (getenv('HTTP_CLIENT_IP'))
+            return getenv('HTTP_CLIENT_IP');
+        else if(getenv('HTTP_X_FORWARDED_FOR'))
+            return getenv('HTTP_X_FORWARDED_FOR');
+        else if(getenv('HTTP_X_FORWARDED'))
+            return getenv('HTTP_X_FORWARDED');
+        else if(getenv('HTTP_FORWARDED_FOR'))
+            return getenv('HTTP_FORWARDED_FOR');
+        else if(getenv('HTTP_FORWARDED'))
+            return getenv('HTTP_FORWARDED');
+        else if(getenv('REMOTE_ADDR'))
+            return getenv('REMOTE_ADDR');
+        else
+            return 'UNKNOWN';
+    }
+
+    static function get_os()
+    {
+        $os = 'OTHER';
+
+        foreach ( ["WIN","MAC","LINUX"] as $val )
+        {
+            if ( strpos(strtoupper($_SERVER['HTTP_USER_AGENT']),$val) !== false )
+                $os = $val;
+        }
+
+        return $os;
+    }
+
+    static public function get_device()
+    {
+        if ( stristr($_SERVER['HTTP_USER_AGENT'],'ipad') )
+            return "iPad";
+        else if( stristr($_SERVER['HTTP_USER_AGENT'],'iphone') || strstr($_SERVER['HTTP_USER_AGENT'],'iphone') )
+            return "iPhone";
+        else if( stristr($_SERVER['HTTP_USER_AGENT'],'blackberry') )
+            return "BlackBerry";
+        else if( stristr($_SERVER['HTTP_USER_AGENT'],'android') )
+            return "Android";
+        else
+            return "Otro";
+    }
+
+    static public function device()
+    {
+        $tablet_browser = 0;
+        $mobile_browser = 0;
+
+        if ( preg_match( '/(tablet|ipad|playbook)|(android(?!.*(mobi|opera mini)))/i', strtolower( $_SERVER['HTTP_USER_AGENT'] ) ) )
+            $tablet_browser++;
+
+        if ( preg_match( '/(up.browser|up.link|mmp|symbian|smartphone|midp|wap|phone|android|iemobile)/i', strtolower( $_SERVER['HTTP_USER_AGENT'] ) ) )
+            $mobile_browser++;
+
+        if ( ( strpos( strtolower( $_SERVER['HTTP_ACCEPT'] ), 'application/vnd.wap.xhtml+xml' ) > 0 ) or ( ( isset( $_SERVER['HTTP_X_WAP_PROFILE'] ) or isset( $_SERVER['HTTP_PROFILE'] ) ) ) )
+            $mobile_browser++;
+
+        $mobile_ua = strtolower( substr( $_SERVER['HTTP_USER_AGENT'], 0, 4 ) );
+        $mobile_agents = [
+            'w3c ','acs-','alav','alca','amoi','audi','avan','benq','bird','blac',
+            'blaz','brew','cell','cldc','cmd-','dang','doco','eric','hipt','inno',
+            'ipaq','java','jigs','kddi','keji','leno','lg-c','lg-d','lg-g','lge-',
+            'maui','maxo','midp','mits','mmef','mobi','mot-','moto','mwbp','nec-',
+            'newt','noki','palm','pana','pant','phil','play','port','prox',
+            'qwap','sage','sams','sany','sch-','sec-','send','seri','sgh-','shar',
+            'sie-','siem','smal','smar','sony','sph-','symb','t-mo','teli','tim-',
+            'tosh','tsm-','upg1','upsi','vk-v','voda','wap-','wapa','wapi','wapp',
+            'wapr','webc','winw','winw','xda ','xda-'
+        ];
+
+        if ( in_array( $mobile_ua, $mobile_agents ) )
+            $mobile_browser++;
+
+        if ( strpos( strtolower( $_SERVER['HTTP_USER_AGENT'] ), 'opera mini' ) > 0 )
+        {
+            $mobile_browser++;
+
+            $stock_ua = strtolower( isset( $_SERVER['HTTP_X_OPERAMINI_PHONE_UA'] ) ? $_SERVER['HTTP_X_OPERAMINI_PHONE_UA'] : ( isset( $_SERVER['HTTP_DEVICE_STOCK_UA'] ) ? $_SERVER['HTTP_DEVICE_STOCK_UA'] : '' ) );
+
+            if ( preg_match('/(tablet|ipad|playbook)|(android(?!.*mobile))/i', $stock_ua) )
+                $tablet_browser++;
+		}
+
+        if ( $tablet_browser > 0 )
+            return 'tablet';
+        else if ( $mobile_browser > 0 )
+            return 'mobile';
+        else
+            return 'desktop';
+    }
+
+    static public function get_client_info()
+    {
+        $info['ip'] = Functions::get_ip();
+		$info['browser'] = Functions::get_browser();
+		$info['device'] = ucfirst(Functions::device());
+
+		if ( $info['device'] == ucfirst('tablet') || $info['device'] == ucfirst('mobile') )
+			$info['so'] = Functions::get_device();
+		else
+			$info['so'] = Functions::get_os();
+
+		$info['HTTP_USER_AGENT'] = $_SERVER['HTTP_USER_AGENT'];
+
+        return $info;
     }
 }

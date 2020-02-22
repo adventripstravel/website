@@ -1,5 +1,4 @@
 <?php
-
 defined('_EXEC') or die;
 
 /**
@@ -84,7 +83,7 @@ class Cpanel
         $this->format = new Format();
         $this->system = new System();
 
-        $this->load_page();
+        $this->loadPage();
     }
 
     /**
@@ -98,6 +97,7 @@ class Cpanel
     {
         ob_start("ob_gzhandler");
 
+		// Load template
 		$this->load_controller();
 
 		if ( !defined('_title') )
@@ -108,10 +108,10 @@ class Cpanel
 
 		$buffer = ob_get_contents();
 
+		// Rendering
 		$buffer = $this->render($buffer);
 
 		ob_end_clean();
-
 		return $buffer;
     }
 
@@ -120,18 +120,21 @@ class Cpanel
      *
      * @return void
      */
-    private function load_page()
+    private function loadPage()
     {
         if ( $this->system->exists_session() )
         {
-            $this->controller   = isset ($_GET['c']) ? ucwords ( Security::clean_string( $_GET['c'] ) ) : 'Dashboard';
+            $this->controller   = isset ($_GET['c']) ? ucwords ( Security::clean_string( $_GET['c'] ) ) : 'Index';
             $this->method       = isset ($_GET['m']) ? strtolower ( Security::clean_string( $_GET['m'] ) ) : 'index';
             $this->params       = isset ($_GET['p']) ? Security::clean_string( $_GET['p'] ) : '' ;
+
+            if ( $this->controller === 'System' && $this->method === 'login' )
+                $this->system->go_to_location('Index');
         }
         else
         {
-            $this->controller   = 'Index';
-            $this->method       = 'index';
+            $this->controller   = 'System';
+            $this->method       = 'login';
             $this->params       = '';
         }
     }

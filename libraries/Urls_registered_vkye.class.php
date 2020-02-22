@@ -13,7 +13,7 @@ class Urls_registered_vkye
                 'controller' => 'Index',
                 'method' => 'index'
             ],
-            '/booking/%param%/%param%' => [
+            '/booking/%param%' => [
                 'controller' => 'Booking',
                 'method' => 'index'
             ],

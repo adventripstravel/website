@@ -11,12 +11,9 @@ $this->dependencies->add(['js', '{$path.js}Index/index.min.js']);
     <section class="hm-st-1" data-image-src="{$main_tour_cover}">
         <h1>{$main_tour_name}</h1>
         <p>{$main_tour_summary}</p>
-        <span><i class="fas fa-globe-americas"></i>{$main_tour_destination}</span>
-        <div>
-            <span><i class="fas fa-baby"></i>{$main_tour_child_price}</span>
-            <span><i class="fas fa-male"></i>{$main_tour_adult_price}</span>
-        </div>
-        <a href="{$main_tour_url}">{$lang.book} | {$lang.view_more}</a>
+        <span><i class="fas fa-map-marker-alt"></i>{$main_tour_destination}</span>
+        {$div_main_tour_price}
+        <a href="{$main_tour_url}">{$lang.book_now}</a>
     </section>
     <section class="hm-st-2">
         <div class="container">
