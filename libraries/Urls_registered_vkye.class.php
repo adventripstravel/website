@@ -28,6 +28,10 @@ class Urls_registered_vkye
             '/terms' => [
                 'controller' => 'Terms',
                 'method' => 'index'
+            ],
+            '/ticket/%param%' => [
+                'controller' => 'Ticket',
+                'method' => 'index'
             ]
         ];
     }
