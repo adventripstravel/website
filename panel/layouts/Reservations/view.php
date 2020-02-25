@@ -41,7 +41,7 @@ $this->dependencies->add(['js', '{$path.js}pages/reservations/view.js?v=1.0']);
 					<div class="col-12">
 						<div class="mo-mt-2">
 							<div class="button-items text-center text-md-right">
-								<button disabled type="button" id="send_notification" class="btn btn-primary waves-effect waves-light" data-folio="<?= $reservation['folio'] ?>"><i class="fa fa-send m-r-5" style="vertical-align: middle;"></i> Reenviar notificaciones</button>
+								<!-- <button disabled type="button" id="send_notification" class="btn btn-primary waves-effect waves-light" data-folio="<?= $reservation['folio'] ?>"><i class="fa fa-send m-r-5" style="vertical-align: middle;"></i> Reenviar notificaciones</button> -->
 								<div class="btn-group dropdown">
                                     <button type="button" class="btn btn-primary waves-effect waves-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Acciones
