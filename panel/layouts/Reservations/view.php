@@ -6,7 +6,7 @@ $this->dependencies->add(['css', '{$path.plugins}sweet-alert2/sweetalert2.min.cs
 $this->dependencies->add(['js', '{$path.plugins}sweet-alert2/sweetalert2.min.js']);
 
 // Page
-$this->dependencies->add(['js', '{$path.js}pages/reservations/view.js?v=1.0']);
+$this->dependencies->add(['js', '{$path.js}pages/reservations/view.js?v=1.1']);
 
 // echo '<pre>';
 // print_R($reservation);
@@ -41,7 +41,8 @@ $this->dependencies->add(['js', '{$path.js}pages/reservations/view.js?v=1.0']);
 					<div class="col-12">
 						<div class="mo-mt-2">
 							<div class="button-items text-center text-md-right">
-								<!-- <button disabled type="button" id="send_notification" class="btn btn-primary waves-effect waves-light" data-folio="<?= $reservation['folio'] ?>"><i class="fa fa-send m-r-5" style="vertical-align: middle;"></i> Reenviar notificaciones</button> -->
+								<button type="button" id="accept_reservation" class="btn btn-success waves-effect waves-light" data-folio="<?= $reservation['folio'] ?>"><i class="fa fa-check m-r-5" style="vertical-align: middle;"></i> Aceptar reservación</button>
+								<button type="button" id="decline_reservation" class="btn btn-danger waves-effect waves-light" data-folio="<?= $reservation['folio'] ?>"><i class="fa fa-block m-r-5" style="vertical-align: middle;"></i> Declinar reservación</button>
 								<div class="btn-group dropdown">
                                     <button type="button" class="btn btn-primary waves-effect waves-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Acciones
