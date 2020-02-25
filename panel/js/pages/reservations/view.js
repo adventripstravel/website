@@ -3,7 +3,7 @@ $( document ).ready(function ()
     var DOM = $( this );
 
     // Enviar notificación
-    DOM.on('click', '#send_notification', function ()
+    DOM.on('click', '#accept_reservation', function ()
     {
         var self = $(this);
         var message = '';
@@ -11,12 +11,12 @@ $( document ).ready(function ()
 
         swal({
             title: '¿Estás seguro?',
-            text: "La notificación se reenviará al cliente.",
+            text: "La reservación será aceptada",
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#54cc96',
             cancelButtonColor: '#ff5560',
-            confirmButtonText: 'Si, reenviar',
+            confirmButtonText: 'Si',
             cancelButtonText: 'Cancelar',
             showLoaderOnConfirm: true,
             allowOutsideClick: false,
@@ -24,44 +24,57 @@ $( document ).ready(function ()
             {
                 return new Promise(function (resolve)
                 {
-                    $.post('index.php?c=reservations&m=send_notification', { folio: self.data('folio') }, function(data, status, jqXHR)
+                    setTimeout(function ()
                     {
-                        if ( data.status == 'OK' )
-                        {
-                            xhr_status = 'OK';
-                        }
-                        else
-                        {
-                            xhr_status = 'ERROR';
-                            message = ( !data.message ) ? 'Error' : data.message;
-                        }
-
-                        setTimeout(function ()
-                        {
-                            resolve();
-                        }, 500);
-                    });
+                        resolve();
+                    }, 500);
                 });
             }
         }).then(function ()
         {
-            if ( xhr_status == 'OK' )
-            {
-                swal({
-                    type: 'success',
-                    title: 'Reenviada',
-                    html: 'Se reenvió la notificación al cliente.'
-                });
-            }
-            else
-            {
-                swal({
-                    type: 'error',
-                    title: 'Error',
-                    html: message
-                });
-            }
+            swal({
+                type: 'success',
+                title: 'Aceptada',
+                html: 'Ahora la reservación fué aceptada.'
+            });
+        });
+    });
 
+    // Enviar notificación
+    DOM.on('click', '#decline_reservation', function ()
+    {
+        var self = $(this);
+        var message = '';
+        var xhr_status = '';
+
+        swal({
+            title: '¿Estás seguro?',
+            text: "La reservación se cancelará",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#54cc96',
+            cancelButtonColor: '#ff5560',
+            confirmButtonText: 'Si',
+            cancelButtonText: 'Cancelar',
+            showLoaderOnConfirm: true,
+            allowOutsideClick: false,
+            preConfirm: function ()
+            {
+                return new Promise(function (resolve)
+                {
+                    setTimeout(function ()
+                    {
+                        resolve();
+                    }, 500);
+                });
+            }
+        }).then(function ()
+        {
+            swal({
+                type: 'success',
+                title: 'Cancelada',
+                html: 'La reservación fue cancelada.'
+            });
         });
     });
 
