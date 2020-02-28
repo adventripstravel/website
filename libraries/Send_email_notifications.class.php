@@ -10,7 +10,7 @@ class Send_email_notifications
         $this->database = new Medoo();
     }
 
-    private function get_template( $arr = null, $template = null )
+    public function get_template( $arr = null, $template = null )
     {
         if ( !is_null( $arr ) )
         {

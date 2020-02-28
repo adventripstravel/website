@@ -1,3 +1,70 @@
+/* Ajax loader
+------------------------------------------------------------------------------ */
+[data-ajax-loader] {
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 9999;
+}
+
+[data-ajax-loader] > div.loader {
+    width: 2em;
+    height: 2em;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    position: absolute;
+    display: inline-block;
+    margin: auto;
+    vertical-align: middle;
+    pointer-events: none;
+    border: 1em solid transparent;
+    border-top-color: currentcolor;
+    border-radius: 50%;
+    color: #e0e0e0;
+    -webkit-animation: 1s loader linear infinite;
+            animation: 1s loader linear infinite;
+}
+
+[data-ajax-loader] > div.loader:before {
+    width: inherit;
+    height: inherit;
+    top: -1em;
+    left: -1em;
+    position: absolute;
+    display: block;
+    content: '';
+    border: 1em solid currentcolor;
+    border-radius: 50%;
+    opacity: .5;
+}
+
+@-webkit-keyframes loader {
+    0% {
+        -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+    }
+}
+
+@keyframes loader {
+    0% {
+        -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+    }
+}
+
 /* MAIN
 ------------------------------------------------------------------------------*/
 #page {

@@ -9,18 +9,16 @@ class Reservations_controller extends Controller
 		Format::set_time_zone();
 	}
 
-	public function send_notification()
+	public function edit_status( $param = null )
 	{
 		if ( Format::exist_ajax_request() )
 		{
 			header('Content-type: application/json');
 
-			$notification = new Send_email_notifications();
-			// $notification->new_reservation( ( isset($_POST['folio']) ) ? $_POST['folio'] : null );
+			$this->model->edit_status( $_POST['value'], $param );
 
 			echo json_encode([
-				'status' => 'OK',
-				'html' => '<span>OK</span>'
+				'status' => 'OK'
 			], JSON_PRETTY_PRINT);
 		}
 		else

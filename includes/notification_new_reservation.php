@@ -8,7 +8,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="x-apple-disable-message-reformatting">
-    <title>Confirm Your Email</title>
+    <title>Email de confirmación</title>
     <!--[if mso]>
         <xml>
             <o:OfficeDocumentSettings>
@@ -411,10 +411,10 @@
                                         </div>
                                         <div class="spacer" style="line-height: 12px;">&zwnj;</div>
                                         <p style="color: #888888; margin: 0;">
-                                            &copy; 2020 Yacht Masters, todos los derechos reservados.
+                                            &copy; 2020 Adventrips, todos los derechos reservados.
                                         </p>
                                         <p class="links-inherit-color" style="color: #888888; margin: 0;">
-                                            Marina Kaybal, Kilometro 3.5 Zona Hotelera, 77500 Cancún, QROO, México.
+                                            77500 Cancún, QROO, México.
                                         </p>
                                         <div class="spacer" style="line-height: 16px;">&zwnj;</div>
                                     </td>

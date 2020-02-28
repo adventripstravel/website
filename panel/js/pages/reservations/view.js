@@ -2,11 +2,11 @@ $( document ).ready(function ()
 {
     var DOM = $( this );
 
-    // Enviar notificación
+    // Aceptar la reservación
     DOM.on('click', '#accept_reservation', function ()
     {
         var self = $(this);
-        var message = '';
+        var folio = self.data('folio');
         var xhr_status = '';
 
         swal({
@@ -24,27 +24,39 @@ $( document ).ready(function ()
             {
                 return new Promise(function (resolve)
                 {
-                    setTimeout(function ()
+                    $.post('index.php?c=reservations&m=edit_status&p='+ folio, { value: 'available' }, function(data, status, jqXHR)
                     {
-                        resolve();
-                    }, 500);
+                        if ( data.status == 'OK' )
+                        {
+                            xhr_status = 'OK';
+                            $('#accept_reservation,#decline_reservation').remove();
+                        }
+
+                        setTimeout(function ()
+                        {
+                            resolve();
+                        }, 500);
+                    });
                 });
             }
         }).then(function ()
         {
-            swal({
-                type: 'success',
-                title: 'Aceptada',
-                html: 'Ahora la reservación fué aceptada.'
-            });
+            if ( xhr_status == 'OK' )
+            {
+                swal({
+                    type: 'success',
+                    title: 'Aceptada',
+                    html: 'La reservación cambio a estado "Disponible".'
+                });
+            }
         });
     });
 
-    // Enviar notificación
-    DOM.on('click', '#decline_reservation', function ()
+    // Declinar reservación
+    DOM.on('click', '#decline_reservation,#cancel_reservation', function ()
     {
         var self = $(this);
-        var message = '';
+        var folio = self.data('folio');
         var xhr_status = '';
 
         swal({
@@ -62,19 +74,31 @@ $( document ).ready(function ()
             {
                 return new Promise(function (resolve)
                 {
-                    setTimeout(function ()
+                    $.post('index.php?c=reservations&m=edit_status&p='+ folio, { value: 'cancelled' }, function(data, status, jqXHR)
                     {
-                        resolve();
-                    }, 500);
+                        if ( data.status == 'OK' )
+                        {
+                            xhr_status = 'OK';
+                            $('#accept_reservation,#decline_reservation,#cancel_reservation').remove();
+                        }
+
+                        setTimeout(function ()
+                        {
+                            resolve();
+                        }, 500);
+                    });
                 });
             }
         }).then(function ()
         {
-            swal({
-                type: 'success',
-                title: 'Cancelada',
-                html: 'La reservación fue cancelada.'
-            });
+            if ( xhr_status == 'OK' )
+            {
+                swal({
+                    type: 'success',
+                    title: 'Cancelada',
+                    html: 'La reservación cambio a estado "Cancelado".'
+                });
+            }
         });
     });
 

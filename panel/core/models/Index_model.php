@@ -17,7 +17,12 @@ class Index_model extends Model
 			'customer [Object]',
 			'paxes [Object]',
 			'data [Object]',
-			'tour [Object]'
+			'tour [Object]',
+			'status'
+		], [
+			'AND' => [
+				'status[!]' => 'removed'
+			]
 		]);
 	}
 }

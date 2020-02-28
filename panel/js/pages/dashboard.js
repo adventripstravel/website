@@ -5,14 +5,15 @@ $( document ).ready(function ()
     var table_reservations = $('#table-reservations').DataTable({
         lengthChange: false,
         pageLength: 100,
-        buttons: ['copy', 'excel', 'pdf'],
+        // buttons: ['copy', 'excel', 'pdf'],
         order: [
-            [4,'ASC']
+            [5,'ASC']
         ],
         "columns": [
             { "orderable": false }, // NOMBRE
             { "orderable": false }, // FECHA RESERVADA
             { "orderable": false }, // FOLIO
+            { "orderable": false }, // STATUS
             { "orderable": false, "searchable": false }, // BUTTONS ACTIONS
             { "orderable": true, "searchable": false }, // HIDDEN
         ]

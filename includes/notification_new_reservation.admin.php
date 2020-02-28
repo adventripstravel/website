@@ -8,7 +8,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="x-apple-disable-message-reformatting">
-    <title>Confirm Your Email</title>
+    <title>Aviso al administrador</title>
     <!--[if mso]>
         <xml>
             <o:OfficeDocumentSettings>
@@ -310,8 +310,8 @@
                             <table cellpadding="0" cellspacing="0" role="presentation" width="100%">
                                 <tr>
                                     <td class="col" align="center" width="100%">
-                                        <a href="https://yachtmstr.com">
-                                            <img src="https://yachtmstr.com/images/email_logotype_yachtmaster.png" alt="" width="94">
+                                        <a href="https://adventrips.com">
+                                            <img src="https://adventrips.com/uploads/icontype-color.png" alt="" width="94">
                                         </a>
                                     </td>
                                 </tr>
@@ -362,19 +362,12 @@
                             <table cellpadding="0" cellspacing="0" role="presentation" width="100%">
                                 <tr>
                                     <td class="col px-sm-16" align="center" width="100%" style="padding: 0 64px;">
-                                        <p style="color: #888888; font-size: 16px; line-height: 24px; margin: 0;">Hay una nueva reservación en Yacht Masters, a nombre de <?= $data['customer_name'] ?></p>
+                                        <p style="color: #888888; font-size: 16px; line-height: 24px; margin: 0;">Tienes una nueva solicitud de reservación, a nombre de <?= $data['customer']['firstname'] ?> <?= $data['customer']['lastname'] ?></p>
                                         <div class="spacer" style="line-height: 32px;">&zwnj;</div>
-                                        <table cellpadding="0" cellspacing="0" role="presentation" style="margin-bottom: 20px">
-                                            <tr>
-                                                <td class="webfont" bgcolor="#2a2760" style="border-radius: 3px; transition: all 0.3s ease-in-out 0s; mso-padding-alt: 6px 32px 12px;">
-                                                    <a href="https://yachtmstr.com/ticket/<?= $data['folio'] ?>" style="color: #FFFFFF; display: inline-block; font-size: 14px; font-weight: 700; padding: 12px 32px; text-decoration: none;">Ver ticket online</a>
-                                                </td>
-                                            </tr>
-                                        </table>
                                         <table cellpadding="0" cellspacing="0" role="presentation">
                                             <tr>
                                                 <td class="webfont" bgcolor="#2a2760" style="border-radius: 3px; transition: all 0.3s ease-in-out 0s; mso-padding-alt: 6px 32px 12px;">
-                                                    <a href="https://yachtmstr.com/administrator/index.php?c=Reservations&m=view&p=<?= $data['folio'] ?>" style="color: #FFFFFF; display: inline-block; font-size: 14px; font-weight: 700; padding: 12px 32px; text-decoration: none;">Ver reservación en el administrator</a>
+                                                    <a href="https://adventrips.com/panel/index.php?c=reservations&m=view&p=<?= $data['folio'] ?>" style="color: #FFFFFF; display: inline-block; font-size: 14px; font-weight: 700; padding: 12px 32px; text-decoration: none;">Ver reservación en el administrator</a>
                                                 </td>
                                             </tr>
                                         </table>
@@ -414,14 +407,14 @@
                                 <tr>
                                     <td class="col" align="center" width="100%" style="padding: 0 8px;">
                                         <div>
-                                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://yachtmstr.com/ticket/<?= $data['folio'] ?>" alt="QR Folio" width="94">
+                                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://adventrips.com/ticket/<?= $data['folio'] ?>" alt="QR Folio" width="94">
                                         </div>
                                         <div class="spacer" style="line-height: 12px;">&zwnj;</div>
                                         <p style="color: #888888; margin: 0;">
-                                            &copy; 2020 Yacht Masters, todos los derechos reservados.
+                                            &copy; 2020 Adventrips, todos los derechos reservados.
                                         </p>
                                         <p class="links-inherit-color" style="color: #888888; margin: 0;">
-                                            Marina Kaybal, Kilometro 3.5 Zona Hotelera, 77500 Cancún, QROO, México.
+                                            77500 Cancún, QROO, México.
                                         </p>
                                         <div class="spacer" style="line-height: 16px;">&zwnj;</div>
                                     </td>
