@@ -52,8 +52,8 @@ $( document ).ready(function ()
         });
     });
 
-    // Enviar notificación
-    DOM.on('click', '#decline_reservation', function ()
+    // Declinar reservación
+    DOM.on('click', '#decline_reservation,#cancel_reservation', function ()
     {
         var self = $(this);
         var folio = self.data('folio');
@@ -79,7 +79,7 @@ $( document ).ready(function ()
                         if ( data.status == 'OK' )
                         {
                             xhr_status = 'OK';
-                            $('#accept_reservation,#decline_reservation').remove();
+                            $('#accept_reservation,#decline_reservation,#cancel_reservation').remove();
                         }
 
                         setTimeout(function ()

@@ -45,6 +45,9 @@ $this->dependencies->add(['js', '{$path.js}pages/reservations/view.js?v=1.1']);
 									<button type="button" id="accept_reservation" class="btn btn-success waves-effect waves-light" data-folio="<?= $reservation['folio'] ?>"><i class="fa fa-check m-r-5" style="vertical-align: middle;"></i> Aceptar reservación</button>
 									<button type="button" id="decline_reservation" class="btn btn-danger waves-effect waves-light" data-folio="<?= $reservation['folio'] ?>"><i class="fa fa-ban m-r-5" style="vertical-align: middle;"></i> Declinar reservación</button>
 								<?php endif; ?>
+								<?php if ( $reservation['status'] == 'available' ): ?>
+									<button type="button" id="cancel_reservation" class="btn btn-danger waves-effect waves-light" data-folio="<?= $reservation['folio'] ?>"><i class="fa fa-ban m-r-5" style="vertical-align: middle;"></i> Cancelar reservación</button>
+								<?php endif; ?>
 								<div class="btn-group dropdown">
                                     <button type="button" class="btn btn-primary waves-effect waves-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Acciones

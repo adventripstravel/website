@@ -165,7 +165,7 @@ defined('_EXEC') or die;
                            <span><strong>Fecha de creación:</strong> <?= date('d-M-Y H:i', strtotime($data['creation_date'])) ?></span>
                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data={$vkye_base}ticket/<?= $data['folio'] ?>" alt="QR Ticket" />
                        </p>
-                        <p>Una vez pagado, la cancelacion deberá ser con 72 hrs de antelación. Despues de este plazo no hay reembolsos y/o compensaciones de ningún tipo. Para mayores informes puedes escribirnos a <strong>contacto@yachtmstr.com</strong>. Te invitamos a que visites nuestros términos y condiciones <a href="{$vkye_domain}/terminos-y-condiciones" target="_blank">aquí</a>.</p>
+                        <p>Una vez pagado, la cancelacion deberá ser con 72 hrs de antelación. Despues de este plazo no hay reembolsos y/o compensaciones de ningún tipo. Para mayores informes puedes escribirnos a <strong><?= Session::get_value('settings')['contact']['email'][Session::get_value('vkye_lang')] ?></strong>. Te invitamos a que visites nuestros términos y condiciones <a href="{$vkye_domain}/terminos-y-condiciones" target="_blank">aquí</a>.</p>
                     </div>
                 </main>
             </section>
@@ -216,8 +216,8 @@ defined('_EXEC') or die;
                             </li>
                             <li>
                                 <h4 data-step="2">Paso 2</h4>
-                                <p style="font-size: 14px;line-height: 1.2;margin-bottom: 5px;">Envía un <strong>WhatsApp</strong> (<a href="https://api.whatsapp.com/send?phone=529982904203&text=He%20realizado%20el%20pago%20de%20mi%20reservación,%20con%20folio%20<?= $data['folio'] ?>%20a%20través%20de%20transferencia%20y/o%20depósito%20bancario.%20Envío%20mi%20voucher%20de%20pago." target="_blank">click aquí</a>).</p>
-                                <p style="font-size: 14px;line-height: 1.2;margin-bottom: 5px;">También puedes escanear o tomar una foto al comprobante de pago. Enviandolo al e-mail <strong>reserva@yachtmstr.com</strong>. Como asunto usa el número de ticket generado por {$vkye_webpage}. <i style="font-size: 12px;">Ejem: Pago para reservación del ticket #<?= $data['folio'] ?>.</i></p>
+                                <p style="font-size: 14px;line-height: 1.2;margin-bottom: 5px;">Envía un <strong>WhatsApp</strong> (<a href="https://api.whatsapp.com/send?phone=<?= str_replace(['+','(',')',' '], '', Session::get_value('settings')['contact']['phone'][Session::get_value('vkye_lang')]) ?>&text=He%20realizado%20el%20pago%20de%20mi%20reservación,%20con%20folio%20<?= $data['folio'] ?>%20a%20través%20de%20transferencia%20y/o%20depósito%20bancario.%20Envío%20mi%20voucher%20de%20pago." target="_blank">click aquí</a>).</p>
+                                <p style="font-size: 14px;line-height: 1.2;margin-bottom: 5px;">También puedes escanear o tomar una foto al comprobante de pago. Enviandolo al e-mail <strong><?= Session::get_value('settings')['contact']['email'][Session::get_value('vkye_lang')] ?></strong>. Como asunto usa el número de ticket generado por {$vkye_webpage}. <i style="font-size: 12px;">Ejem: Pago para reservación del ticket #<?= $data['folio'] ?>.</i></p>
 
                             </li>
                             <li>
@@ -226,6 +226,15 @@ defined('_EXEC') or die;
                                 <p style="font-size: 14px;line-height: 1.2;margin-bottom: 0px;">En todo momento puedes revisar online, el estado de tu reservación.<br> Únicamente con tu número de ticket (<strong><?= $data['folio'] ?></strong>) en el siguiente enlace: <a href="{$vkye_base}ticket/<?= $data['folio'] ?>"><?= Configuration::$domain ?>/ticket/<?= $data['folio'] ?></a></p>
                             </li>
                         </ul>
+                    </div>
+                </div>
+            </section>
+            <section class="toggle view">
+                <h3>Información de contacto.</h3>
+                <div>
+                    <div class="content-box" style="padding: 10px;">
+                        <p><strong>Correo electrónico</strong> <?= Session::get_value('settings')['contact']['email'][Session::get_value('vkye_lang')] ?></p>
+                        <p><strong>Teléfono</strong> <?= Session::get_value('settings')['contact']['phone'][Session::get_value('vkye_lang')] ?> <a href="https://api.whatsapp.com/send?phone=<?= str_replace(['+','(',')',' '], '', Session::get_value('settings')['contact']['phone'][Session::get_value('vkye_lang')]) ?>" target="_blank">Enviar WhatsApp</a> <a href="tel:+<?= str_replace(['+','(',')',' '], '', Session::get_value('settings')['contact']['phone'][Session::get_value('vkye_lang')]) ?>" target="_blank">Llamar</a></p>
                     </div>
                 </div>
             </section>

@@ -80,12 +80,6 @@ $this->dependencies->add(['js', '{$path.js}pages/dashboard.js?v=1.0']);
 			</div>
 		</div>
 
-		<?php
-		// echo '<pre>';
-		// print_r($reservations);
-		// echo '</pre>';
-		?>
-
         <div class="row">
         	<div class="col-12">
         		<div class="card m-b-30">
