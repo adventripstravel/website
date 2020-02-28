@@ -2377,3 +2377,37 @@ section.modal[data-modal="request_cancel_booking"] > .content {
     box-sizing: border-box;
     background-color: transparent;
 }
+
+/* MAIN Terms and condition
+------------------------------------------------------------------------------*/
+.terms_condition {
+    position: relative;
+    font-size: 10px;
+    text-align: justify;
+}
+
+.terms_condition > p {
+    font-size: inherit;
+    margin: 0 0 5px;
+    line-height: 1.3;
+    opacity: 0.5;
+}
+
+.terms_condition > h6 {
+    margin: 0;
+    font-size: 12px;
+    font-weight: bold;
+    color: #636363;
+    opacity: 0.5;
+    margin-top: 10px;
+}
+
+.terms_condition > ul {
+    list-style: decimal-leading-zero;
+    padding-left: 30px;
+    font-size: 10px;
+    line-height: 1.5;
+    color: #636363;
+    opacity: 0.5;
+    margin-bottom: 10px;
+}

@@ -90,8 +90,6 @@ class Booking_controller extends Controller
 						break;
 
 					case 'create_booking':
-						// print_r($_POST);
-						// print_r($data);
 						$post['babies'] = ( isset($_POST['babies']) && !empty($_POST['babies']) ) ? (int) $_POST['babies'] : 0;
 						$post['childs'] = ( isset($_POST['childs']) && !empty($_POST['childs']) ) ? (int) $_POST['childs'] : 0;
 						$post['adults'] = ( isset($_POST['adults']) && !empty($_POST['adults']) ) ? (int) $_POST['adults'] : 0;
@@ -170,6 +168,7 @@ class Booking_controller extends Controller
 							$post['language'] = $this->lang;
 
 							$ticket = [
+								'folio' => strtoupper(Functions::get_random_string(8)),
 								'date' => $post['date'],
 								'customer' => [
 									'firstname' => $post['firstname'],
@@ -187,6 +186,23 @@ class Booking_controller extends Controller
 
 							if ( $this->model->create_booking($ticket) )
 							{
+								$notification = new Send_email_notifications();
+
+								$mail = new Mailer(true);
+				                // $mail->SMTPDebug = 3;
+				                $mail->isSMTP();
+				                $mail->setFrom('noreplay@adventrips.com', 'Adventrips');
+				                $mail->AltBody = 'To view the message, please use an HTML compatible email viewer!';
+				                $mail->SMTPOptions = [ 'ssl' => [ 'verify_peer' => false, 'verify_peer_name' => false, 'allow_self_signed' => true ] ];
+				                // $mail->addAddress('reservaciones@adventrips.com');
+				                $mail->addAddress('davidgomezmacias@gmail.com');
+				                $mail->Subject = "Reservación número #{$ticket['folio']}";
+				                $mail->msgHTML( $notification->get_template( $ticket, 'notification_new_reservation.admin.php' ) );
+
+				                try {
+				                    $mail->send();
+				                } catch (Exception $e) {}
+
 								echo json_encode([
 									'status' => 'success'
 								]);

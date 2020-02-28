@@ -124,7 +124,7 @@ class Booking_model extends Model
 		unset($data['tour']);
 
 		$this->database->insert('bookings', [
-			'folio' => strtoupper(Functions::get_random_string(8)),
+			'folio' => $data['folio'],
 			'customer' => $data['customer'],
 			'paxes' => $data['paxes'],
 			'observations' => $data['observations'],
@@ -135,56 +135,5 @@ class Booking_model extends Model
 
 
 		return $this->database->id();
-
-		// $query = $this->database->insert('bookings', [
-		// 	'token' => Functions::get_random_string(8),
-		// 	'tour' => $data['tour']['id'],
-		// 	'paxes' => $data['total_paxes'],
-		// 	'booked_date' => $data['date'],
-		// 	'observations' => $data['observations'],
-		// 	'firstname' => $data['firstname'],
-		// 	'lastname' => $data['lastname'],
-		// 	'email' => $data['email'],
-		// 	'phone' => json_encode([
-		// 		'lada' => $data['phone_lada'],
-		// 		'number' => $data['phone_number']
-		// 	]),
-		// 	'total' => $data['total'],
-		// 	'payment' => json_encode([
-		// 		'status' => false,
-		// 		'date' => null,
-		// 		'method' => null,
-		// 		'currency' => Session::get_value('currency'),
-		// 		'exchange' => Functions::get_currency_exchange(1, 'USD', 'MXN')
-		// 	]),
-		// 	'language' => $data['language'],
-		// 	'canceled' => false,
-		// 	'request' => json_encode([
-		// 		'type' => 'none'
-		// 	]),
-		// 	'registration_date' => Functions::get_current_date()
-		// ]);
-		//
-		// if (!empty($query))
-		// {
-		// 	$query = $this->database->select('bookings', [
-		// 		'token',
-		// 		'paxes',
-		// 		'booked_date',
-		// 		'observations',
-		// 		'firstname',
-		// 		'lastname',
-		// 		'email',
-		// 		'phone',
-		// 		'total',
-		// 		'language'
-		// 	], [
-		// 		'id' => $this->database->id()
-		// 	]);
-		//
-		// 	return !empty($query) ? Functions::get_array_json_decoded($query[0]) : null;
-		// }
-		// else
-		// 	return null;
 	}
 }

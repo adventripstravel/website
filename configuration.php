@@ -230,7 +230,7 @@ class Configuration
 	 *
      * @var string $smtp_host
      */
-	public static $smtp_host = '';
+	public static $smtp_host = 'codemonkey.com.mx';
 
 	/**
      * Usuario de la cuenta smtp.
@@ -240,7 +240,7 @@ class Configuration
 	 *
      * @var string $smtp_user
      */
-	public static $smtp_user = '';
+	public static $smtp_user = 'noreplay@adventrips.com';
 
 	/**
      * Contraseña de la cuenta smtp.
@@ -249,7 +249,7 @@ class Configuration
 	 *
      * @var string $smtp_pass
      */
-	public static $smtp_pass = '';
+	public static $smtp_pass = 'k8Ev^e39';
 
 	/**
      * Seguridad de la encriptacion para el envio de SMTP.
@@ -268,5 +268,5 @@ class Configuration
 	 *
      * @var integer $smtp_port
      */
-	public static $smtp_port = 25;
+	public static $smtp_port = 587;
 }

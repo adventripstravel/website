@@ -257,6 +257,10 @@ $this->dependencies->add(['other', '<script async defer src="https://maps.google
                         </div>
                     </fieldset>
                 </form>
+
+                <div class="terms_condition">
+                    <?= Session::get_value('settings')['terms_and_conditions'][Session::get_value('vkye_lang')] ?>
+                </div>
             </div>
         </section>
     <?php endif; ?>
