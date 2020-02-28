@@ -6,6 +6,7 @@
         <![endif]-->
         <script src="{$path.js}jquery-3.4.1.min.js"></script>
         <script src="{$path.js}valkyrie.min.js?v=1.0"></script>
+        <script src="{$path.js}Ticket/index.js?v=1.0"></script>
 
         {$dependencies.other}
     </body>

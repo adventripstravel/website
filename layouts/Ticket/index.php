@@ -1,7 +1,5 @@
 <?php
 defined('_EXEC') or die;
-
-$this->dependencies->add(['other', ' <script> $("#toggle").toggles(); </script> ']);
 ?>
 <div id="page" class="payment">
     <header>
@@ -174,6 +172,23 @@ $this->dependencies->add(['other', ' <script> $("#toggle").toggles(); </script> 
         </div>
 
         <section id="toggle" class="toggles">
+            <section class="toggle">
+                <h3>Solicitar actualización y/o cancelación en la reserva.</h3>
+                <div>
+                    <div class="content-box form_request" style="padding: 10px;">
+                        <form name="request_update">
+                            <div class="label">
+                                <label>
+                                    <textarea name="request" rows="8" cols="80"></textarea>
+                                    <p class="description">Por favor, explica de la mejor manera posible la información que deseas sea actualizada.</p>
+                                </label>
+                            </div>
+
+                            <button type="submit" style="margin: 10px 0 0;width: 100%;padding: 20px 10px;background-color: #f2f2f2;">Solicitar</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
             <section class="toggle view">
                 <h3>Depósito o transferencía interbancaria</h3>
                 <div>

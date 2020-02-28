@@ -6,21 +6,25 @@ $(document).ready(function()
     {
         e.preventDefault();
 
-        var form = $(this);
+        let folio = $(this).find('input[name="token"]').val();
 
-        $.ajax({
-            type: 'POST',
-            data: form.serialize() + '&action=search_voucher',
-            processData: false,
-            cache: false,
-            dataType: 'json',
-            success: function(response)
-            {
-                checkFormDataErrors(form, response, function()
-                {
-                    window.location.href = response.path;
-                });
-            }
-        });
+        window.location.href = 'https://adventrips.com/ticket/'+ folio;
+
+        // var form = $(this);
+
+        // $.ajax({
+        //     type: 'POST',
+        //     data: form.serialize() + '&action=search_voucher',
+        //     processData: false,
+        //     cache: false,
+        //     dataType: 'json',
+        //     success: function(response)
+        //     {
+        //         checkFormDataErrors(form, response, function()
+        //         {
+        //             window.location.href = response.path;
+        //         });
+        //     }
+        // });
     });
 });
