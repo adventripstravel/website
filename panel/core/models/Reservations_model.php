@@ -19,6 +19,7 @@ class Reservations_model extends Model
 			'data [Object]',
 			'tour [Object]',
 			'status',
+			'status_payment',
 			'creation_date'
 		], [
 			'folio' => $folio

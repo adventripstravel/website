@@ -17,7 +17,9 @@ class Ticket_model extends Model
 			'observations',
 			'data[Object]',
 			'tour[Object]',
-			'creation_date'
+			'creation_date',
+			'status',
+			'status_payment'
 		], [
 			'folio' => $ticket
 		]);

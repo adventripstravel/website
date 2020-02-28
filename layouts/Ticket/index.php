@@ -19,6 +19,30 @@ $this->dependencies->add(['other', ' <script> $("#toggle").toggles(); </script> 
                     </div>
                     <div class="person_info">
                         <span><strong>Nombre:</strong> <?= $data['customer']['firstname'] ?> <?= $data['customer']['lastname'] ?></span>
+                        <?php
+                            if ( $data['status'] == 'finalized' || $data['status'] == 'cancelled' )
+                                $data['status_payment'] = $data['status'];
+
+                            switch ( $data['status_payment'] )
+                            {
+                                case 'pending_payment':
+                                default:
+                                    echo '<span><strong>Estado:</strong> Pendiente de pago.</span>';
+                                    break;
+                                case 'reserved_payment':
+                                    echo '<span style="color:#4caf50;"><strong>Estado:</strong> Reservación pagada</span>';
+                                    break;
+                                case 'full_payment':
+                                    echo '<span style="color:#4caf50;"><strong>Estado:</strong> Pago completo</span>';
+                                    break;
+                                case 'finalized':
+                                    echo '<span style="color:#bdbdbd;"><strong>Estado:</strong> Finalizada</span>';
+                                    break;
+                                case 'cancelled':
+                                    echo '<span style="color:#f44336;"><strong>Estado:</strong> Reserva cancelada</span>';
+                                    break;
+                            }
+                        ?>
                     </div>
                     <div class="amount">
                         <span>Depósito</span>
@@ -33,6 +57,36 @@ $this->dependencies->add(['other', ' <script> $("#toggle").toggles(); </script> 
                                 $to_report_subtotal += $data['tour']['price']['to_report']['babies'] * $data['data']['paxes']['babies'];
                                 $to_report_subtotal += $data['tour']['price']['to_report']['childs'] * $data['data']['paxes']['childs'];
                                 $to_report_subtotal += $data['tour']['price']['to_report']['adults'] * $data['data']['paxes']['adults'];
+
+                                $total = $subtotal;
+                                $discount = 0;
+
+                                switch ( $data['customer']['nationality'] )
+                                {
+                                    case 'mexican':
+                                        $discount = $total * (int) $data['tour']['price']['discounts']['national']['amount'] / 100;
+                                        // $to_report_subtotal = $to_report_subtotal * (int) $data['tour']['price']['discounts']['national']['amount'] / 100;
+                                        break;
+
+                                    default:
+                                        $discount = $total * (int) $data['tour']['price']['discounts']['foreign']['amount'] / 100;
+                                        // $to_report_subtotal = $to_report_subtotal * (int) $data['tour']['price']['discounts']['foreign']['amount'] / 100;
+                                        break;
+                                }
+
+                                $to_report_subtotal = ($subtotal - $discount) - $to_report_subtotal;
+
+                                $total -= $discount;
+                            ?>
+
+                            <span><strong>$<?= number_format($to_report_subtotal) ?> MXN</strong></span>
+                        <?php endif; ?>
+
+                        <?php if ( $data['tour']['price']['type'] == 'height' ): ?>
+                            <?php
+                                $subtotal = $data['tour']['price']['public']['max'] * $data['data']['paxes']['total'];
+
+                                $to_report_subtotal = $data['tour']['price']['to_report']['max'] * $data['data']['paxes']['total'];
 
                                 $total = $subtotal;
                                 $discount = 0;
@@ -94,8 +148,19 @@ $this->dependencies->add(['other', ' <script> $("#toggle").toggles(); </script> 
                             </p>
                         </div>
                     <?php endif; ?>
+                    <?php if ( $data['tour']['price']['type'] == 'height' ): ?>
+                        <div class="breakdown">
+                            <p>
+                                <span>Tour: <strong><?= $data['tour']['name'] ?></strong></span>
+                            </p>
+
+                            <p>
+                                <span>Total de pax: <strong>x<?= $data['data']['paxes']['total'] ?></strong></span>
+                            </p>
+                        </div>
+                    <?php endif; ?>
                     <div class="booking_info">
-                        <p><strong>Importante:</strong> Información importante.</p>
+                        <!-- <p><strong>Importante:</strong> Información importante.</p> -->
                     </div>
                     <div class="ticket_info">
                         <p><span><strong>Número de ticket:</strong> #<?= $data['folio'] ?></span>

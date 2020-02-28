@@ -79,11 +79,51 @@ $this->dependencies->add(['js', '{$path.js}pages/reservations/view.js?v=1.1']);
 											<span class="badge badge-default">Nacionalidad</span> <?= ( $reservation['data']['customer']['nationality'] == 'mexican' ) ? 'Mexicano <span class="text-muted" style="font-size: 10px;">Se aplicó un descuento especial.</span>' : 'Otro' ?>
 										</address>
 										<address>
+											<?php
+												switch ( $reservation['status'] )
+												{
+													case 'pending':
+													default:
+														$reservation['status'] = 'Pendiente por aprobar.';
+														break;
+													case 'available':
+														$reservation['status'] = 'Disponible';
+														break;
+													case 'finalized':
+														$reservation['status'] = 'Finalizada';
+														break;
+													case 'noshow':
+														$reservation['status'] = 'No Show';
+														break;
+													case 'cancelled':
+														$reservation['status'] = 'Cancelada';
+														break;
+													case 'removed':
+														$reservation['status'] = 'Eliminada';
+														break;
+												}
+
+												switch ( $reservation['status_payment'] )
+												{
+													case 'pending_payment':
+													default:
+														$reservation['status_payment'] = 'Pendiente de pago';
+														break;
+													case 'reserved_payment':
+														$reservation['status_payment'] = 'Reservación pagada';
+														break;
+													case 'full_payment':
+														$reservation['status_payment'] = 'Pago completo';
+														break;
+												}
+											?>
 											<strong>Reservación:</strong><br>
 											<span class="badge badge-default">Fecha reservada</span> <?= Dates::formatted_date($reservation['data']['date'], 'formatted') ?> <br>
 											<span class="badge badge-default">Tour</span> <?= $reservation['tour']['name'] ?> <br>
 											<span class="badge badge-default">Paxes</span> <?= ( isset($reservation['paxes']['total']) ) ? 'Total: '. $reservation['paxes']['total'] : 'Bebes: '. $reservation['paxes']['babies'] .'; Niños: '. $reservation['paxes']['childs'] .'; Adultos: '. $reservation['paxes']['adults'] .'.' ?> <br>
 											<span class="badge badge-default">Descuento aplicado</span> <?= ( $reservation['data']['customer']['nationality'] == 'mexican' ) ? $reservation['tour']['price']['discounts']['national']['amount'] . $reservation['tour']['price']['discounts']['national']['type'] : $reservation['tour']['price']['discounts']['foreign']['amount'] . $reservation['tour']['price']['discounts']['foreign']['type'] ?> <br>
+											<span class="badge badge-default">Estado de la reservación</span> <?= $reservation['status'] ?> <br>
+											<span class="badge badge-default">Estado del pago</span> <?= $reservation['status_payment'] ?> <br>
 										</address>
 
 										<address>
