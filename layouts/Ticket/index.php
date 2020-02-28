@@ -21,7 +21,7 @@ $this->dependencies->add(['other', ' <script> $("#toggle").toggles(); </script> 
                         <span><strong>Nombre:</strong> <?= $data['customer']['firstname'] ?> <?= $data['customer']['lastname'] ?></span>
                     </div>
                     <div class="amount">
-                        <span>Mónto requerido para la reservación</span>
+                        <span>Depósito</span>
                         <?php if ( $data['tour']['price']['type'] == 'regular' ): ?>
                             <?php
                                 $subtotal = 0;
@@ -33,7 +33,6 @@ $this->dependencies->add(['other', ' <script> $("#toggle").toggles(); </script> 
                                 $to_report_subtotal += $data['tour']['price']['to_report']['babies'] * $data['data']['paxes']['babies'];
                                 $to_report_subtotal += $data['tour']['price']['to_report']['childs'] * $data['data']['paxes']['childs'];
                                 $to_report_subtotal += $data['tour']['price']['to_report']['adults'] * $data['data']['paxes']['adults'];
-                                $to_report_subtotal = $subtotal - $to_report_subtotal;
 
                                 $total = $subtotal;
                                 $discount = 0;
@@ -42,14 +41,16 @@ $this->dependencies->add(['other', ' <script> $("#toggle").toggles(); </script> 
                                 {
                                     case 'mexican':
                                         $discount = $total * (int) $data['tour']['price']['discounts']['national']['amount'] / 100;
-                                        $to_report_subtotal = $to_report_subtotal * (int) $data['tour']['price']['discounts']['national']['amount'] / 100;
+                                        // $to_report_subtotal = $to_report_subtotal * (int) $data['tour']['price']['discounts']['national']['amount'] / 100;
                                         break;
 
                                     default:
                                         $discount = $total * (int) $data['tour']['price']['discounts']['foreign']['amount'] / 100;
-                                        $to_report_subtotal = $to_report_subtotal * (int) $data['tour']['price']['discounts']['foreign']['amount'] / 100;
+                                        // $to_report_subtotal = $to_report_subtotal * (int) $data['tour']['price']['discounts']['foreign']['amount'] / 100;
                                         break;
                                 }
+
+                                $to_report_subtotal = ($subtotal - $discount) - $to_report_subtotal;
 
                                 $total -= $discount;
                             ?>

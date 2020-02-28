@@ -96,12 +96,37 @@ $this->dependencies->add(['js', '{$path.js}pages/dashboard.js?v=1.0']);
                         			<th>Nombre / Email</th>
 									<th>Fecha reservada / Tour</th>
 									<th>Folio</th>
+									<th>Estado</th>
                         			<th align="right"></th>
 									<th class="d-none">ORDER</th>
                         		</tr>
                         	</thead>
                         	<tbody>
 								<?php foreach ( $reservations as $key => $value ): ?>
+									<?php
+									switch ( $value['status'] )
+									{
+										case 'pending':
+											$value['status'] = 'Pendiente de aprobar';
+											break;
+
+										case 'available':
+											$value['status'] = 'Disponible';
+											break;
+
+										case 'finished':
+											$value['status'] = 'Finalizada';
+											break;
+
+										case 'noshow':
+											$value['status'] = 'No Show';
+											break;
+
+										case 'cancelled':
+											$value['status'] = 'Cancelada';
+											break;
+									}
+									?>
 									<tr>
 										<td style="overflow: hidden;text-overflow: ellipsis;"><?= $value['customer']['firstname'] ?> <?= $value['customer']['lastname'] ?> <br>
 											<span class="text-muted" style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;font-size: 12px;"><?= $value['customer']['email'] ?></span></td>
@@ -110,6 +135,8 @@ $this->dependencies->add(['js', '{$path.js}pages/dashboard.js?v=1.0']);
 											<span class="text-muted" style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;font-size: 12px;"><?= $value['tour']['name'] ?></span></td>
 
 										<td><?= $value['folio'] ?></td>
+
+										<td><?= $value['status'] ?></td>
 
 										<td align="right">
 											<a href="index.php?c=reservations&m=view&p=<?= $value['folio'] ?>" class="btn btn-primary waves-effect waves-light" role="button" data-toggle="tooltip" data-placement="left" title="Ver reservación"><i class="dripicons-preview"></i></a>
