@@ -201,17 +201,17 @@ defined('_EXEC') or die;
                                 <p>Realiza una transferencia bancaria o un deposito en ventanilla a cualquiera de nuestras siguientes cuentas bancarias.</p>
                                 <div class="bank_accounts">
                                     <div>
-                                        <h6>Santander</h6>
-                                        <p>Razón social EMPRESA</p>
-                                        <p>Número de cuenta 444444444-2</p>
-                                        <p>Clabe interbancaria 44444444444444444</p>
+                                        <h6>Banco Azteca</h6>
+                                        <!-- <p>Razón social EMPRESA</p> -->
+                                        <p>Número de tarjeta 5343-8101-0009-9727</p>
+                                        <!-- <p>Clabe interbancaria 44444444444444444</p> -->
                                     </div>
-                                    <div>
+                                    <!-- <div>
                                         <h6>BBVA Bancomer</h6>
                                         <p>Razón social EMPRESA</p>
                                         <p>Número de cuenta 4444444444</p>
                                         <p>Clabe interbancaria 4444444444444</p>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </li>
                             <li>

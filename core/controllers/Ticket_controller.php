@@ -24,8 +24,8 @@ class Ticket_controller extends Controller
 				$mail->setFrom('noreplay@adventrips.com', 'Adventrips');
 				$mail->AltBody = 'To view the message, please use an HTML compatible email viewer!';
 				$mail->SMTPOptions = [ 'ssl' => [ 'verify_peer' => false, 'verify_peer_name' => false, 'allow_self_signed' => true ] ];
-				// $mail->addAddress('reservaciones@adventrips.com');
-				$mail->addAddress('davidgomezmacias@gmail.com');
+				$mail->addAddress('reservaciones@adventrips.com');
+				// $mail->addAddress('davidgomezmacias@gmail.com');
 				$mail->Subject = "{$response['customer']['firstname']}, solicitó una actualización en su reservación.";
 				$mail->Body    = "Folio: {$response['folio']} <br><br> Mensaje: {$_POST['request']}";
 

@@ -194,8 +194,8 @@ class Booking_controller extends Controller
 				                $mail->setFrom('noreplay@adventrips.com', 'Adventrips');
 				                $mail->AltBody = 'To view the message, please use an HTML compatible email viewer!';
 				                $mail->SMTPOptions = [ 'ssl' => [ 'verify_peer' => false, 'verify_peer_name' => false, 'allow_self_signed' => true ] ];
-				                // $mail->addAddress('reservaciones@adventrips.com');
-				                $mail->addAddress('davidgomezmacias@gmail.com');
+				                $mail->addAddress('reservaciones@adventrips.com');
+				                // $mail->addAddress('davidgomezmacias@gmail.com');
 				                $mail->Subject = "Reservación número #{$ticket['folio']}";
 				                $mail->msgHTML( $notification->get_template( $ticket, 'notification_new_reservation.admin.php' ) );
 
