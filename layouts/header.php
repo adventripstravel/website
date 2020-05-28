@@ -24,7 +24,8 @@
     <div class="bottombar">
         <div class="container">
             <figure>
-                <a href="/"><img src="{$_vkye_logotype_color}" alt="Logotype"></a>
+                <!-- <a href="/"><img src="{$_vkye_logotype_color}" alt="Logotype"></a> -->
+                <a href="/"><img src="{$path.images}logotype.png" alt="Logotype"></a>
             </figure>
             <nav>
                 <ul>
