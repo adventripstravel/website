@@ -2,42 +2,42 @@
 defined('_EXEC') or die;
 
 /**
- *
- * @package Valkyrie.Libraries
- *
- * @since 1.0.0
- * @version 1.0.0
- * @license You can see LICENSE.txt
- *
- * @author David Miguel Gómez Macías < davidgomezmacias@gmail.com >
- * @copyright Copyright (C) CodeMonkey - Platform. All Rights Reserved.
- */
+*
+* @package Valkyrie.Libraries
+*
+* @since 1.0.0
+* @version 1.0.1
+* @license You can see LICENSE.txt
+*
+* @author David Miguel Gómez Macías < davidgomezmacias@gmail.com >
+* @copyright Copyright (C) CodeMonkey - Platform. All Rights Reserved.
+*/
 
 class View
 {
 	/**
-     *
-     * @var object
-     */
+	*
+	* @var object
+	*/
 	private $dependencies;
 
 	/**
-     *
-     * @var object
-     */
+	*
+	* @var object
+	*/
 	private $security;
 
 	/**
-     *
-     * @var object
-     */
+	*
+	* @var object
+	*/
 	private $format;
 
 	/**
-	 * Constructor.
-     *
-     * @return  void
-     */
+	* Constructor.
+	*
+	* @return  void
+	*/
 	public function __construct()
 	{
 		$this->dependencies = new Dependencies();
@@ -46,27 +46,27 @@ class View
 	}
 
 	/**
-	 * Renderiza el html
-     *
-	 * @param	object    $controller    Controlador principal.
-	 * @param	mixed     $layouts		 Informacion de los layouts a mostrar.
-	 *
-     * @return  string
-     */
+	* Renderiza el html
+	*
+	* @param	object    $controller    Controlador principal.
+	* @param	mixed     $layouts		 Informacion de los layouts a mostrar.
+	*
+	* @return  string
+	*/
 	public function render( $controller, $layouts )
 	{
 		foreach ( $GLOBALS as $key => $value )
 		{
 			if ( $key != 'GLOBALS' ||
-				 $key != '_SERVER' ||
-				 $key != '_GET' ||
-				 $key != '_POST' ||
-			 	 $key != '_FILES' ||
-				 $key != '_COOKIE' ||
-				 $key != '_SESSION' ||
-				 $key != '_REQUEST' ||
-				 $key != '_ENV' ||
-			 	 $key != 'layout' )
+			$key != '_SERVER' ||
+			$key != '_GET' ||
+			$key != '_POST' ||
+			$key != '_FILES' ||
+			$key != '_COOKIE' ||
+			$key != '_SESSION' ||
+			$key != '_REQUEST' ||
+			$key != '_ENV' ||
+			$key != 'layout' )
 			{
 				global ${$key};
 			}
@@ -83,21 +83,17 @@ class View
 			{
 				$file = Security::DS("{$layouts['head']['path']}/{$layouts['head']['file']}.php");
 
-				if ( file_exists($file) )
-					require_once $file;
-				else
-					require_once Security::DS("{$path_layouts}/head.php");
+				if ( file_exists($file) ) require_once $file;
+				else require_once Security::DS("{$path_layouts}/head.php");
 			}
-			else
-				require_once Security::DS("{$path_layouts}/head.php");
+			else require_once Security::DS("{$path_layouts}/head.php");
 
 			// Load Main
 			if ( isset($layouts['main']['path']) && !empty($layouts['main']['path']) )
 			{
 				$file = Security::DS("{$layouts['main']['path']}/{$layouts['main']['file']}.php");
 
-				if ( file_exists($file) )
-					require_once $file;
+				if ( file_exists($file) ) require_once $file;
 			}
 			else
 			{
@@ -110,33 +106,29 @@ class View
 			{
 				$file = Security::DS("{$layouts['footer']['path']}/{$layouts['footer']['file']}.php");
 
-				if ( file_exists($file) )
-					require_once $file;
-				else
-					require_once Security::DS("{$path_layouts}/footer.php");
+				if ( file_exists($file) ) require_once $file;
+				else require_once Security::DS("{$path_layouts}/footer.php");
 			}
-			else
-				require_once Security::DS("{$path_layouts}/footer.php");
+			else require_once Security::DS("{$path_layouts}/footer.php");
 		}
 		else
 		{
 			require_once Security::DS("{$path_layouts}/head.php");
 
-			if ( is_object($controller) )
-				$controller = str_replace(CONTROLLER_PHP, '', get_class($controller));
+			if ( is_object($controller) ) $controller = str_replace(CONTROLLER_PHP, '', get_class($controller));
 
 			require_once Security::DS("{$path_layouts}/{$controller}/{$layouts}.php");
 			require_once Security::DS("{$path_layouts}/footer.php");
 		}
 
-        $buffer = ob_get_contents();
+		$buffer = ob_get_contents();
 
 		// Code render
 		$buffer = $this->dependencies->run($buffer);
 
-        ob_end_clean();
+		ob_end_clean();
 
-        return $buffer;
+		return $buffer;
 	}
 
 }
