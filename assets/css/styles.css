@@ -214,6 +214,138 @@ ul.timeline > li:last-child:after {
     line-height: 0;
 }
 
+#reservation_mail {
+    position: fixed;
+    bottom: 280px;
+    right: 20px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
+    overflow: initial;
+    z-index: 99;
+    background-color: #9c27b0;
+    border: none;
+}
+
+#reservation_mail::after {
+    content: "Cotíza por correo";
+    font-size: 12px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 115%;
+    color: #222;
+    z-index: 1;
+    margin: auto;
+    height: 30px;
+    line-height: 30px;
+    background-color: #FFF;
+    border-radius: 50px;
+    padding: 0 20px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+#reservation_phone {
+    position: fixed;
+    bottom: 220px;
+    right: 20px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
+    overflow: initial;
+    z-index: 99;
+    background-color: #9c27b0;
+    border: none;
+}
+
+#reservation_phone::after {
+    content: "Cotíza por teléfono";
+    font-size: 12px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 115%;
+    color: #222;
+    z-index: 1;
+    margin: auto;
+    height: 30px;
+    line-height: 30px;
+    background-color: #FFF;
+    border-radius: 50px;
+    padding: 0 20px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+#reservation_messenger {
+    position: fixed;
+    bottom: 160px;
+    right: 20px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
+    overflow: initial;
+    z-index: 99;
+    background-color: #2196F3;
+    border: none;
+}
+
+#reservation_messenger::after {
+    content: "Cotíza por Messenger";
+    font-size: 12px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 115%;
+    color: #222;
+    z-index: 1;
+    margin: auto;
+    height: 30px;
+    line-height: 30px;
+    background-color: #FFF;
+    border-radius: 50px;
+    padding: 0 20px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+#reservation_whatsapp {
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
+    overflow: initial;
+    z-index: 99;
+    background-color: #4caf50;
+    border: none;
+}
+
+#reservation_whatsapp::after {
+    content: "Cotíza por Whatsapp";
+    font-size: 12px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 115%;
+    color: #222;
+    z-index: 1;
+    margin: auto;
+    height: 30px;
+    line-height: 30px;
+    background-color: #FFF;
+    border-radius: 50px;
+    padding: 0 20px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
+}
+
 #reservation {
     position: fixed;
     bottom: 20px;
@@ -225,10 +357,11 @@ ul.timeline > li:last-child:after {
     box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
     overflow: initial;
     z-index: 99;
+    border: none;
 }
 
 #reservation::after {
-    content: "¡Reservar ahora!";
+    content: "¡Cotíza ahora!";
     font-size: 12px;
     position: absolute;
     top: 0;
@@ -273,4 +406,48 @@ ul.timeline > li:last-child:after {
     padding: 20px;
     box-sizing: border-box;
     background-color: transparent;
+}
+
+div.discount {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+div.discount > span {
+    width: auto;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 20px;
+    box-sizing: border-box;
+    border-radius: 60px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;
+    margin-right: 10px;
+    text-align: center;
+}
+
+div.discount > span:first-child {
+    background-color: #ffc107;
+}
+
+div.discount > span:last-child {
+    background-color: #f44336;
+}
+
+@media (max-width: 768px) {
+
+    div.discount {
+        flex-direction: column;
+    }
+
+    div.discount > span {
+        width: 100%;
+        margin-bottom: 10px;
+        margin-right: 0px;
+    }
 }

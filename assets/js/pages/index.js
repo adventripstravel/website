@@ -13,6 +13,21 @@ $( document ).ready(function ()
         dots:false,
     });
 
+    $('.isla-mujeres-slide').on('click', function ()
+    {
+        owl.trigger('to.owl.carousel', [1]);
+    });
+
+    $('.isla-contoy-slide').on('click', function ()
+    {
+        owl.trigger('to.owl.carousel', [2]);
+    });
+
+    $('.tiburon-ballena-slide').on('click', function ()
+    {
+        owl.trigger('to.owl.carousel', [3]);
+    });
+
     $('.next-slide').on('click', function ()
     {
         owl.trigger('next.owl.carousel');

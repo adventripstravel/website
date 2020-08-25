@@ -1,4 +1,5 @@
 <?php
+
 defined('_EXEC') or die;
 
 class Experiences_controller extends Controller
@@ -8,44 +9,39 @@ class Experiences_controller extends Controller
 		parent::__construct();
 	}
 
-	public function view( $param )
+	public function view($param)
 	{
-		/* Action Ajax ------------------------------------------------------ */
-		if ( Format::exist_ajax_request() )
+		if (Format::exist_ajax_request())
 		{
-			$post['babies'] = ( isset($_POST['babies']) && !empty($_POST['babies']) ) ? (int) $_POST['babies'] : 0;
-			$post['childs'] = ( isset($_POST['childs']) && !empty($_POST['childs']) ) ? (int) $_POST['childs'] : 0;
-			$post['adults'] = ( isset($_POST['adults']) && !empty($_POST['adults']) ) ? (int) $_POST['adults'] : 0;
-			$post['date'] = ( isset($_POST['date']) && !empty($_POST['date']) ) ? $_POST['date'] : null;
-			$post['name'] = ( isset($_POST['name']) && !empty($_POST['name']) ) ? $_POST['name'] : null;
-			$post['lastname'] = ( isset($_POST['lastname']) && !empty($_POST['lastname']) ) ? $_POST['lastname'] : null;
-			$post['email'] = ( isset($_POST['email']) && !empty($_POST['email']) ) ? $_POST['email'] : null;
-			$post['nationality'] = ( isset($_POST['nationality']) && !empty($_POST['nationality']) ) ? $_POST['nationality'] : null;
-			$post['lada'] = ( isset($_POST['lada']) && !empty($_POST['lada']) ) ? $_POST['lada'] : null;
-			$post['phone'] = ( isset($_POST['phone']) && !empty($_POST['phone']) ) ? $_POST['phone'] : null;
-			$post['comments'] = ( isset($_POST['comments']) && !empty($_POST['comments']) ) ? $_POST['comments'] : null;
+			$post['babies'] = (isset($_POST['babies']) && !empty($_POST['babies'])) ? (int) $_POST['babies'] : 0;
+			$post['childs'] = (isset($_POST['childs']) && !empty($_POST['childs'])) ? (int) $_POST['childs'] : 0;
+			$post['adults'] = (isset($_POST['adults']) && !empty($_POST['adults'])) ? (int) $_POST['adults'] : 0;
+			$post['date'] = (isset($_POST['date']) && !empty($_POST['date'])) ? $_POST['date'] : null;
+			$post['name'] = (isset($_POST['name']) && !empty($_POST['name'])) ? $_POST['name'] : null;
+			$post['lastname'] = (isset($_POST['lastname']) && !empty($_POST['lastname'])) ? $_POST['lastname'] : null;
+			$post['email'] = (isset($_POST['email']) && !empty($_POST['email'])) ? $_POST['email'] : null;
+			$post['lada'] = (isset($_POST['lada']) && !empty($_POST['lada'])) ? $_POST['lada'] : null;
+			$post['phone'] = (isset($_POST['phone']) && !empty($_POST['phone'])) ? $_POST['phone'] : null;
+			$post['comments'] = (isset($_POST['comments']) && !empty($_POST['comments'])) ? $_POST['comments'] : null;
 
 			$labels = [];
 
-			if ( is_null($post['adults']) || $post['adults'] <= 0 )
+			if (is_null($post['adults']) || $post['adults'] <= 0)
 				array_push($labels, ['adults', 'Debe ir al menos 1 adulto.']);
 
-			if ( is_null($post['date']) )
+			if (is_null($post['date']))
 				array_push($labels, ['date', 'Debes elegir una fecha para la excursión.']);
 
-			if ( is_null($post['name']) )
+			if (is_null($post['name']))
 				array_push($labels, ['name', '¿Cómo te llamas?']);
 
-			if ( is_null($post['lastname']) )
+			if (is_null($post['lastname']))
 				array_push($labels, ['lastname', '¿Cómo te apellidas?']);
 
-			if ( is_null($post['email']) )
+			if (is_null($post['email']))
 				array_push($labels, ['email', '¿Cúal es tu correo electrónico?']);
 
-			if ( is_null($post['phone']) || strlen($post['phone']) != 10 )
-				array_push($labels, ['phone', 'Escríbe un número telefónico a 10 dígitos.']);
-
-			if ( !empty($labels) )
+			if (!empty($labels))
 			{
 				echo json_encode([
 					'status' => 'error',
@@ -54,6 +50,22 @@ class Experiences_controller extends Controller
 			}
 			else
 			{
+				$header_mail  = 'MIME-Version: 1.0' . "\r\n";
+				$header_mail .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+				$header_mail .= 'From: Adventrips.com <noreply@adventrips.com>' . "\r\n";
+				$subject_mail .= 'Cotización';
+				$body_mail =
+				'Bebés: ' . (!empty($post['babies']) ? $post['babies'] : '0') . '<br>
+				Niños: ' . (!empty($post['childs']) ? $post['childs'] : '0') . '<br>
+				Adultos: ' . $post['adults'] . '<br>
+				Fecha: ' . $post['date'] . '<br>
+				Nombre: ' . $post['name'] . ' ' . $post['lastname'] . '<br>
+				Correo: ' . $post['email'] . '<br>
+				Teléfono: ' . $post['lada'] . ' ' . $post['phone'] . '<br>
+				Comentarios: ' . $post['comments'];
+
+			    mail('reservaciones@adventrips.com', $subject_mail, $body_mail, $header_mail);
+
 				echo json_encode([
 					"status" => "OK"
 				], JSON_PRETTY_PRINT);
@@ -61,7 +73,7 @@ class Experiences_controller extends Controller
 		}
 		else
 		{
-			switch ( $param[0] )
+			switch ($param[0])
 			{
 				case 'isla-contoy':
 					$this->isla_contoy();
@@ -134,6 +146,7 @@ class Experiences_controller extends Controller
 		];
 
 		define('_title', $data['title'] .' - Adventrips');
+
 		echo $this->view->render($this, 'isla_contoy');
 	}
 
@@ -184,6 +197,7 @@ class Experiences_controller extends Controller
 		];
 
 		define('_title', $data['title'] .' - Adventrips');
+
 		echo $this->view->render($this, 'isla_mujeres');
 	}
 
@@ -216,6 +230,7 @@ class Experiences_controller extends Controller
 		];
 
 		define('_title', $data['title'] .' - Adventrips');
+
 		echo $this->view->render($this, 'tiburon_ballena');
 	}
 
