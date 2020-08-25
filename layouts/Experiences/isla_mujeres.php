@@ -36,6 +36,7 @@ $this->dependencies->add(['js', '{$path.js}pages/experiences.js']);
     </header>
     <section class="p-t-50 p-b-50">
         <div class="container">
+            <h4 class="m-b-20">Desde $ 910.00 MXN + Descuentos</h4>
             <p class="text-muted">{$lang.home_6}</p>
             <p class="text-muted">{$lang.home_7}</p>
             <p class="text-muted">{$lang.home_8}</p>

@@ -36,6 +36,7 @@ $this->dependencies->add(['js', '{$path.js}pages/experiences.js']);
     </header>
     <section class="p-t-50 p-b-50">
         <div class="container">
+            <h4 class="m-b-20">Desde $ 3,780.00 MXN + Descuentos</h4>
             <p class="text-muted">Nada con tiburones ballena cuando visiten la costa mexicana entre mediados de mayo hasta mitad de septiembre.</p>
             <p class="text-muted">Salida desde Punta Sam, bebidas de cortesía a bordo en el camino hacia el sitio de snorkel, donde se le dará su equipo de snórkel y se le proporcionará la información de seguridad sobre qué esperar en el mar. Salte al océano para bucear con los peces más grandes del mundo mientras se encuentra cara a cara con los tiburones ballena. Algunos ejemplares adultos pueden medir hasta 13 metros de longitud, aunque se han registrado relatos de individuos de hasta 18 metros, al subir a bordo le darán sándwiches de desayuno.</p>
             <p class="text-muted">Luego, se dirigirá a Playa Norte en Isla Mujeres para disfrutar de un delicioso almuerzo mientras disfruta de las cristalinas aguas de la isla, regrese a bordo de su barco para el traslado de regreso al punto de inicio. Tenga en cuenta que el encuentro con el tiburón ballena es una actividad segura y está disponible de mayo a septiembre.</p>

@@ -36,6 +36,7 @@ $this->dependencies->add(['js', '{$path.js}pages/experiences.js']);
     </header>
     <section class="p-t-50 p-b-50">
         <div class="container">
+            <h4 class="m-b-20">Desde $ 3,240.00 MXN + Descuentos</h4>
             <p class="text-muted">Isla Contoy es una de las principales reservas naturales de Quintana Roo, puedes visitarla en un viaje privado y personalizado para tu grupo. En la isla habitan más de 150 especies de aves y su visita es obligada para los amantes de la naturaleza.</p>
             <p class="text-muted">La Isla Contoy se trata de una reserva natural protegida. Es literalmente una isla de casi 9 kilómetros de longitud convertidos en 230 hectáreas de casa-hogar de 152 especies distintas de aves; esto lo convierte en el refugio de aves marinas más importante de la zona del Caribe Mexicano.</p>
             <p class="text-muted">Embárcate en un tour para hacer snórkel dónde podrás admirar arrecifes de coral y una gran variedad de especies marinas, después te dirigirás a la isla para admirar de cerca la belleza natural de la reserva. A continuación podrás, hacer una caminata para conocer la flora y la fauna, visitar un museo local y subir al mirador de 25 metros de altura desde el que podrás contemplar vistas espectaculares o avista alguna de las 152 especies de aves diferentes que viven en la isla.</p>
