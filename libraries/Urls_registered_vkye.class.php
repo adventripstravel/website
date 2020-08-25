@@ -1,4 +1,15 @@
 <?php
+/**
+ *
+ * @package Valkyrie.Platform.Libraries
+ *
+ * @since 2.0.0
+ * @version 1.0.0
+ * @license You can see LICENSE.txt
+ *
+ * @author David Miguel Gómez Macías < davidgomezmacias@gmail.com >
+ * @copyright Copyright (C) CodeMonkey - Valkyrie Platform. All Rights Reserved.
+ */
 
 defined('_EXEC') or die;
 
@@ -13,26 +24,10 @@ class Urls_registered_vkye
                 'controller' => 'Index',
                 'method' => 'index'
             ],
-            '/booking/%param%' => [
-                'controller' => 'Booking',
-                'method' => 'index'
+            '/experiencia/%param%' => [
+                'controller' => 'Experiences',
+                'method' => 'view'
             ],
-            '/voucher/%param%' => [
-                'controller' => 'Voucher',
-                'method' => 'index'
-            ],
-            '/contact' => [
-                'controller' => 'Contact',
-                'method' => 'index'
-            ],
-            '/terms' => [
-                'controller' => 'Terms',
-                'method' => 'index'
-            ],
-            '/ticket/%param%' => [
-                'controller' => 'Ticket',
-                'method' => 'index'
-            ]
         ];
     }
 }

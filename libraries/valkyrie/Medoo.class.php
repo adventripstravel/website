@@ -8,13 +8,6 @@
  * Released under the MIT license
  */
 
-// namespace Medoo;
-//
-// use PDO;
-// use Exception;
-// use PDOException;
-// use InvalidArgumentException;
-
 class Raw {
 	public $map;
 	public $value;
@@ -44,7 +37,7 @@ class Medoo
 
 	public function __construct(array $options = null)
 	{
-		if ( Configuration::$db_state === TRUE && $options == null )
+		if ( Configuration::$db_state === true && $options == null )
 		{
 			$options = [
 				'database_type' => Configuration::$db_type,

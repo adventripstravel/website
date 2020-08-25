@@ -3,12 +3,12 @@
 defined('_EXEC') or die;
 
 /**
+ *
  * @author David Miguel Gómez Macías < davidgomezmacias@gmail.com >
  * @package Valkyrie.Libraries
  * @since 1.0.0
  * @version 1.0.0
  */
-
 class Configuration
 {
 	/**
@@ -101,7 +101,7 @@ class Configuration
 	 *
      * @var string $secret
      */
-	public static $secret = '1e:[7~uJ*T}/CCO3';
+	public static $secret = 'M|m(oS8%}g4Ys$x[ox)-zE.1g';
 
 	/**
      * Tiempo de vida para una session en bytes.
@@ -110,7 +110,7 @@ class Configuration
 	 *
      * @var integer $cookie_lifetime
      */
-	public static $cookie_lifetime	= 86400;
+	public static $cookie_lifetime	= 86400; // Duracion de un día
 
 	/**
      * Estado de uso de la base de datos.
@@ -119,7 +119,7 @@ class Configuration
 	 *
      * @var boolean $db_state
      */
-	public static $db_state = true;
+	public static $db_state = false;
 
 	/**
      * Tipo de base de datos.
@@ -138,7 +138,7 @@ class Configuration
 	 *
      * @var string $db_host
      */
-	public static $db_host = 'adventrips.com';
+	public static $db_host = '';
 
 	/**
      * Nombre de la base de datos
@@ -147,7 +147,11 @@ class Configuration
 	 *
      * @var string $db_name
      */
+<<<<<<< HEAD
 	public static $db_name = 'ad-website';
+=======
+	public static $db_name = '';
+>>>>>>> development
 
 	/**
      * Usuario de la base de datos
@@ -156,7 +160,7 @@ class Configuration
 	 *
      * @var string $db_user
      */
-	public static $db_user = 'adventrips';
+	public static $db_user = '';
 
 	/**
      * Contraseña de la base de datos.
@@ -165,7 +169,7 @@ class Configuration
 	 *
      * @var string $db_pass
      */
-	public static $db_pass = 'P2g@y77v';
+	public static $db_pass = '';
 
 	/**
      * Tipo de caracteres para la base de datos. Opcional.
@@ -230,7 +234,7 @@ class Configuration
 	 *
      * @var string $smtp_host
      */
-	public static $smtp_host = 'codemonkey.com.mx';
+	public static $smtp_host = '';
 
 	/**
      * Usuario de la cuenta smtp.
@@ -240,7 +244,7 @@ class Configuration
 	 *
      * @var string $smtp_user
      */
-	public static $smtp_user = 'noreplay@adventrips.com';
+	public static $smtp_user = '';
 
 	/**
      * Contraseña de la cuenta smtp.
@@ -249,7 +253,7 @@ class Configuration
 	 *
      * @var string $smtp_pass
      */
-	public static $smtp_pass = 'k8Ev^e39';
+	public static $smtp_pass = '';
 
 	/**
      * Seguridad de la encriptacion para el envio de SMTP.
@@ -268,5 +272,5 @@ class Configuration
 	 *
      * @var integer $smtp_port
      */
-	public static $smtp_port = 587;
+	public static $smtp_port = 25;
 }

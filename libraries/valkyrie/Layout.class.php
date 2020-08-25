@@ -2,84 +2,84 @@
 defined('_EXEC') or die;
 
 /**
- *
- * @package Valkyrie.Libraries
- *
- * @since 1.0.0
- * @version 1.0.1
- * @license You can see LICENSE.txt
- *
- * @author David Miguel Gómez Macías < davidgomezmacias@gmail.com >
- * @copyright Copyright (C) CodeMonkey - Platform. All Rights Reserved.
- */
+*
+* @package Valkyrie.Libraries
+*
+* @since 1.0.0
+* @version 1.0.1
+* @license You can see LICENSE.txt
+*
+* @author David Miguel Gómez Macías < davidgomezmacias@gmail.com >
+* @copyright Copyright (C) CodeMonkey - Platform. All Rights Reserved.
+*/
 
 class Layout
 {
     /**
-     *
-     * @var object
-     */
+    *
+    * @var object
+    */
     private $framework;
 
     /**
-     *
-     * @var object
-     */
+    *
+    * @var object
+    */
     private $security;
 
     /**
-     *
-     * @var object
-     */
+    *
+    * @var object
+    */
     private $render;
 
     /**
-     *
-     * @var object
-     */
+    *
+    * @var object
+    */
     private $language;
 
     /**
-     *
-     * @var object
-     */
+    *
+    * @var object
+    */
     private $format;
 
     /**
-     *
-     * @var string
-     */
+    *
+    * @var string
+    */
     private $controller;
 
     /**
-     *
-     * @var string
-     */
+    *
+    * @var string
+    */
     private $method;
 
     /**
-     *
-     * @var string
-     */
+    *
+    * @var string
+    */
     private $params;
 
     /**
-     *
-     * @var string
-     */
+    *
+    * @var string
+    */
     private $settins_url;
 
     /**
-     *
-     * @var string
-     */
+    *
+    * @var string
+    */
     private $route;
 
     /**
-	 * Constructor.
-     *
-     * @return  void
-     */
+    * Constructor.
+    *
+    * @return  void
+    */
     public function __construct()
     {
         $this->framework = new Framework();
@@ -92,38 +92,36 @@ class Layout
     }
 
     /**
-     * Imprime todo el contendio ya procesado.
-     *
-     * @final
-     *
-     * @return  string
-     */
+    * Imprime todo el contendio ya procesado.
+    *
+    * @final
+    *
+    * @return  string
+    */
     public function execute()
     {
         ob_start("ob_gzhandler");
 
-		$this->load_controller();
+        $this->load_controller();
 
-		if ( !defined('_title') )
-			define('_title', Configuration::$web_page . ' - ' . Framework::PRODUCT);
+        if ( !defined('_title') ) define('_title', Configuration::$web_page . ' - ' . Framework::PRODUCT);
 
-		if ( !defined('_lang') )
-			define('_lang', Configuration::$lang_default);
+        if ( !defined('_lang') ) define('_lang', Configuration::$lang_default);
 
-		$buffer = ob_get_contents();
+        $buffer = ob_get_contents();
 
-		$buffer = $this->render($buffer);
+        $buffer = $this->render($buffer);
 
-		ob_end_clean();
+        ob_end_clean();
 
-		return $buffer;
+        return $buffer;
     }
 
     /**
-     * Prepara las variables a partir de la url para solicitar el controlador y metodos.
-     *
-     * @return void
-     */
+    * Prepara las variables a partir de la url para solicitar el controlador y metodos.
+    *
+    * @return void
+    */
     private function load_page()
     {
         $url = Security::url();
@@ -134,21 +132,7 @@ class Layout
         {
             $urls_registered = $class_urls_registered::urls();
 
-            $call_api = ( isset($class_urls_registered::$api) ) ? $class_urls_registered::$api : "api";
-
-            if ( $url[0] == $call_api )
-            {
-                $this->controller = ucwords(strtolower('Api'));
-                $this->method = strtolower('execute');
-                $this->params = [];
-
-                foreach ( $url as $value )
-                {
-                    if ( $value != $call_api )
-                        $this->params[] = $value;
-                }
-            }
-            else if ( $url[0] !== '/' )
+            if ( $url[0] !== '/' )
             {
                 foreach ( $urls_registered as $_url => $_value )
                 {
@@ -157,8 +141,7 @@ class Layout
                     $new_key = $_url;
                     $_url    = explode('/', $_url);
 
-                    if ( count($url) != count($_url) )
-                        unset($urls_registered[$key]);
+                    if ( count($url) != count($_url) ) unset($urls_registered[$key]);
                     else
                     {
                         $urls_registered[$new_key] = $urls_registered[$key];
@@ -173,16 +156,8 @@ class Layout
 
                     foreach ( $_url as $_key => $_value )
                     {
-                        switch ( $_value )
-                        {
-                            case '%param%':
-                                $url_parse .= "{$url[$_key]}/";
-                                break;
-
-                            default:
-                                $url_parse .= "{$_value}/";
-                                break;
-                        }
+                        if ( $_value != '%param%' ) $url_parse .= "{$_value}/";
+                        else $url_parse .= "{$url[$_key]}/";
                     }
 
                     $url_parse = explode("/", substr($url_parse, 0, -1));
@@ -198,32 +173,32 @@ class Layout
                         $params = array_diff($url, $_url);
 
                         $this->params = [];
-                        foreach ( $params as $value )
-                            $this->params[] = $value;
+                        foreach ( $params as $value ) $this->params[] = $value;
                     }
                 }
             }
             else
             {
                 if ( !isset($class_urls_registered::$home_page_default) || empty($class_urls_registered::$home_page_default) )
+                {
                     die(sprintf("La direccion por default no se encuentra definida en: <b>%s::%s</b>.", $class_urls_registered, '$home_page_default'));
+                }
 
                 $value = ( $class_urls_registered::$home_page_default[0] != '/' ) ? "/{$class_urls_registered::$home_page_default}" : $class_urls_registered::$home_page_default;
                 $value = $urls_registered[$value];
 
                 $this->controller = ucwords(strtolower($value['controller']));
                 $this->method = strtolower($value['method']);
+                unset($value['controller'], $value['method']);
+                $this->settins_url = $value;
                 $this->params = [];
             }
         }
         else
         {
-            if ( isset($_SERVER['PATH_INFO']) )
-                $PATH_INFO = $_SERVER['PATH_INFO'];
-            else if ( isset($_SERVER['ORIG_PATH_INFO']) )
-                $PATH_INFO = $_SERVER['ORIG_PATH_INFO'];
-            else
-                $PATH_INFO = null;
+            if ( isset($_SERVER['PATH_INFO']) ) $PATH_INFO = $_SERVER['PATH_INFO'];
+            else if ( isset($_SERVER['ORIG_PATH_INFO']) ) $PATH_INFO = $_SERVER['ORIG_PATH_INFO'];
+            else $PATH_INFO = null;
 
             if ( Configuration::$url_friendly === true && isset($PATH_INFO) && !is_null($PATH_INFO) )
             {
@@ -238,8 +213,7 @@ class Layout
                 unset($url[1]);
                 unset($url[2]);
 
-                foreach ( $url as $param )
-                    $this->params .= $param . '/';
+                foreach ( $url as $param ) $this->params .= $param . '/';
 
                 $this->params = ( isset($url[3]) )? substr($this->params, 0, -1) : '';
 
@@ -252,34 +226,32 @@ class Layout
                 $this->params     = (isset($_GET['p']))? $_GET['p'] : '';
             }
 
-            if ( empty($this->controller) )
-                $this->controller = 'Index';
+            if ( empty($this->controller) ) $this->controller = 'Index';
 
-            if ( empty($this->method) )
-                $this->method = 'index';
+            if ( empty($this->method) ) $this->method = 'index';
         }
     }
 
     /**
-     * Obtiene la informacion del controlador solicitado.
-     *
-     * @return  void
-     */
+    * Obtiene la informacion del controlador solicitado.
+    *
+    * @return  void
+    */
     private function load_controller()
-	{
+    {
         $path = Security::DS(PATH_CONTROLLERS . $this->controller . CONTROLLER_PHP . '.php');
 
-		if ( file_exists($path) )
-		{
-			require_once $path;
+        if ( file_exists($path) )
+        {
+            require_once $path;
 
             $controller = $this->controller . CONTROLLER_PHP;
-			$controller = new $controller();
+            $controller = new $controller();
 
-			if ( isset($this->method) )
-			{
-				if ( method_exists($controller, $this->method) )
-				{
+            if ( isset($this->method) )
+            {
+                if ( method_exists($controller, $this->method) )
+                {
                     if ( file_exists(Security::DS(PATH_MY_LIBRARIES . 'Route_vkye' . CLASS_PHP)) )
                     {
                         $this->route = new Route_vkye('/' . $this->controller . '/' . $this->method, $this->settins_url);
@@ -287,31 +259,25 @@ class Layout
                         $this->route->on_change_start();
                     }
 
-					if ( isset($this->params) )
-						$controller->{$this->method}($this->params);
-					else
-						$controller->{$this->method}();
+                    if ( isset($this->params) ) $controller->{$this->method}($this->params);
+                    else $controller->{$this->method}();
 
-                    if ( file_exists(Security::DS(PATH_MY_LIBRARIES . 'Route_vkye' . CLASS_PHP)) )
-                        $this->route->on_change_end();
-				}
-				else
-                    Errors::http('404', '{method_does_exists}');
-			}
-			else
-                $controller->index();
-		}
-		else
-            Errors::http('404', '{controller_does_exists}');
-	}
+                    if ( file_exists(Security::DS(PATH_MY_LIBRARIES . 'Route_vkye' . CLASS_PHP)) ) $this->route->on_change_end();
+                }
+                else Errors::http('404', '{method_does_exists}');
+            }
+            else $controller->index();
+        }
+        else Errors::http('404', '{controller_does_exists}');
+    }
 
     /**
-     * Renderiza todo el buffer remplazando placeholder.
-     *
-     * @param   string    $buffer    Buffer pre-cargado.
-     *
-     * @return  string
-     */
+    * Renderiza todo el buffer remplazando placeholder.
+    *
+    * @param   string    $buffer    Buffer pre-cargado.
+    *
+    * @return  string
+    */
     private function render( $buffer )
     {
         if ( file_exists(Security::DS(PATH_MY_LIBRARIES . 'Placeholders_vkye' . CLASS_PHP)) )
@@ -325,7 +291,9 @@ class Layout
         $buffer = $this->render->paths($buffer);
 
         if ( Configuration::$compress_html === true )
+        {
             $buffer = preg_replace(array('//Uis', "/[[:blank:]]+/"), array('', ' '), str_replace(array("\n", "\r", "\t"), '', $buffer));
+        }
 
         return $buffer;
     }
