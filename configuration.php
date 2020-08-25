@@ -47,7 +47,7 @@ class Configuration
 	 *
      * @var string $error_reporting
      */
-	public static $error_reporting = 'none';
+	public static $error_reporting = 'development';
 
 	/**
      * Modo para debuggear errores.
@@ -147,11 +147,7 @@ class Configuration
 	 *
      * @var string $db_name
      */
-<<<<<<< HEAD
-	public static $db_name = 'ad-website';
-=======
 	public static $db_name = '';
->>>>>>> development
 
 	/**
      * Usuario de la base de datos
