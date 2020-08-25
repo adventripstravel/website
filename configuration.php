@@ -1,4 +1,5 @@
 <?php
+
 defined('_EXEC') or die;
 
 /**
@@ -137,7 +138,7 @@ class Configuration
 	 *
      * @var string $db_host
      */
-	public static $db_host = 'localhost';
+	public static $db_host = '';
 
 	/**
      * Nombre de la base de datos
@@ -220,7 +221,7 @@ class Configuration
 	 *
      * @var boolean $smtp_auth
      */
-	public static $smtp_auth = true;
+	public static $smtp_auth = false;
 
 	/**
      * Dominio o IP del servidor SMTP.
