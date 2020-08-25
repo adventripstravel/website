@@ -214,42 +214,9 @@ ul.timeline > li:last-child:after {
     line-height: 0;
 }
 
-#reservation_mail {
-    position: fixed;
-    bottom: 280px;
-    right: 20px;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    font-size: 24px;
-    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
-    overflow: initial;
-    z-index: 99;
-    background-color: #9c27b0;
-    border: none;
-}
-
-#reservation_mail::after {
-    content: "Cotíza por correo";
-    font-size: 12px;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 115%;
-    color: #222;
-    z-index: 1;
-    margin: auto;
-    height: 30px;
-    line-height: 30px;
-    background-color: #FFF;
-    border-radius: 50px;
-    padding: 0 20px;
-    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
-}
-
 #reservation_phone {
     position: fixed;
-    bottom: 220px;
+    bottom: 200px;
     right: 20px;
     border-radius: 50%;
     width: 50px;
@@ -282,7 +249,7 @@ ul.timeline > li:last-child:after {
 
 #reservation_messenger {
     position: fixed;
-    bottom: 160px;
+    bottom: 140px;
     right: 20px;
     border-radius: 50%;
     width: 50px;
@@ -315,7 +282,7 @@ ul.timeline > li:last-child:after {
 
 #reservation_whatsapp {
     position: fixed;
-    bottom: 100px;
+    bottom: 80px;
     right: 20px;
     border-radius: 50%;
     width: 50px;
@@ -346,10 +313,42 @@ ul.timeline > li:last-child:after {
     box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
 }
 
-#reservation {
+#reservation_mail {
     position: fixed;
     bottom: 20px;
     right: 20px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
+    overflow: initial;
+    z-index: 99;
+    border: none;
+}
+
+#reservation_mail::after {
+    content: "Cotíza por correo";
+    font-size: 12px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 115%;
+    color: #222;
+    z-index: 1;
+    margin: auto;
+    height: 30px;
+    line-height: 30px;
+    background-color: #FFF;
+    border-radius: 50px;
+    padding: 0 20px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+#reservation {
+    position: fixed;
+    bottom: 20px;
+    right: -100%;
     border-radius: 50%;
     width: 70px;
     height: 70px;
@@ -376,6 +375,44 @@ ul.timeline > li:last-child:after {
     border-radius: 50px;
     padding: 0 20px;
     box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width:768px) {
+
+    #reservation_phone {
+        bottom: 280px;
+    }
+
+    #reservation_messenger {
+        bottom: 220px;
+    }
+
+    #reservation_whatsapp {
+        bottom: 160px;
+    }
+
+    #reservation_mail {
+        bottom: 100px;
+    }
+
+    #reservation {
+        right: 20px;
+    }
+
+    #reservation_phone,
+    #reservation_messenger,
+    #reservation_whatsapp,
+    #reservation_mail {
+        right: -100%;
+        transition: 400ms;
+    }
+
+    #reservation_phone.view,
+    #reservation_messenger.view,
+    #reservation_whatsapp.view,
+    #reservation_mail.view {
+        right: 20px;
+    }
 }
 
 .input-group.bootstrap-touchspin {

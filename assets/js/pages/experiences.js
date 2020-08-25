@@ -41,4 +41,12 @@ $( document ).ready(function ()
         {
         }
     });
+
+    $('#reservation').on('click', function()
+    {
+        $('#reservation_phone').toggleClass('view');
+        $('#reservation_messenger').toggleClass('view');
+        $('#reservation_whatsapp').toggleClass('view');
+        $('#reservation_mail').toggleClass('view');
+    });
 });

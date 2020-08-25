@@ -112,11 +112,11 @@ $this->dependencies->add(['js', '{$path.js}pages/experiences.js']);
             </div>
         </div>
     </section>
-    <a href="mailto:reservaciones@adventrips.com" id="reservation_mail" class="btn" target="_blank"><i class="fas fa-envelope"></i></a>
     <a href="tel:+529983375918" id="reservation_phone" class="btn" target="_blank"><i class="fas fa-phone"></i></a>
     <a href="https://m.me/106456467505158" id="reservation_messenger" class="btn" target="_blank"><i class="fab fa-facebook-messenger"></i></a>
     <a href="https://api.whatsapp.com/send?phone=+529983375918" id="reservation_whatsapp" class="btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
-    <button id="reservation" class="btn" data-button-modal="booking" style="background-color:#f29100"><i class="mdi mdi-calendar"></i></button>
+    <button id="reservation_mail" class="btn" data-button-modal="booking" style="background-color:#f29100"><i class="fas fa-envelope"></i></button>
+    <a id="reservation" class="btn" style="background-color:#f29100"><i class="mdi mdi-calendar"></i></a>
 </main>
 <section id="booking" class="modal fullscreen" data-modal="booking">
     <div class="content">
