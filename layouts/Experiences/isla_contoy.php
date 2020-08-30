@@ -48,7 +48,7 @@ $this->dependencies->add(['js', '{$path.js}pages/experiences.js']);
                         <h5>Incluido</h5>
                         <p class="text-muted"><i class="fa fa-check"></i> Desayuno continental antes de partir.</p>
                         <p class="text-muted"><i class="fa fa-check"></i> Equipo y guía de snorkel.</p>
-                        <p class="text-muted"><i class="fa fa-check"></i> Bebidas a boro de la embarcación.</p>
+                        <p class="text-muted"><i class="fa fa-check"></i> Bebidas a bordo de la embarcación.</p>
                         <p class="text-muted"><i class="fa fa-check"></i> Almuerzo.</p>
                         <p class="text-muted"><i class="fa fa-check"></i> Todas las actividades del itinerario.</p>
                         <hr>
