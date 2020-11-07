@@ -119,7 +119,7 @@ class Configuration
 	 *
      * @var boolean $db_state
      */
-	public static $db_state = false;
+	public static $db_state = true;
 
 	/**
      * Tipo de base de datos.
@@ -138,7 +138,7 @@ class Configuration
 	 *
      * @var string $db_host
      */
-	public static $db_host = '';
+	public static $db_host = 'localhost';
 
 	/**
      * Nombre de la base de datos
@@ -147,7 +147,7 @@ class Configuration
 	 *
      * @var string $db_name
      */
-	public static $db_name = '';
+	public static $db_name = 'adventrips';
 
 	/**
      * Usuario de la base de datos
@@ -156,7 +156,7 @@ class Configuration
 	 *
      * @var string $db_user
      */
-	public static $db_user = '';
+	public static $db_user = 'development';
 
 	/**
      * Contraseña de la base de datos.
@@ -165,7 +165,7 @@ class Configuration
 	 *
      * @var string $db_pass
      */
-	public static $db_pass = '';
+	public static $db_pass = 'd3v3l0pm3nt';
 
 	/**
      * Tipo de caracteres para la base de datos. Opcional.
