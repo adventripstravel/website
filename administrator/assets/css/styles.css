@@ -904,7 +904,7 @@ div.label label .bootstrap-touchspin {
 }
 
 div.label label .bootstrap-touchspin > span {
-    width: 40px;
+    width: 20px;
     height: 50px;
     background-color: var(--light);
     display: -webkit-box;
@@ -916,14 +916,15 @@ div.label label .bootstrap-touchspin > span {
 
 div.label label .bootstrap-touchspin input {
     text-align: center;
-    width: calc(100% - 80px) !important;
+    width: calc(100% - 40px) !important;
     height: 50px !important;
     border: 1px solid var(--light) !important;
 }
 
 div.label label .bootstrap-touchspin > span > button {
-    width: 40px;
+    width: 20px;
     height: 50px;
+    padding: 0px;
 }
 
 div.label label .bootstrap-touchspin > span.input-group-prepend > button {

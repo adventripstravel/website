@@ -25,7 +25,6 @@ class Functions
             [ 'code' => 'transfer', 'title' => 'transferencia' ],
             [ 'code' => 'terminal', 'title' => 'terminal' ],
             [ 'code' => 'coupon', 'title' => 'cupón' ],
-            [ 'code' => 'other', 'title' => 'otro' ],
         ];
     }
 }

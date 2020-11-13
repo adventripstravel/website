@@ -8,41 +8,64 @@ class Reservations_model extends Model
 		parent::__construct();
 	}
 
+	// INSERTS
+	public function insert_new_reservation( $data = null ) : bool
+	{
+		if ( is_null($data) )
+			return false;
+
+		$this->database->insert('bookings', $data);
+
+		if ( $this->database->id() )
+			return true;
+		else
+			return false;
+	}
+
 	// GETS
-	// public function get_reservations( $folio = null ) : array
-	// {
-	// 	$_user_level = Session::get_value('_vkye_level');
-	// 	$where = [
-	// 		'type' => 'yacht',
-	// 		'status[!]' => 'removed'
-	// 	];
-	//
-	// 	if ( !is_null($folio) ) $where['folio'] = $folio;
-	//
-	// 	if ( in_array($_user_level, ['{sales}']) || in_array('{reservations_read_self}', Session::get_value('session_permissions')) )
-	// 		$where['__session[~]'] = '%'. Session::get_value('_vkye_user') .'%';
-	//
-	// 	if ( in_array('{reservations_read}', Session::get_value('session_permissions')) )
-	// 	{
-	// 		return $this->database->select('reservations', [
-	// 			'folio',
-	// 			'customer_email',
-	// 			'customer_name',
-	// 			'origin',
-	// 			'status',
-	// 			'data [Object]',
-	// 			'creation_date',
-	// 			'payment_status',
-	// 			'__session [Object]'
-	// 		], [
-	// 			'AND' => $where,
-	// 			'ORDER' => [
-	// 				'reservation_date' => 'DESC'
-	// 			]
-	// 		]);
-	// 	}
-	// 	else return [];
-	// }
+	public function get_reservations( $folio = null ) : array
+	{
+		$_user_level = Session::get_value('_vkye_level');
+		$where = [
+			'status[!]' => 'removed'
+		];
+
+		if ( !is_null($folio) ) $where['folio'] = $folio;
+
+		if ( in_array($_user_level, ['{sales}']) || in_array('{reservations_read_self}', Session::get_value('session_permissions')) )
+			$where['__session[~]'] = '%'. Session::get_value('_vkye_user') .'%';
+
+		if ( in_array('{reservations_read}', Session::get_value('session_permissions')) )
+		{
+			return $this->database->select('bookings', [
+				'folio',
+				'customer_email',
+				'customer_name',
+				'status',
+				'data [Object]',
+				'creation_date',
+				'payment_status',
+				'__session [Object]'
+			], [
+				'AND' => $where,
+				'ORDER' => [
+					'reservation_date' => 'DESC'
+				]
+			]);
+		}
+		else return [];
+	}
+
+
+
+
+
+
+
+
+
+
+
 	//
 	// public function get_origins_reservations() : array
 	// {

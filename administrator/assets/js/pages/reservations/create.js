@@ -16,13 +16,33 @@ $( document ).ready(function()
         buttonup_class: 'btn btn-secondary'
     });
 
-    $("input[type='price']").TouchSpin({
+    $("input[name='tour_price'], input[name='amount_discount']").TouchSpin({
         min: 0,
         max: null,
         prefix: '$',
         postfix: 'MXN',
         buttondown_class: 'btn btn-secondary',
         buttonup_class: 'btn btn-secondary'
+    });
+
+    $("input[name='percentage_discount']").TouchSpin({
+        min: 0,
+        max: 100,
+        postfix: '%',
+        buttondown_class: 'btn btn-secondary',
+        buttonup_class: 'btn btn-secondary'
+    });
+
+    $( document ).on('change', '[name="discount"]', function ()
+    {
+        $( document ).find('input[name="percentage_discount"]').parents('.form-group').addClass('d-none');
+        $( document ).find('input[name="amount_discount"]').parents('.form-group').addClass('d-none');
+
+        if ( $(this).val() === 'percentage' )
+            $( document ).find('input[name="percentage_discount"]').parents('.form-group').removeClass('d-none');
+
+        if ( $(this).val() === 'amount' )
+            $( document ).find('input[name="amount_discount"]').parents('.form-group').removeClass('d-none');
     });
 
     // SUBMIT

@@ -163,7 +163,7 @@ $this->dependencies->add(['js', '{$path.js}pages/reservations/create.js?v=1.3'])
                                 <div class="label">
                                     <label>
                                         <input class="form-control" type="time" name="reservation_hour" value="14:00">
-                                        <p class="description text-muted">Establezcla el horario para la salida del yate.</p>
+                                        <p class="description text-muted">Establezcla el horario de salida.</p>
                                     </label>
                                 </div>
                             </div>
@@ -177,8 +177,8 @@ $this->dependencies->add(['js', '{$path.js}pages/reservations/create.js?v=1.3'])
                 <div class="card m-b-30" data-block="info">
                     <div class="card-body">
                         <!-- Title container -->
-                        <h4 class="header-title m-t-0">...</h4>
-                        <p class="text-muted m-b-20">... ... ...</p>
+                        <h4 class="header-title m-t-0">Información del hotel y tour</h4>
+                        <p class="text-muted m-b-20">Detalles de información sobre el hotel y el tour reservado.</p>
                         <!-- End title container -->
 
                         <div class="form-group row">
@@ -188,7 +188,7 @@ $this->dependencies->add(['js', '{$path.js}pages/reservations/create.js?v=1.3'])
                             <div class="col-md-5">
                                 <div class="label">
                                     <label>
-                                        <input type="text" value="" name="">
+                                        <input type="text" value="" name="hotel_name">
                                         <p class="description text-muted">Nombre del hotel.</p>
                                     </label>
                                 </div>
@@ -196,22 +196,8 @@ $this->dependencies->add(['js', '{$path.js}pages/reservations/create.js?v=1.3'])
                             <div class="col-md-4">
                                 <div class="label">
                                     <label>
-                                        <input type="text" value="" name="">
+                                        <input type="text" value="" name="hotel_room">
                                         <p class="description text-muted">Número de habitación.</p>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-3">
-                                <h6 class="p-t-5">Número de confirmación</h6>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="label">
-                                    <label>
-                                        <input class="form-control" type="text" name="">
-                                        <p class="description text-muted">Escriba el nombre completo del cliente que realiza la reservación.</p>
                                     </label>
                                 </div>
                             </div>
@@ -225,7 +211,7 @@ $this->dependencies->add(['js', '{$path.js}pages/reservations/create.js?v=1.3'])
                                 <div class="label">
                                     <label>
                                         <input class="form-control" type="text" name="">
-                                        <p class="description text-muted">Escriba el nombre completo del cliente que realiza la reservación.</p>
+                                        <p class="description text-muted">(¿?).</p>
                                     </label>
                                 </div>
                             </div>
@@ -238,8 +224,8 @@ $this->dependencies->add(['js', '{$path.js}pages/reservations/create.js?v=1.3'])
                             <div class="col-md-9">
                                 <div class="label">
                                     <label>
-                                        <input class="form-control" type="text" name="">
-                                        <p class="description text-muted">Escriba el nombre completo del cliente que realiza la reservación.</p>
+                                        <input class="form-control" type="text" name="tour_name">
+                                        <p class="description text-muted">Escriba el nombre del tour.</p>
                                     </label>
                                 </div>
                             </div>
@@ -252,8 +238,8 @@ $this->dependencies->add(['js', '{$path.js}pages/reservations/create.js?v=1.3'])
                             <div class="col-md-9">
                                 <div class="label">
                                     <label>
-                                        <input class="form-control" type="text" name="">
-                                        <p class="description text-muted">Escriba el nombre completo del cliente que realiza la reservación.</p>
+                                        <input class="form-control" type="text" name="tour_price">
+                                        <p class="description text-muted">Establezcla un precio al tour.</p>
                                     </label>
                                 </div>
                             </div>
@@ -266,11 +252,64 @@ $this->dependencies->add(['js', '{$path.js}pages/reservations/create.js?v=1.3'])
                             <div class="col-md-9">
                                 <div class="label">
                                     <label>
-                                        <select class="form-control" name="">
+                                        <select class="form-control" name="payment_methods">
                                             <?php foreach ( Functions::payment_methods() as $key => $value ): ?>
                                                 <option value="<?= $value['code'] ?>"><?= ucwords($value['title']) ?></option>
                                             <?php endforeach; ?>
                                         </select>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-3">
+                                <h6 class="p-t-5">Realizar descuento</h6>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="label">
+                                    <label class="radio" style="margin-top: 0px;">
+                                        <p class="text-muted"><small><strong>No hacer descuento.</strong></small></p>
+                                        <input name="discount" type="radio" value="no" checked/>
+                                        <div class="radio_indicator"></div>
+                                    </label>
+                                    <label class="radio" style="margin-top: 5px;">
+                                        <p class="text-muted"><small><strong>Con porcentaje.</strong></small></p>
+                                        <input name="discount" type="radio" value="percentage"/>
+                                        <div class="radio_indicator"></div>
+                                    </label>
+                                    <label class="radio" style="margin-top: 5px;">
+                                        <p class="text-muted"><small><strong>Con precio.</strong></small></p>
+                                        <input name="discount" type="radio" value="amount"/>
+                                        <div class="radio_indicator"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row d-none">
+                            <div class="col-md-3">
+                                <h6 class="p-t-5">Porcentaje</h6>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="label">
+                                    <label>
+                                        <input type="text" value="0" name="percentage_discount">
+                                        <p class="description text-muted">Escriba el porcentaje de descuento.</p>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row d-none">
+                            <div class="col-md-3">
+                                <h6 class="p-t-5">Cantidad</h6>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="label">
+                                    <label>
+                                        <input class="form-control" type="text" value="100" name="amount_discount">
+                                        <p class="description text-muted">Escriba la cantidad que desea descontar.</p>
                                     </label>
                                 </div>
                             </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 07-11-2020 a las 10:29:51
+-- Tiempo de generación: 13-11-2020 a las 16:46:25
 -- Versión del servidor: 10.5.5-MariaDB-1:10.5.5+maria~buster
 -- Versión de PHP: 7.4.10
 
@@ -20,6 +20,33 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `adventrips`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `bookings`
+--
+
+CREATE TABLE `bookings` (
+  `id` bigint(20) NOT NULL,
+  `folio` varchar(8) DEFAULT NULL,
+  `customer_email` text DEFAULT NULL,
+  `customer_name` text DEFAULT NULL,
+  `reservation_date` datetime DEFAULT NULL,
+  `status` set('available','finalized','no_show','cancelled','removed') NOT NULL DEFAULT 'available',
+  `data` longtext DEFAULT NULL,
+  `creation_date` datetime NOT NULL DEFAULT current_timestamp(),
+  `payment_status` set('pending_payment','reserved_payment','full_payment') NOT NULL DEFAULT 'pending_payment',
+  `__session` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `bookings`
+--
+
+INSERT INTO `bookings` (`id`, `folio`, `customer_email`, `customer_name`, `reservation_date`, `status`, `data`, `creation_date`, `payment_status`, `__session`) VALUES
+(1, 'WAJNTCOC', 'davidgomezmacias@gmail.com', 'David Miguel Gomez Macias', '2020-11-14 14:00:00', 'available', 'a:4:{s:8:\"customer\";a:3:{s:4:\"name\";s:25:\"David Miguel Gomez Macias\";s:5:\"email\";s:26:\"davidgomezmacias@gmail.com\";s:5:\"phone\";s:12:\"529982904203\";}s:11:\"reservation\";a:5:{s:3:\"pax\";a:3:{s:6:\"adults\";s:1:\"2\";s:9:\"childrens\";i:0;s:5:\"babys\";i:0;}s:4:\"date\";s:10:\"2020-11-14\";s:4:\"hour\";s:8:\"14:00:00\";s:5:\"hotel\";a:2:{s:4:\"name\";s:3:\"RIU\";s:4:\"room\";s:3:\"855\";}s:4:\"tour\";a:2:{s:4:\"name\";s:12:\"Isla mujeres\";s:5:\"price\";s:4:\"1200\";}}s:7:\"payment\";a:4:{s:8:\"discount\";N;s:12:\"type_payment\";s:4:\"cash\";s:8:\"subtotal\";s:4:\"1200\";s:5:\"total\";s:4:\"1200\";}s:8:\"metadata\";a:1:{s:7:\"version\";s:5:\"1.0.0\";}}', '2020-11-13 14:29:54', 'pending_payment', 'a:3:{s:4:\"user\";s:6:\"dgomez\";s:2:\"id\";s:1:\"1\";s:5:\"token\";a:3:{i:0;s:1:\"1\";i:1;s:4:\"F0iD\";i:2;s:128:\"k5SX2WEuXYCAANy4OOgPGm4CuHN5OfMQQ7myJStb5edDYYVv8iCbHcKIt34i424JbbzyUqM8XpVbn0UO6nZEyye2eM6tMXXebxulwIQUVwRfIhuGJozIgULTEOIoiAZ7\";}}'),
+(2, 'UKMXAEBS', 'davidgomezmacias@gmail.com', 'David Miguel Gomez Macias', '2020-11-14 17:03:00', 'available', 'a:4:{s:8:\"customer\";a:3:{s:4:\"name\";s:25:\"David Miguel Gomez Macias\";s:5:\"email\";s:26:\"davidgomezmacias@gmail.com\";s:5:\"phone\";s:12:\"529982904203\";}s:11:\"reservation\";a:5:{s:3:\"pax\";a:3:{s:6:\"adults\";s:1:\"2\";s:9:\"childrens\";s:1:\"1\";s:5:\"babys\";i:0;}s:4:\"date\";s:10:\"2020-11-14\";s:4:\"hour\";s:8:\"17:03:00\";s:5:\"hotel\";a:2:{s:4:\"name\";s:3:\"RIU\";s:4:\"room\";s:3:\"855\";}s:4:\"tour\";a:2:{s:4:\"name\";s:12:\"Isla mujeres\";s:5:\"price\";s:4:\"4000\";}}s:7:\"payment\";a:4:{s:8:\"discount\";N;s:12:\"type_payment\";s:4:\"cash\";s:8:\"subtotal\";s:4:\"4000\";s:5:\"total\";s:4:\"4000\";}s:8:\"metadata\";a:1:{s:7:\"version\";s:5:\"1.0.0\";}}', '2020-11-13 15:16:16', 'pending_payment', 'a:3:{s:4:\"user\";s:6:\"dgomez\";s:2:\"id\";s:1:\"1\";s:5:\"token\";a:3:{i:0;s:1:\"1\";i:1;s:4:\"F0iD\";i:2;s:128:\"k5SX2WEuXYCAANy4OOgPGm4CuHN5OfMQQ7myJStb5edDYYVv8iCbHcKIt34i424JbbzyUqM8XpVbn0UO6nZEyye2eM6tMXXebxulwIQUVwRfIhuGJozIgULTEOIoiAZ7\";}}');
 
 -- --------------------------------------------------------
 
@@ -123,11 +150,17 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `name`, `email`, `phone`, `password`, `id_level`, `permissions`) VALUES
 (1, 'dgomez', 'Administrador', 'davidgomezmacias@gmail.com', 529981904203, '1b42f6b8eb057aa91ffd85f945efa7c0cb65a3ca:Jq2CpecTSBjDX14rOyG47dEv6jDGUW22P8FBR8uk7NWESr4E9gxDFGUVO3078rx8', 1, 'a:14:{i:0;s:12:\"{users_read}\";i:1;s:14:\"{users_create}\";i:2;s:14:\"{users_update}\";i:3;s:14:\"{users_delete}\";i:4;s:18:\"{help_development}\";i:5;s:19:\"{reservations_read}\";i:6;s:21:\"{reservations_create}\";i:7;s:21:\"{reservations_update}\";i:8;s:21:\"{reservations_delete}\";i:9;s:21:\"{reservations_status}\";i:10;s:22:\"{reservations_payment}\";i:11;s:18:\"{permissions_read}\";i:12;s:20:\"{permissions_create}\";i:13;s:20:\"{permissions_delete}\";}'),
-(2, 'ggomez', 'Gersón Gómez Macías', 'ggomez@codemonkey.com.mx', 52, '0a3e07024e4b47f5707011f1e04b773847cc9a34:vBi30S3SX872CWnOrZtyZS8DKzlfQfez1PNcjlEJJsjmUD4uawAPTqR5mWto94U7', 1, 'a:14:{i:0;s:12:\"{users_read}\";i:1;s:14:\"{users_create}\";i:2;s:14:\"{users_update}\";i:3;s:14:\"{users_delete}\";i:4;s:18:\"{help_development}\";i:5;s:19:\"{reservations_read}\";i:6;s:21:\"{reservations_create}\";i:7;s:21:\"{reservations_update}\";i:8;s:21:\"{reservations_delete}\";i:9;s:21:\"{reservations_status}\";i:10;s:22:\"{reservations_payment}\";i:11;s:18:\"{permissions_read}\";i:12;s:20:\"{permissions_create}\";i:13;s:20:\"{permissions_delete}\";}');
+(2, 'ggomez', 'Gersón Gómez Macías', 'ggomez@codemonkey.com.mx', 52, '5534895f13296c960a447b5fc3a35710ba6d1509:Qj0FfImGd4DcfipnLFBvscsVfRUfTX8djnzRF8wCfiwI4hbuU3ryrfnCNOyMIRYJ', 1, 'a:14:{i:0;s:12:\"{users_read}\";i:1;s:14:\"{users_create}\";i:2;s:14:\"{users_update}\";i:3;s:14:\"{users_delete}\";i:4;s:18:\"{help_development}\";i:5;s:19:\"{reservations_read}\";i:6;s:21:\"{reservations_create}\";i:7;s:21:\"{reservations_update}\";i:8;s:21:\"{reservations_delete}\";i:9;s:21:\"{reservations_status}\";i:10;s:22:\"{reservations_payment}\";i:11;s:18:\"{permissions_read}\";i:12;s:20:\"{permissions_create}\";i:13;s:20:\"{permissions_delete}\";}');
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `bookings`
+--
+ALTER TABLE `bookings`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `levels`
@@ -158,6 +191,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `bookings`
+--
+ALTER TABLE `bookings`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `levels`

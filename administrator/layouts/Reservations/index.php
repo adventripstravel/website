@@ -46,7 +46,7 @@ $this->dependencies->add(['other', '<script type="text/javascript">$.app.tableSe
                                 <thead>
                                     <tr>
                                         <th>Nombre / Correo electrónico</th>
-                                        <th>Fecha reservada / Yate</th>
+                                        <th>Fecha reservada</th>
                                         <th>Estado</th>
                                         <th>Folio</th>
                                         <th></th>
@@ -69,7 +69,7 @@ $this->dependencies->add(['other', '<script type="text/javascript">$.app.tableSe
                                             </td>
                                             <td data-title="Fecha reservada&#xa;Yate">
                                                 <span class="d-block"><?= Dates::formatted_date($value['data']['reservation']['date'], 'formatted') ?> - <?= $value['data']['reservation']['hour'] ?></span>
-                                                <small class="d-block"><?= $value['data']['yacht']['name'] ?></small>
+                                                <small class="d-block"></small>
                                             </td>
                                             <td data-title="Estado">
                                                 <?php
