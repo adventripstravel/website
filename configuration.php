@@ -138,7 +138,7 @@ class Configuration
 	 *
      * @var string $db_host
      */
-	public static $db_host = 'localhost';
+	public static $db_host = 'adventrips.com';
 
 	/**
      * Nombre de la base de datos
@@ -147,7 +147,7 @@ class Configuration
 	 *
      * @var string $db_name
      */
-	public static $db_name = 'adventrips';
+	public static $db_name = 'ad-website';
 
 	/**
      * Usuario de la base de datos
@@ -156,7 +156,7 @@ class Configuration
 	 *
      * @var string $db_user
      */
-	public static $db_user = 'development';
+	public static $db_user = 'adventrips';
 
 	/**
      * Contraseña de la base de datos.
@@ -165,7 +165,7 @@ class Configuration
 	 *
      * @var string $db_pass
      */
-	public static $db_pass = 'd3v3l0pm3nt';
+	public static $db_pass = '2$Aj4be7';
 
 	/**
      * Tipo de caracteres para la base de datos. Opcional.
