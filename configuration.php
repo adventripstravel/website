@@ -138,7 +138,7 @@ class Configuration
 	 *
      * @var string $db_host
      */
-	public static $db_host = 'adventrips.com';
+	public static $db_host = 'codemonkey.com.mx';
 
 	/**
      * Nombre de la base de datos
@@ -147,7 +147,7 @@ class Configuration
 	 *
      * @var string $db_name
      */
-	public static $db_name = 'ad-website';
+	public static $db_name = 'adventrips';
 
 	/**
      * Usuario de la base de datos
@@ -165,7 +165,7 @@ class Configuration
 	 *
      * @var string $db_pass
      */
-	public static $db_pass = '2$Aj4be7';
+	public static $db_pass = 'pB8$h27h';
 
 	/**
      * Tipo de caracteres para la base de datos. Opcional.
